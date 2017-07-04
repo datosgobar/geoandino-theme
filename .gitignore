@@ -3,3 +3,5 @@
 *.retry
 .vagrant/
 .env
+*.py[o|c]
+local_settings.py
