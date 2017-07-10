@@ -13,3 +13,15 @@ class TestSiteConfiguration(TestCase):
     @istest
     def site_created_at(self):
         assert self.site_configuration.created
+
+    @istest
+    def site_modified(self):
+        assert self.site_configuration.modified
+
+    @istest
+    def site_title(self):
+        assert self.site_configuration.title
+
+    @istest
+    def site_description(self):
+        assert self.site_configuration.description
