@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.test import TestCase
-from nose.tools import istest
+from nose.tools import istest, assert_false
 from geoandino.models import SiteConfiguration
 
 class TestSiteConfiguration(TestCase):
@@ -25,3 +25,7 @@ class TestSiteConfiguration(TestCase):
     @istest
     def site_description(self):
         assert self.site_configuration.description
+
+    @istest
+    def site_is_default(self):
+        assert_false(self.site_configuration.default)
