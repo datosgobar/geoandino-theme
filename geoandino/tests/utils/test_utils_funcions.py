@@ -17,4 +17,6 @@ class TestWithoutDefaultSiteConfiguration(TestCase):
     def has_title(self):
         assert self.conf_module.get_site_conf().title
 
-    
+    @istest
+    def has_description(self):
+        assert self.conf_module.get_site_conf().description

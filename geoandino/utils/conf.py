@@ -5,6 +5,7 @@ from geoandino.models import SiteConfiguration
 class NullSiteConfiguration:
     def __init__(self):
         self.title = "Portal Geoandino"
+        self.description = "Portal Geoandino"
     
 
 def get_nullobject_site_conf():
