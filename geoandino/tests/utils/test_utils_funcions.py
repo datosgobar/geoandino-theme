@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from nose.tools import istest, assert_true
+from nose.tools import istest, assert_true, assert_equals
 from django.test import TestCase
 from geoandino.utils import conf
 from geoandino.tests.test_utils.factories import SiteConfigurationFactory
@@ -33,4 +33,16 @@ class TestWithDefaultSiteConfiguration(TestWithoutDefaultSiteConfiguration):
         self.site_configuration = self.create_site_configuration()
 
     def create_site_configuration(self):
-        return SiteConfigurationFactory.create()
+        return SiteConfigurationFactory.create(default=True)
+    
+    @istest
+    def returns_defalt_site_configuration(self):
+        assert_equals(self.site_configuration, self.conf_module.get_site_conf())
+
+    @istest
+    def default_site_conf_title(self):
+        assert_equals(self.site_configuration.title, self.conf_module.get_site_conf().title)
+
+    @istest
+    def default_site_conf_description(self):
+        assert_equals(self.site_configuration.description, self.conf_module.get_site_conf().description)

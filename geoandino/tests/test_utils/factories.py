@@ -3,7 +3,7 @@
 import factory
 from geoandino import models
 
-class SiteConfigurationFactory(factory.Factory):
+class SiteConfigurationFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = models.SiteConfiguration
 
