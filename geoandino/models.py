@@ -4,3 +4,6 @@ from django_extensions.db import models
 
 class SiteConfiguration(models.TimeStampedModel, models.TitleDescriptionModel):
     default = BooleanField(default=False, )
+
+    class Meta:
+        ordering = ['created', ]
