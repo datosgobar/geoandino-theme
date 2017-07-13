@@ -46,3 +46,21 @@ class TestWithDefaultSiteConfiguration(TestWithoutDefaultSiteConfiguration):
     @istest
     def default_site_conf_description(self):
         assert_equals(self.site_configuration.description, self.conf_module.get_site_conf().description)
+
+class TestWithOneNonDefaultSiteConfiguration(TestWithoutDefaultSiteConfiguration):
+
+    def setUp(self):
+        super(TestWithOneNonDefaultSiteConfiguration, self).setUp()
+        self.site_configuration = self.create_site_configuration()
+
+    def create_site_configuration(self):
+        return SiteConfigurationFactory.create(default=False)
+
+class TestWithTwoDefaultSiteConfiguration(TestWithDefaultSiteConfiguration):
+
+    def setUp(self):
+        super(TestWithTwoDefaultSiteConfiguration, self).setUp()
+        self.another_site_configuration = self.create_another_site_configuration()
+
+    def create_another_site_configuration(self):
+        return SiteConfigurationFactory.create(default=False)
