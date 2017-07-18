@@ -2,11 +2,17 @@
 from nose.tools import istest, assert_true, assert_equals
 from django.test import TestCase
 from django.conf import settings
+from geonode.base.populate_test_data import create_models
+from geonode.layers.models import Layer
 from geoandino.utils.datajsonar import data_jsonar
-from geoandino.tests.test_utils.factories import SiteConfigurationFactory
+from geoandino.tests.test_utils.factories import SiteConfigurationFactory, TopicCategoryFactory
 
 
 class TestDataJsonAr(TestCase):
+
+    # Required by create_models() function, from geonode's initial_data.json
+    fixtures = ['initial_data.json']
+
     def setUp(self):
         self.site_conf = SiteConfigurationFactory.create(default=True)
         self.settings = settings
@@ -40,3 +46,10 @@ class TestDataJsonAr(TestCase):
     def has_dataset_list(self):
         datasets = data_jsonar()['datasets']
         assert_equals([], datasets)
+
+    @istest
+    def dataset_from_layers(self):
+        create_models(type='layer')
+
+        datasets = data_jsonar()['datasets']
+        assert_equals(Layer.objects.count(), len(datasets))

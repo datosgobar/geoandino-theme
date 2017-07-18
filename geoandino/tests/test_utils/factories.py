@@ -3,7 +3,15 @@
 import factory
 from django.contrib.auth import get_user_model
 from account import models as account_models
+from geonode.base.models import TopicCategory
 from geoandino import models
+
+
+class TopicCategoryFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = TopicCategory
+    
+    identifier = factory.Sequence(lambda n: 'location%d' % n)
 
 class UserFactory(factory.django.DjangoModelFactory):
     class Meta:
