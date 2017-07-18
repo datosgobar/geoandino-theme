@@ -96,6 +96,11 @@ class DataJsonArDatasetMixin:
         dataset = dataset_from(model)
         assert_equals(model.title, dataset['title'])
 
+    def test_has_description(self):
+        model = self.get_models().first()
+        dataset = dataset_from(model)
+        assert_equals(model.abstract, dataset['description'])
+
 class TestDataJsonArDatasetFromDocuments(DataJsonArDatasetMixin,TestCase):
 
     def create_models(self):

@@ -36,6 +36,7 @@ Geonode's /data.json is implemented like:
 def dataset_from(resource):
     record = {}
     record['title'] = resource.title
+    record['description'] = resource.abstract
     return record
 
 
