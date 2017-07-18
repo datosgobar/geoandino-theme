@@ -10,6 +10,11 @@ class TestDataJsonAr(TestCase):
         self.site_conf = SiteConfigurationFactory.create(default=True)
 
     @istest
-    def title_is_default_site_confs_title(self):
+    def title_from_site_conf(self):
         title = data_jsonar()['title']
         assert_equals(self.site_conf.title, title)
+
+    @istest
+    def description_from_site_conf(self):
+        description = data_jsonar()['description']
+        assert_equals(self.site_conf.description, description)
