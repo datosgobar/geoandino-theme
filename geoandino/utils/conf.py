@@ -13,7 +13,7 @@ def get_nullobject_site_conf():
     return NullSiteConfiguration()
 
 def get_site_conf():
-    query = SiteConfiguration.objects.filter(default=True)
+    query = SiteConfiguration.objects.select_related("publisher__user").filter(default=True)
     if query.exists():
         return query.first()
     else:

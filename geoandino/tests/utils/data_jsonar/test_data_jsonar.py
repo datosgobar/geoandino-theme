@@ -18,3 +18,14 @@ class TestDataJsonAr(TestCase):
     def description_from_site_conf(self):
         description = data_jsonar()['description']
         assert_equals(self.site_conf.description, description)
+
+    @istest
+    def publisher_name_from_site_conf(self):
+        publisher_name = data_jsonar()['publisher']['name']
+        assert_equals(self.site_conf.publisher.user.username, publisher_name)
+
+    @istest
+    def publisher_mbox_from_site_conf(self):
+        publisher_mbox = data_jsonar()['publisher']['mbox']
+        assert_equals(self.site_conf.publisher.email, publisher_mbox)
+
