@@ -103,3 +103,19 @@ class TestDataJsonArDatasetFromDocuments(DataJsonArDatasetMixin,TestCase):
 
     def get_models(self):
         return Document.objects.all()
+
+class TestDataJsonArDatasetFromLayers(DataJsonArDatasetMixin,TestCase):
+
+    def create_models(self):
+        create_models(type='layer')
+
+    def get_models(self):
+        return Layer.objects.all()
+
+class TestDataJsonArDatasetFromMaps(DataJsonArDatasetMixin,TestCase):
+
+    def create_models(self):
+        create_models(type='map')
+
+    def get_models(self):
+        return Map.objects.all()
