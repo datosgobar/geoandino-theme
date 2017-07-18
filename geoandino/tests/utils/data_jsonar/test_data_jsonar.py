@@ -4,6 +4,7 @@ from django.test import TestCase
 from django.conf import settings
 from geonode.base.populate_test_data import create_models
 from geonode.layers.models import Layer
+from geonode.maps.models import Map
 from geoandino.utils.datajsonar import data_jsonar
 from geoandino.tests.test_utils.factories import SiteConfigurationFactory, TopicCategoryFactory
 
@@ -53,3 +54,12 @@ class TestDataJsonAr(TestCase):
 
         datasets = data_jsonar()['datasets']
         assert_equals(Layer.objects.count(), len(datasets))
+
+    @istest
+    def dataset_from_layers_and_maps(self):
+        create_models(type='layer')
+        create_models(type='map')
+        expected_count = Layer.objects.count() + Map.objects.count()
+        datasets = data_jsonar()['datasets']
+        assert_equals(expected_count, len(datasets))
+

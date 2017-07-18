@@ -1,15 +1,21 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
 from geonode.layers.models import Layer
+from geonode.maps.models import Map
 from geoandino.utils.conf import get_site_conf
+
+def dataset_from(resource):
+    record = {}
+    record['title'] = resource.title
+    return record
 
 
 def get_datasets():
     json_data = []
-    for resource in Layer.objects.all():
-        record = {}
-        record['title'] = resource.title
-        json_data.append(record)
+    for a_map in Map.objects.all():
+        json_data.append(dataset_from(a_map))
+    for layer in Layer.objects.all():
+        json_data.append(dataset_from(layer))
     return json_data
 
 def data_jsonar():
