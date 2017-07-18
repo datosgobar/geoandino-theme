@@ -31,8 +31,9 @@ LOCAL_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 WSGI_APPLICATION = "geoandino.wsgi.application"
 
-
+SUPER_THEME_TAXONOMY_URL = "http://datos.gob.ar/superThemeTaxonomy.json"
 # Load more settings from a file called local_settings.py if it exists
+# TODO: Remove this hack and use environment variables
 try:
     from local_settings import *
 except ImportError:
