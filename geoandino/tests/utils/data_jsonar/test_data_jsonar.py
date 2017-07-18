@@ -6,7 +6,7 @@ from geonode.base.populate_test_data import create_models
 from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from geonode.documents.models import Document
-from geoandino.utils.datajsonar import data_jsonar
+from geoandino.utils.datajsonar import data_jsonar, dataset_from
 from geoandino.tests.test_utils.factories import SiteConfigurationFactory, TopicCategoryFactory
 
 
@@ -72,3 +72,34 @@ class TestDataJsonAr(TestCase):
         expected_count = Layer.objects.count() + Map.objects.count() + Document.objects.count()
         datasets = data_jsonar()['datasets']
         assert_equals(expected_count, len(datasets))
+
+
+class DataJsonArDatasetMixin:
+
+    # Required by create_models() function, from geonode's initial_data.json
+    fixtures = ['initial_data.json']
+
+    def setUp(self):
+        self.site_conf = SiteConfigurationFactory.create(default=True)
+        self.settings = settings
+        self.create_models()
+        self.expect_keys = ['title', ]
+
+    def create_models(self):
+        raise NotImplementedError("This should be implement in a subclass.")
+
+    def get_models(self):
+        raise NotImplementedError("This should be implement in a subclass.")
+
+    def test_has_title(self):
+        model = self.get_models().first()
+        dataset = dataset_from(model)
+        assert_equals(model.title, dataset['title'])
+
+class TestDataJsonArDatasetFromDocuments(DataJsonArDatasetMixin,TestCase):
+
+    def create_models(self):
+        create_models(type='document')
+
+    def get_models(self):
+        return Document.objects.all()
