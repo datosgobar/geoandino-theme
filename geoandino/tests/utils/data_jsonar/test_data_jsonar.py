@@ -36,3 +36,7 @@ class TestDataJsonAr(TestCase):
         taxonomy = data_jsonar()['superThemeTaxonomy']
         assert_equals(self.settings.SUPER_THEME_TAXONOMY_URL, taxonomy)
 
+    @istest
+    def has_dataset_list(self):
+        datasets = data_jsonar()['datasets']
+        assert_equals([], datasets)

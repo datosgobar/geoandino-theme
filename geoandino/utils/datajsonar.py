@@ -14,4 +14,5 @@ def data_jsonar():
             "mbox": site_conf.publisher.email,
         },
         "superThemeTaxonomy": settings.SUPER_THEME_TAXONOMY_URL,
+        "datasets": [],
     }
