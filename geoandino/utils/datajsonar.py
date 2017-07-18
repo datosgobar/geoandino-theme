@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
-from geonode.layers.models import Layer
+from geonode.base.models import ResourceBase
 from geonode.maps.models import Map
 from geonode.documents.models import Document
 from geoandino.utils.conf import get_site_conf
@@ -13,12 +13,8 @@ def dataset_from(resource):
 
 def get_datasets():
     json_data = []
-    for a_map in Map.objects.all():
-        json_data.append(dataset_from(a_map))
-    for layer in Layer.objects.all():
-        json_data.append(dataset_from(layer))
-    for document in Document.objects.all():
-        json_data.append(dataset_from(document))
+    for resource in ResourceBase.objects.all():
+        json_data.append(dataset_from(resource))
     return json_data
 
 def data_jsonar():
