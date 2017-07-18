@@ -2,6 +2,7 @@
 from django.conf import settings
 from geonode.layers.models import Layer
 from geonode.maps.models import Map
+from geonode.documents.models import Document
 from geoandino.utils.conf import get_site_conf
 
 def dataset_from(resource):
@@ -16,6 +17,8 @@ def get_datasets():
         json_data.append(dataset_from(a_map))
     for layer in Layer.objects.all():
         json_data.append(dataset_from(layer))
+    for document in Document.objects.all():
+        json_data.append(dataset_from(document))
     return json_data
 
 def data_jsonar():
