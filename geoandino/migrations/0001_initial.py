@@ -8,6 +8,7 @@ import django_extensions.db.fields
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('account', '0003_auto_20160822_0917'),
     ]
 
     operations = [
@@ -19,11 +20,11 @@ class Migration(migrations.Migration):
                 ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
                 ('title', models.CharField(max_length=255, verbose_name='title')),
                 ('description', models.TextField(null=True, verbose_name='description', blank=True)),
+                ('default', models.BooleanField(default=False)),
+                ('publisher', models.ForeignKey(to='account.EmailAddress')),
             ],
             options={
-                'ordering': ('-modified', '-created'),
-                'abstract': False,
-                'get_latest_by': 'modified',
+                'ordering': ['created'],
             },
         ),
     ]
