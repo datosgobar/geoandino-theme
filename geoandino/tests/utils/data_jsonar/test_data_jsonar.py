@@ -105,7 +105,6 @@ class DataJsonArDatasetMixin:
         self.site_conf = SiteConfigurationFactory.create(default=True)
         self.settings = settings
         self.create_models()
-        self.expect_keys = ['title', ]
 
     def create_models(self):
         raise NotImplementedError("This should be implement in a subclass.")
@@ -129,6 +128,15 @@ class DataJsonArDatasetMixin:
         accrual_periodicity = string_to_accrual_periodicity(model.maintenance_frequency)
         assert_equals(accrual_periodicity, dataset['accrualPeriodicity'])
 
+    def test_has_publisher_name(self):
+        model = self.get_models().first()
+        dataset = dataset_from(model)
+        assert_equals(model.poc.organization, dataset['publisher']['name'])
+
+    def test_has_publisher_mbox(self):
+        model = self.get_models().first()
+        dataset = dataset_from(model)
+        assert_equals(model.poc.email, dataset['publisher']['mbox'])
 
 class TestDataJsonArDatasetFromDocuments(DataJsonArDatasetMixin,TestCase):
 
