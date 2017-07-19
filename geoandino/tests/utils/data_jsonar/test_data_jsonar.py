@@ -2,12 +2,13 @@
 from nose.tools import istest, assert_true, assert_equals
 from django.test import TestCase
 from django.conf import settings
+from parameterized import parameterized
 from geonode.base.populate_test_data import create_models
 from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from geonode.documents.models import Document
 from geoandino.utils.datajsonar import data_jsonar, dataset_from, string_to_accrual_periodicity, ISO_8601_ACCRUAL_PERIODICITY_DIC
-from geoandino.tests.test_utils.factories import SiteConfigurationFactory, TopicCategoryFactory
+from geoandino.tests.test_utils.factories import SiteConfigurationFactory, TopicCategoryFactory, a_word
 
 
 class TestDataJsonAr(TestCase):
@@ -75,14 +76,24 @@ class TestDataJsonAr(TestCase):
 
 class TestStringToAccrualPeriodicity:
 
-    def check_value(self, value, from_value):
-        iso_formated = string_to_accrual_periodicity(value)
-        expected = ISO_8601_ACCRUAL_PERIODICITY_DIC[from_value]
+    @parameterized.expand([
+        ("continual", "continuously_updated"),
+        ("daily", "daily"),
+        ("annualy", "annual"),
+        ("monthly", "monthly"),
+        ("fortnightly", "biweekly"),
+        ("weekly", "weekly"),
+        ("biannually", "semiannual"),
+        ("quarterly", "quarterly"),
+    ])
+    def test_periodicity_mapping(self, geonode_value, iso_8601_key):
+        iso_formated = string_to_accrual_periodicity(geonode_value)
+        expected = ISO_8601_ACCRUAL_PERIODICITY_DIC[iso_8601_key]
         assert_equals(expected, iso_formated)
 
-    @istest
-    def continual_value(self):
-        self.check_value('continual', 'continuously_updated')
+    def test_periodicity_mapping_with_invalid_value(self):
+        iso_formated = string_to_accrual_periodicity(a_word())
+        assert_equals("", iso_formated)
 
 
 class DataJsonArDatasetMixin:

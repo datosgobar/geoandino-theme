@@ -1,10 +1,16 @@
 # -*- coding: utf-8 -*-
 
+from faker import Faker
 import factory
 from django.contrib.auth import get_user_model
 from account import models as account_models
 from geonode.base.models import TopicCategory
 from geoandino import models
+
+fake = Faker()
+
+def a_word():
+    return fake.word()
 
 
 class TopicCategoryFactory(factory.django.DjangoModelFactory):
