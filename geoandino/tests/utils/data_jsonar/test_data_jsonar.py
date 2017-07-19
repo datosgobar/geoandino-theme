@@ -8,7 +8,7 @@ from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from geonode.documents.models import Document
 from geoandino.utils.datajsonar import data_jsonar, dataset_from, string_to_accrual_periodicity, ISO_8601_ACCRUAL_PERIODICITY_DIC
-from geoandino.tests.test_utils.factories import SiteConfigurationFactory, TopicCategoryFactory, a_word
+from geoandino.tests.test_utils.factories import SiteConfigurationFactory, TopicCategoryFactory, a_word, LinkFactory
 
 
 class TestDataJsonAr(TestCase):
@@ -138,7 +138,15 @@ class DataJsonArDatasetMixin:
         dataset = dataset_from(model)
         assert_equals(model.poc.email, dataset['publisher']['mbox'])
 
-class TestDataJsonArDatasetFromDocuments(DataJsonArDatasetMixin,TestCase):
+class DataJsonArDistributionMixin:
+
+    def test_dataset_with_distributions(self):
+        model = self.get_models().first()
+        LinkFactory.create(resource=model)
+        assert_true(any(model.link_set.all()))
+
+
+class TestDataJsonArDatasetFromDocuments(DataJsonArDatasetMixin,DataJsonArDistributionMixin, TestCase):
 
     def create_models(self):
         create_models(type='document')
@@ -146,7 +154,7 @@ class TestDataJsonArDatasetFromDocuments(DataJsonArDatasetMixin,TestCase):
     def get_models(self):
         return Document.objects.all()
 
-class TestDataJsonArDatasetFromLayers(DataJsonArDatasetMixin,TestCase):
+class TestDataJsonArDatasetFromLayers(DataJsonArDatasetMixin,DataJsonArDistributionMixin, TestCase):
 
     def create_models(self):
         create_models(type='layer')
@@ -154,7 +162,7 @@ class TestDataJsonArDatasetFromLayers(DataJsonArDatasetMixin,TestCase):
     def get_models(self):
         return Layer.objects.all()
 
-class TestDataJsonArDatasetFromMaps(DataJsonArDatasetMixin,TestCase):
+class TestDataJsonArDatasetFromMaps(DataJsonArDatasetMixin, DataJsonArDistributionMixin,TestCase):
 
     def create_models(self):
         create_models(type='map')

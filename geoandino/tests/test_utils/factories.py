@@ -4,7 +4,7 @@ from faker import Faker
 import factory
 from django.contrib.auth import get_user_model
 from account import models as account_models
-from geonode.base.models import TopicCategory
+from geonode.base.models import TopicCategory, Link
 from geoandino import models
 
 fake = Faker()
@@ -12,6 +12,16 @@ fake = Faker()
 def a_word():
     return fake.word()
 
+
+class LinkFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = Link
+
+    extension = "xml"
+    link_type = "metadata"
+    name = "ISO"
+    mime = "text/xml"
+    url = factory.Faker("url")
 
 class TopicCategoryFactory(factory.django.DjangoModelFactory):
     class Meta:

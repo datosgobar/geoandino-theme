@@ -86,7 +86,7 @@ def dataset_from(resource):
 
 def get_datasets():
     json_data = []
-    for resource in ResourceBase.objects.select_related("owner").all():
+    for resource in ResourceBase.objects.select_related("owner").prefetch_related("link_set").all():
         json_data.append(dataset_from(resource))
     return json_data
 
