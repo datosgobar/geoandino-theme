@@ -7,7 +7,8 @@ from geonode.base.populate_test_data import create_models
 from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from geonode.documents.models import Document
-from geoandino.utils.datajsonar import data_jsonar, dataset_from, string_to_accrual_periodicity, ISO_8601_ACCRUAL_PERIODICITY_DIC
+from geoandino.utils.datajsonar import (data_jsonar, dataset_from, string_to_accrual_periodicity, 
+                                        ISO_8601_ACCRUAL_PERIODICITY_DIC, distribution_from, )
 from geoandino.tests.test_utils.factories import SiteConfigurationFactory, TopicCategoryFactory, a_word, LinkFactory
 
 
@@ -95,7 +96,6 @@ class TestStringToAccrualPeriodicity:
         iso_formated = string_to_accrual_periodicity(a_word())
         assert_equals("", iso_formated)
 
-
 class DataJsonArDatasetMixin:
 
     # Required by create_models() function, from geonode's initial_data.json
@@ -111,6 +111,9 @@ class DataJsonArDatasetMixin:
 
     def get_models(self):
         raise NotImplementedError("This should be implement in a subclass.")
+
+    def get_model(self):
+        return self.get_models().first()
 
     def test_has_title(self):
         model = self.get_models().first()
@@ -138,12 +141,20 @@ class DataJsonArDatasetMixin:
         dataset = dataset_from(model)
         assert_equals(model.poc.email, dataset['publisher']['mbox'])
 
-class DataJsonArDistributionMixin:
-
-    def test_dataset_with_distributions(self):
+    def test_has_distributions(self):
         model = self.get_models().first()
-        LinkFactory.create(resource=model)
-        assert_true(any(model.link_set.all()))
+        dataset = dataset_from(model)
+        assert_true('distributions' in dataset)
+
+class DataJsonArDistributionMixin:
+    def get_link(self):
+        model = self.get_model()
+        return LinkFactory.create(resource=model)
+
+    def test_has_access_url(self):
+        link = self.get_link()
+        distribution = distribution_from(link)
+        assert_equals(link.url, distribution['accessUrl'])
 
 
 class TestDataJsonArDatasetFromDocuments(DataJsonArDatasetMixin,DataJsonArDistributionMixin, TestCase):
