@@ -33,12 +33,51 @@ Geonode's /data.json is implemented like:
         json_data.append(record)
 
 """
+
+ISO_8601_ACCRUAL_PERIODICITY_DIC = {
+    "decennial":	"R/P10Y",
+    "quadrennial":	"R/P4Y",
+    "annual":	"R/P1Y",
+    "bimonthly":	"R/P2M",
+    "semiweekly":	"R/P3.5D",
+    "daily":	"R/P1D",
+    "biweekly":	"R/P2W",
+    "semiannual":	"R/P6M",
+    "biennial":	"R/P2Y",
+    "triennial":	"R/P3Y",
+    "three_times_a_week":	"R/P0.33W",
+    "three_times_a_month":	"R/P0.33M",
+    "continuously_updated":	"R/PT1S",
+    "monthly":	"R/P1M",
+    "quarterly":	"R/P3M",
+    "semimonthly":	"R/P0.5M",
+    "three_times_a_year":	"R/P4M",
+    "weekly":	"R/P1W",
+    "hourly":	"R/PT1H",
+}
+
+# Keys taken from geonode.base.enumerators.UPDATE_FREQUENCIES
+GEONODE_MAINTENANCE_FREQUENCIES_DIC = {
+    "continual": ISO_8601_ACCRUAL_PERIODICITY_DIC['continuously_updated'],
+    "daily": ISO_8601_ACCRUAL_PERIODICITY_DIC['daily'],
+    "annualy": ISO_8601_ACCRUAL_PERIODICITY_DIC['annual'],
+    "monthly": ISO_8601_ACCRUAL_PERIODICITY_DIC['monthly'],
+    "fortnightly": ISO_8601_ACCRUAL_PERIODICITY_DIC['biweekly'],
+    "weekly": ISO_8601_ACCRUAL_PERIODICITY_DIC['weekly'],
+    "biannually": ISO_8601_ACCRUAL_PERIODICITY_DIC['semiannual'],
+    "quarterly": ISO_8601_ACCRUAL_PERIODICITY_DIC['quarterly'],
+}
+
+def string_to_accrual_periodicity(value):
+    # Tanslate *known* values to ISO 8601, otherwise return an empty string
+    # Taken from https://project-open-data.cio.gov/iso8601_guidance/
+    return GEONODE_MAINTENANCE_FREQUENCIES_DIC.get(value, "")
+
 def dataset_from(resource):
     record = {}
     record['title'] = resource.title
     record['description'] = resource.abstract
     return record
-
 
 def get_datasets():
     json_data = []

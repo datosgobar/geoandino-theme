@@ -6,7 +6,7 @@ from geonode.base.populate_test_data import create_models
 from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from geonode.documents.models import Document
-from geoandino.utils.datajsonar import data_jsonar, dataset_from
+from geoandino.utils.datajsonar import data_jsonar, dataset_from, string_to_accrual_periodicity, ISO_8601_ACCRUAL_PERIODICITY_DIC
 from geoandino.tests.test_utils.factories import SiteConfigurationFactory, TopicCategoryFactory
 
 
@@ -72,6 +72,17 @@ class TestDataJsonAr(TestCase):
         expected_count = Layer.objects.count() + Map.objects.count() + Document.objects.count()
         datasets = data_jsonar()['datasets']
         assert_equals(expected_count, len(datasets))
+
+class TestStringToAccrualPeriodicity:
+
+    def check_value(self, value, from_value):
+        iso_formated = string_to_accrual_periodicity(value)
+        expected = ISO_8601_ACCRUAL_PERIODICITY_DIC[from_value]
+        assert_equals(expected, iso_formated)
+
+    @istest
+    def continual_value(self):
+        self.check_value('continual', 'continuously_updated')
 
 
 class DataJsonArDatasetMixin:
