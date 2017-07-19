@@ -123,6 +123,13 @@ class DataJsonArDatasetMixin:
         dataset = dataset_from(model)
         assert_equals(model.abstract, dataset['description'])
 
+    def test_has_accrual_periodicity(self):
+        model = self.get_models().first()
+        dataset = dataset_from(model)
+        accrual_periodicity = string_to_accrual_periodicity(model.maintenance_frequency)
+        assert_equals(accrual_periodicity, dataset['accrualPeriodicity'])
+
+
 class TestDataJsonArDatasetFromDocuments(DataJsonArDatasetMixin,TestCase):
 
     def create_models(self):

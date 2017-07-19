@@ -77,6 +77,7 @@ def dataset_from(resource):
     record = {}
     record['title'] = resource.title
     record['description'] = resource.abstract
+    record['accrualPeriodicity'] = string_to_accrual_periodicity(resource.maintenance_frequency)
     return record
 
 def get_datasets():
