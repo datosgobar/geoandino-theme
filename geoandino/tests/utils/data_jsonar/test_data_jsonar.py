@@ -156,6 +156,16 @@ class DataJsonArDistributionMixin:
         distribution = distribution_from(link)
         assert_equals(link.url, distribution['accessUrl'])
 
+    def test_has_download_url(self):
+        link = self.get_link()
+        distribution = distribution_from(link)
+        assert_equals(link.url, distribution['downloadUrl'])
+
+    def test_has_title(self):
+        link = self.get_link()
+        distribution = distribution_from(link)
+        assert_equals(link.name, distribution['title'])
+
 
 class TestDataJsonArDatasetFromDocuments(DataJsonArDatasetMixin,DataJsonArDistributionMixin, TestCase):
 

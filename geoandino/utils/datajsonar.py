@@ -76,6 +76,8 @@ def string_to_accrual_periodicity(value):
 def distribution_from(link):
     return {
         "accessUrl": link.url,
+        "downloadUrl": link.url,
+        "title": link.name,
     }
 
 def get_distributions(resource):
