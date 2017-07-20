@@ -1,0 +1,17 @@
+{% extends 'documents/document_list.html' %}
+{% block body %}
+<div class="page-header">
+  <a href="{% url "document_upload" %}" class="btn btn-primary pull-right">Upload Documents</a>
+  <h2>Explore Documents</h2>
+  <div>{{ site_conf.document_description }}</div>
+</div>
+  {% with include_type_filter='true' %}
+  {% with header='Document Type' %}
+  {% with filter='doc_type__in' %}
+  {% include "search/_search_content.html" %}
+  {% endwith %}
+  {% endwith %}
+  {% endwith %}
+  {% include "_bulk_permissions_form.html" %}
+{% endblock %}
+

@@ -1,0 +1,10 @@
+{% extends 'maps/map_list.html' %}
+{% block body %}
+<div class="page-header">
+  <a href="{% url "new_map" %}" class="btn btn-primary pull-right">reate a New Map</a>
+  <h2>Explore Maps</h2>
+  <div>{{ site_conf.map_description }}</div>
+</div>
+  {% include "search/_search_content.html" %}
+  {% include "_bulk_permissions_form.html" %}
+{% endblock %}
