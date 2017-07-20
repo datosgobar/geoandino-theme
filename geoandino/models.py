@@ -7,5 +7,11 @@ class SiteConfiguration(models.TimeStampedModel, models.TitleDescriptionModel):
     default = BooleanField(default=False, )
     publisher = ForeignKey(EmailAddress)
 
+    def publisher_name(self):
+        return self.publisher.user.username
+
+    def publisher_email(self):
+        return self.publisher.email
+
     class Meta:
         ordering = ['created', ]

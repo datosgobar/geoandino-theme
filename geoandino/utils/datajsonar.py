@@ -119,8 +119,8 @@ def data_jsonar():
         "title": site_conf.title,
         "description": site_conf.description,
         "publisher": {
-            "name": site_conf.publisher.user.username,
-            "mbox": site_conf.publisher.email,
+            "name": site_conf.publisher_name(),
+            "mbox": site_conf.publisher_email(),
         },
         "superThemeTaxonomy": settings.SUPER_THEME_TAXONOMY_URL,
         "datasets": get_datasets(),

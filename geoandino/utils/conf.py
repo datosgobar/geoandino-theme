@@ -7,6 +7,12 @@ class NullSiteConfiguration:
         self.title = "Portal Geoandino"
         self.description = "Portal Geoandino"
         self.default = True
+
+    def publisher_name(self):
+        return "%s's admin" % self.title
+
+    def publisher_email(self):
+        return "admin@example.com"
     
 
 def get_nullobject_site_conf():
