@@ -147,23 +147,23 @@ class DataJsonArDatasetMixin:
         assert_true('distributions' in dataset)
 
 class DataJsonArDistributionMixin:
-    def get_link(self):
+    def get_samples(self):
         model = self.get_model()
-        return LinkFactory.create(resource=model)
+        return model, LinkFactory.create(resource=model)
 
     def test_has_access_url(self):
-        link = self.get_link()
-        distribution = distribution_from(link)
+        resource, link = self.get_samples()
+        distribution = distribution_from(resource, link)
         assert_equals(link.url, distribution['accessUrl'])
 
     def test_has_download_url(self):
-        link = self.get_link()
-        distribution = distribution_from(link)
+        resource, link = self.get_samples()
+        distribution = distribution_from(resource, link)
         assert_equals(link.url, distribution['downloadUrl'])
 
     def test_has_title(self):
-        link = self.get_link()
-        distribution = distribution_from(link)
+        resource, link = self.get_samples()
+        distribution = distribution_from(resource, link)
         assert_equals(link.name, distribution['title'])
 
 

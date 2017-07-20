@@ -73,7 +73,7 @@ def string_to_accrual_periodicity(value):
     # Taken from https://project-open-data.cio.gov/iso8601_guidance/
     return GEONODE_MAINTENANCE_FREQUENCIES_DIC.get(value, "")
 
-def distribution_from(link):
+def distribution_from(resource, link):
     return {
         "accessUrl": link.url,
         "downloadUrl": link.url,
@@ -83,7 +83,7 @@ def distribution_from(link):
 def get_distributions(resource):
     distributions = []
     for link in resource.link_set.all():
-        distributions.append(distribution_from(link))
+        distributions.append(distribution_from(resource, link))
     return distributions
 
 def dataset_from(resource):
