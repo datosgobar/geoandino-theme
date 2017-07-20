@@ -8,7 +8,7 @@ from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from geonode.documents.models import Document
 from geoandino.utils.datajsonar import (data_jsonar, dataset_from, string_to_accrual_periodicity, 
-                                        ISO_8601_ACCRUAL_PERIODICITY_DIC, distribution_from, )
+                                        ISO_8601_ACCRUAL_PERIODICITY_DIC, distribution_from, get_access_url, )
 from geoandino.tests.test_utils.factories import SiteConfigurationFactory, TopicCategoryFactory, a_word, LinkFactory
 
 
@@ -153,8 +153,9 @@ class DataJsonArDistributionMixin:
 
     def test_has_access_url(self):
         resource, link = self.get_samples()
+        acces_url = get_access_url(resource, link)
         distribution = distribution_from(resource, link)
-        assert_equals(link.url, distribution['accessUrl'])
+        assert_equals(acces_url, distribution['accessUrl'])
 
     def test_has_download_url(self):
         resource, link = self.get_samples()

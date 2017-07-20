@@ -73,9 +73,16 @@ def string_to_accrual_periodicity(value):
     # Taken from https://project-open-data.cio.gov/iso8601_guidance/
     return GEONODE_MAINTENANCE_FREQUENCIES_DIC.get(value, "")
 
+def get_access_url(resource, link):
+    links = [link for link in resource.link_set.all() if link.link_type == "html"]
+    if links:
+        return links[0].url
+    return link.url
+
+
 def distribution_from(resource, link):
     return {
-        "accessUrl": link.url,
+        "accessUrl": get_access_url(resource, link),
         "downloadUrl": link.url,
         "title": link.name,
     }
