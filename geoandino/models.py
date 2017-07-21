@@ -7,18 +7,19 @@ from django.utils.translation import ugettext as _
 class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionModel):
     default = models.BooleanField(default=False)
     about_visible = models.BooleanField(default=False, verbose_name=_('Visible'))
-    about_title = models.CharField(_('title'), max_length=255, default=None)
+    about_title = models.CharField(_('title'), max_length=255, default=None, blank=True, null=True)
     about_description = models.TextField(_('description'), blank=True, null=True)
-    image_background = models.ImageField(null=True)
+    image_background = models.ImageField(blank=True, null=True)
     facebook_url = models.CharField(max_length=150, verbose_name=_('Facebook'), default="www.facebook.com/portal")
     twitter_url = models.CharField(max_length=150, verbose_name=_('Twitter'), default="www.twitter.com/portal")
     github_url = models.CharField(max_length=150, verbose_name=_('GitHub'), default="www.github.com/portal")
     instagram_url = models.CharField(max_length=150, verbose_name=_('Instagram'), default="www.instagram.com/portal")
     youtube_url = models.CharField(max_length=150, verbose_name=_('Youtube'), default="www.youtube.com/portal")
-    contact_mail = models.CharField(max_length=250, verbose_name=_('Contact Mail'), default="contact@portal.com")
-    layer_description = models.TextField(max_length=250, verbose_name=_('Layer Description'), blank=True, null=True)
-    map_description = models.TextField(max_length=250, verbose_name=_('Map Description'), blank=True, null=True)
-    document_description = models.TextField(max_length=250, verbose_name=_('Document Description'), blank=True, null=True)
+    contact_mail = models.CharField(max_length=250, verbose_name=_('Contact mail'), default="contact@portal.com")
+    layer_description = models.TextField(max_length=250, verbose_name=_('Layer description'), blank=True, null=True)
+    map_description = models.TextField(max_length=250, verbose_name=_('Map description'), blank=True, null=True)
+    document_description = models.TextField(max_length=250, verbose_name=_('Document description'), blank=True, null=True)
+    icon_display = models.BooleanField(default=False, verbose_name=_('Icon display'))
 
     class Meta:
         ordering = ['created', ]
