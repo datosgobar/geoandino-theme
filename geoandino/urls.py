@@ -16,4 +16,7 @@ urlpatterns = patterns('',
     url(r'^maps/?$',
        TemplateView.as_view(template_name='maps/site_maps_list.html'),
        name='maps_browse'),
+    url(r'^groups/?$',
+       TemplateView.as_view(template_name='groups/site_groups_list.html'),
+       name='groups_browse'),
  ) + urlpatterns

@@ -29,6 +29,7 @@ class SiteConfigurationAdmin(admin.ModelAdmin):
         (_('Footer'), {'fields': [_('site_url'), _('logo_footer')]}),
         (_('Themes'), {'fields': [_('icon_display')]}),
         (_('Layers, documents and maps'), {'fields': [_('layer_description'), _('document_description'), _('map_description')]}),
+        (_('Groups'), {'fields': [_('group_description'), _('group_visible')]}),
         (_('Contact'), {'fields': [_('facebook_url'), _('twitter_url'), _('github_url'), _('instagram_url'), _('youtube_url'), _('contact_mail')]}),
         (_('About (optional)'), {'fields': [_('about_title'), _('about_description'), _('about_visible')]}),
     ]

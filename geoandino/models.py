@@ -19,6 +19,8 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
     layer_description = models.TextField(max_length=250, verbose_name=_('Layer description'), blank=True, null=True)
     map_description = models.TextField(max_length=250, verbose_name=_('Map description'), blank=True, null=True)
     document_description = models.TextField(max_length=250, verbose_name=_('Document description'), blank=True, null=True)
+    group_description = models.TextField(max_length=250, verbose_name=_('Group description'), blank=True, null=True)
+    group_visible = models.BooleanField(default=False, verbose_name=_('Visible'))
     icon_display = models.BooleanField(default=False, verbose_name=_('Icon display'))
     site_url = models.CharField(_('Site url'), max_length=255, default=None, blank=True, null=True)
     logo_footer = models.ImageField(blank=True, null=True)

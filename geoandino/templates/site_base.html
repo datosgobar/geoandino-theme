@@ -14,6 +14,11 @@
                 <a href="{% url 'about' %}">About</a>
             </li>
           {% endif %}
+          {% if site_conf.group_visible %}
+            <li>
+                <a href="{% url 'group_list' %}">Groups</a>
+            </li>
+          {% endif %}
           {% if not user.is_authenticated and ACCOUNT_OPEN_SIGNUP %}
             <li><a href="{% url "account_signup" %}">Register</a></li>
             {% endif %}
