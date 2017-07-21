@@ -25,6 +25,8 @@ class SiteConfigurationAdmin(admin.ModelAdmin):
     fieldsets = [
         (None, {'fields': [_('default')]}),
         (_('Landing'), {'fields': [_('title'), _('description'), _('image_background')]}),
+        (_('Header'), {'fields': [_('logo_header')]}),
+        (_('Footer'), {'fields': [_('site_url'), _('logo_footer')]}),
         (_('Themes'), {'fields': [_('icon_display')]}),
         (_('Layers, documents and maps'), {'fields': [_('layer_description'), _('document_description'), _('map_description')]}),
         (_('Contact'), {'fields': [_('facebook_url'), _('twitter_url'), _('github_url'), _('instagram_url'), _('youtube_url'), _('contact_mail')]}),
