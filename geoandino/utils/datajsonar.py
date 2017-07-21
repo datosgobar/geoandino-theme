@@ -97,6 +97,7 @@ def dataset_from(resource):
     record = {}
     record['title'] = resource.title
     record['description'] = resource.abstract
+    record['issued'] = resource.extra_fields.created
     record['accrualPeriodicity'] = string_to_accrual_periodicity(resource.maintenance_frequency)
     record['publisher'] = {
         "name": resource.poc.organization,
@@ -107,7 +108,8 @@ def dataset_from(resource):
 
 def get_datasets():
     json_data = []
-    for resource in ResourceBase.objects.select_related("owner").prefetch_related("link_set").all():
+    for resource in ResourceBase.objects.select_related("owner"). \
+                        prefetch_related("link_set").select_related("extra_fields").all():
         json_data.append(dataset_from(resource))
     return json_data
 

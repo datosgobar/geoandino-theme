@@ -17,7 +17,7 @@ class SiteConfigurationAdmin(admin.ModelAdmin):
     )
 
 class ResourceExtraAdmin(admin.ModelAdmin):
-    readonly_fields = ('created', 'modified', 'resource', 'link_to_resource', 'resource_type', '__str__')
+    readonly_fields = ('created', 'modified', 'resource', 'link_to_resource', 'resource_type', '__str__', )
     list_display = ('__str__', 'resource_type','link_to_resource', 'created', 'modified', )
     fieldsets = (
         ('Basic', {
