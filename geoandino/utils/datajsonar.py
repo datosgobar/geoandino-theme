@@ -95,9 +95,11 @@ def get_distributions(resource):
 
 def dataset_from(resource):
     record = {}
+    resource_extras = resource.extra_fields
     record['title'] = resource.title
     record['description'] = resource.abstract
-    record['issued'] = resource.extra_fields.created
+    record['issued'] = resource_extras.created
+    record['superTheme'] = resource_extras.super_theme
     record['accrualPeriodicity'] = string_to_accrual_periodicity(resource.maintenance_frequency)
     record['publisher'] = {
         "name": resource.poc.organization,

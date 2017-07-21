@@ -8,8 +8,9 @@ from geonode.base.models import ResourceBase
 from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from geonode.documents.models import Document
-
+from geoandino.utils.enumerators import SUPER_THEME_CHOICES
 from .managers import ResourceExtraManager
+
 
 class SiteConfiguration(extension_models.TimeStampedModel, extension_models.TitleDescriptionModel):
     default = models.BooleanField(default=False, )
@@ -28,11 +29,12 @@ class SiteConfiguration(extension_models.TimeStampedModel, extension_models.Titl
         return self.title
 
 class ResourceExtra(extension_models.TimeStampedModel):
-
     resource = models.OneToOneField(ResourceBase,
                         on_delete=models.CASCADE,
                         primary_key=True,
                         related_name="extra_fields",)
+    
+    super_theme  = models.CharField(max_length=10, blank=True, null=True, choices=SUPER_THEME_CHOICES, )
     
     objects = ResourceExtraManager()
 

@@ -7,6 +7,7 @@ from geonode.base.populate_test_data import create_models
 from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from geonode.documents.models import Document
+from geoandino.utils.enumerators import AGRI
 from geoandino.utils.datajsonar import (data_jsonar, dataset_from, string_to_accrual_periodicity, 
                                         ISO_8601_ACCRUAL_PERIODICITY_DIC, distribution_from, get_access_url, )
 from geoandino.tests.test_utils.factories import SiteConfigurationFactory, TopicCategoryFactory, a_word, LinkFactory
@@ -115,6 +116,12 @@ class DataJsonArDatasetMixin:
     def get_model(self):
         return self.get_models().first()
 
+    def get_AGRI_model(self):
+        model = self.get_model()
+        model.extra_fields.super_theme = AGRI
+        model.extra_fields.save()
+        return model
+
     def test_has_title(self):
         model = self.get_models().first()
         dataset = dataset_from(model)
@@ -147,9 +154,20 @@ class DataJsonArDatasetMixin:
         assert_true('distributions' in dataset)
 
     def test_has_issued(self):
-        model = self.get_models().first()
+        model = self.get_model()
         dataset = dataset_from(model)
         assert_equals(model.extra_fields.created, dataset['issued'])
+
+    def test_has_no_super_theme(self):
+        model = self.get_model()
+        dataset = dataset_from(model)
+        assert_equals(None, dataset['superTheme'])
+
+    def test_has_super_theme(self):
+        model = self.get_AGRI_model()
+        dataset = dataset_from(model)
+        assert_equals(model.extra_fields.super_theme, dataset['superTheme'])
+
 
 class DataJsonArDistributionMixin:
     def get_samples(self):
