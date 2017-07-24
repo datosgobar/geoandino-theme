@@ -49,9 +49,9 @@ POSTGIS_VERSION = (2, 1, 2)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': env('POSTGRES_DB'),
-        'USER': env('POSTGRES_USER'),
-        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'NAME': env('POSTGRES_DB', default=""),
+        'USER': env('POSTGRES_USER', default=""),
+        'PASSWORD': env('POSTGRES_PASSWORD', default=""),
         'HOST' : env('POSTGRES_HOST', default="db"),
         'PORT' : '5432',
      },
@@ -59,9 +59,9 @@ DATABASES = {
     'datastore' : {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         #'ENGINE': '', # Empty ENGINE name disables
-        'NAME': env('DATASTORE_DB'),
-        'USER': env('POSTGRES_USER'),
-        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'NAME': env('DATASTORE_DB', default=""),
+        'USER': env('POSTGRES_USER', default=""),
+        'PASSWORD': env('POSTGRES_PASSWORD', default=""),
         'HOST' : env('POSTGRES_HOST', default="db"),
         'PORT' : '5432',
     }
