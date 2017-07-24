@@ -18,11 +18,14 @@
 #
 #########################################################################
 import os
+import environ
 from geonode.settings import *
 
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-LOCAL_ROOT = PROJECT_ROOT
-PROJECT_DIR = os.path.dirname(os.path.dirname(PROJECT_ROOT))
+env = environ.Env()
+
+LOCAL_ROOT = environ.Path(__file__) - 1
+PROJECT_ROOT = LOCAL_ROOT
+PROJECT_DIR = PROJECT_ROOT - 2
 
 WSGI_APPLICATION = "geoandino.wsgi.application"
 
@@ -132,13 +135,12 @@ CATALOGUE = {
         'PASSWORD': 'admin',
     }
 }
-MEDIA_ROOT = os.getenv('MEDIA_ROOT', os.path.join(PROJECT_DIR, "uploaded"))
+
+MEDIA_ROOT = env("MEDIA_ROOT", default=PROJECT_DIR("uploaded"))
 
 # Absolute path to the directory that holds static files like app media.
 # Example: "/home/media/media.lawrence.com/apps/"
-STATIC_ROOT = os.getenv('STATIC_ROOT',
-                        os.path.join(PROJECT_DIR, "static_root")
-                        )
+MEDIA_ROOT = env("STATIC_ROOT", default=PROJECT_DIR("static_root"))
 
 # Default preview library
 #LAYER_PREVIEW_LIBRARY = 'geoext'
@@ -146,8 +148,7 @@ STATIC_ROOT = os.getenv('STATIC_ROOT',
 # Custom settings
 
 MODIFY_TOPICCATEGORY = True
-
-DEBUG = os.getenv("DEBUG", False)
+DEBUG = env("DEBUG", default=False)
 
 
 LOCAL_GEOSERVER = {
@@ -203,7 +204,7 @@ MAP_BASELAYERS = [
 
 
 STATICFILES_DIRS.append(
-    os.path.join(LOCAL_ROOT, "static"),
+    LOCAL_ROOT("static"),
 )
 
 # Location of url mappings
@@ -211,13 +212,12 @@ ROOT_URLCONF = 'geoandino.urls'
 
 # Location of locale files
 LOCALE_PATHS = (
-    os.path.join(LOCAL_ROOT, 'locale'),
+    LOCAL_ROOT('locale'),
     ) + LOCALE_PATHS
 
 INSTALLED_APPS = INSTALLED_APPS + ('geoandino',)
 
-
-TEMPLATES[0]['DIRS'].insert(0, os.path.join(LOCAL_ROOT, "templates"))
+TEMPLATES[0]['DIRS'].insert(0, LOCAL_ROOT("templates"))
 
 TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.site_conf')
 
