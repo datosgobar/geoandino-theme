@@ -111,7 +111,7 @@ OGC_SERVER = {
 #    }
 #}
 
-CATALOG_URL=env("CATALOG_URL", default=SITEURL)
+CATALOG_URL = env("CATALOG_URL", default=SITEURL)
 
 CATALOGUE = {
     'default': {
