@@ -20,35 +20,37 @@
 import os
 from geonode.settings import *
 
-LOCAL_ROOT = os.path.abspath(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+LOCAL_ROOT = PROJECT_ROOT
+PROJECT_DIR = os.path.dirname(os.path.dirname(PROJECT_ROOT))
 
 WSGI_APPLICATION = "geoandino.wsgi.application"
-
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
-PROJECT_DIR = os.path.dirname(os.path.dirname(PROJECT_ROOT))
 
 SITEURL = os.environ.get("SITEURL", "http://localhost/")
 
 ALLOWED_HOSTS = [
-    'localhost', '127.0.0.1',
+    'localhost', 
+    '127.0.0.1',
     'geonode',
-    os.environ.get("ALLOWED_HOST_IP", '127.0.0.1'), os.environ.get("ALLOWED_HOST_NAME", 'localhost')
+    os.environ.get("ALLOWED_HOST_IP", '127.0.0.1'),
+    os.environ.get("ALLOWED_HOST_NAME", 'localhost')
 ]
 PROXY_ALLOWED_HOSTS = (
     'localhost', '127.0.0.1',
     'geonode',
-    os.environ.get("PROXY_ALLOWED_HOST_IP", '127.0.0.1'), os.environ.get("PROXY_ALLOWED_HOST_NAME", 'localhost'), 
+    os.environ.get("PROXY_ALLOWED_HOST_IP", '127.0.0.1'),
+    os.environ.get("PROXY_ALLOWED_HOST_NAME", 'localhost'), 
 )
 POSTGIS_VERSION = (2, 1, 2)
 
 DATABASES = {
     'default': {
-         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-         'NAME': os.getenv('POSTGRES_DB'),
-         'USER': os.getenv('POSTGRES_USER'),
-         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-         'HOST' : 'db',
-         'PORT' : '5432',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv('POSTGRES_DB'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST' : os.getenv('POSTGRES_HOST'),
+        'PORT' : '5432',
      },
     # vector datastore for uploads
     'datastore' : {
@@ -57,7 +59,7 @@ DATABASES = {
         'NAME': os.getenv('DATASTORE_DB'),
         'USER': os.getenv('POSTGRES_USER'),
         'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST' : 'db',
+        'HOST' : os.getenv('POSTGRES_HOST'),
         'PORT' : '5432',
     }
 }
