@@ -140,7 +140,7 @@ MEDIA_ROOT = env("MEDIA_ROOT", default=PROJECT_DIR("uploaded"))
 
 # Absolute path to the directory that holds static files like app media.
 # Example: "/home/media/media.lawrence.com/apps/"
-MEDIA_ROOT = env("STATIC_ROOT", default=PROJECT_DIR("static_root"))
+STATIC_ROOT = env("STATIC_ROOT", default=PROJECT_DIR("static_root"))
 
 # Default preview library
 #LAYER_PREVIEW_LIBRARY = 'geoext'
