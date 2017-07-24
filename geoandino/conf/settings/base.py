@@ -23,7 +23,7 @@ from geonode.settings import *
 
 env = environ.Env()
 
-LOCAL_ROOT = environ.Path(__file__) - 1
+LOCAL_ROOT = environ.Path(__file__) - 3
 PROJECT_ROOT = LOCAL_ROOT
 PROJECT_DIR = PROJECT_ROOT - 2
 
