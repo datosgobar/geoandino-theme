@@ -29,49 +29,49 @@ PROJECT_DIR = PROJECT_ROOT - 2
 
 WSGI_APPLICATION = "geoandino.wsgi.application"
 
-SITEURL = os.environ.get("SITEURL", "http://localhost/")
+SITEURL = env("SITEURL", default="http://localhost/")
 
 ALLOWED_HOSTS = [
     'localhost', 
     '127.0.0.1',
     'geonode',
-    os.environ.get("ALLOWED_HOST_IP", '127.0.0.1'),
-    os.environ.get("ALLOWED_HOST_NAME", 'localhost')
+    env("ALLOWED_HOST_IP", default='127.0.0.1'),
+    env("ALLOWED_HOST_NAME", default='localhost')
 ]
 PROXY_ALLOWED_HOSTS = (
     'localhost', '127.0.0.1',
     'geonode',
-    os.environ.get("PROXY_ALLOWED_HOST_IP", '127.0.0.1'),
-    os.environ.get("PROXY_ALLOWED_HOST_NAME", 'localhost'), 
+    env("PROXY_ALLOWED_HOST_IP", default='127.0.0.1'),
+    env("PROXY_ALLOWED_HOST_NAME", default='localhost'), 
 )
 POSTGIS_VERSION = (2, 1, 2)
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv('POSTGRES_DB'),
-        'USER': os.getenv('POSTGRES_USER'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST' : os.getenv('POSTGRES_HOST'),
+        'NAME': env('POSTGRES_DB'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'HOST' : env('POSTGRES_HOST', default="db"),
         'PORT' : '5432',
      },
     # vector datastore for uploads
     'datastore' : {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         #'ENGINE': '', # Empty ENGINE name disables
-        'NAME': os.getenv('DATASTORE_DB'),
-        'USER': os.getenv('POSTGRES_USER'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        'HOST' : os.getenv('POSTGRES_HOST'),
+        'NAME': env('DATASTORE_DB'),
+        'USER': env('POSTGRES_USER'),
+        'PASSWORD': env('POSTGRES_PASSWORD'),
+        'HOST' : env('POSTGRES_HOST', default="db"),
         'PORT' : '5432',
     }
 }
 
-GEOSERVER_LOCATION = os.getenv(
-    'GEOSERVER_LOCATION', 'http://geoserver:8080/geoserver/'
+GEOSERVER_LOCATION = env(
+    'GEOSERVER_LOCATION', default='http://geoserver:8080/geoserver/'
 )
-GEOSERVER_PUBLIC_LOCATION = os.getenv(
-    'GEOSERVER_PUBLIC_LOCATION', "%sgeoserver/" % SITEURL
+GEOSERVER_PUBLIC_LOCATION = env(
+    'GEOSERVER_PUBLIC_LOCATION', default="%sgeoserver/" % SITEURL
 )
 
 # OGC (WMS/WFS/WCS) Server Settings
@@ -111,7 +111,7 @@ OGC_SERVER = {
 #    }
 #}
 
-CATALOG_URL=os.getenv("CATALOG_URL", SITEURL)
+CATALOG_URL=env("CATALOG_URL", default=SITEURL)
 
 CATALOGUE = {
     'default': {
