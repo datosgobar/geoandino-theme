@@ -223,3 +223,7 @@ TEMPLATES[0]['DIRS'].insert(0, LOCAL_ROOT("templates"))
 
 TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.site_conf')
 
+def accept_middleware(middleware):
+    return middleware not in ['django.middleware.locale.LocaleMiddleware',]
+
+MIDDLEWARE_CLASSES = [middleware for middleware in MIDDLEWARE_CLASSES if accept_middleware(middleware)]
