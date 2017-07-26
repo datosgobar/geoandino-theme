@@ -1,4 +1,7 @@
 {% extends 'index.html' %}
+{% block title %}
+  {{ site_conf.title }}
+{% endblock title %}
 {% load i18n %}
 {% comment %}
 This is where you can override the hero area block. You can simply modify the content below or replace it wholesale to meet your own needs. 
