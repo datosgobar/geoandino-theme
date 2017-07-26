@@ -20,7 +20,7 @@ msgstr ""
 
 #: geoandino/templates/overrides/index.html:4
 msgid "Search for Data."
-msgstr "Buscar datos."
+msgstr ""
 
 #: geoandino/templates/site_base.html:22
 msgid "Layers"
