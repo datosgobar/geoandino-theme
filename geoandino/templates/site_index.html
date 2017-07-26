@@ -5,11 +5,50 @@ This is where you can override the hero area block. You can simply modify the co
 {% endcomment %}
   {% block hero %}
   <div class="jumbotron">
-    <div class="container">
-      <h1>{% trans "Welcome" %}</h1>
-      <p>{% blocktrans %}GeoNode is an open source platform for sharing geospatial data and maps.{% endblocktrans %}</p>
-      <p>{% blocktrans %}If you have any questions about the software or service, join our <a href="https://groups.google.com/d/forum/geonode-users">mailing list</a>.{% endblocktrans %}</p>
-      <span>{% trans 'Need help?' %} <a href="http://docs.geonode.org/en/latest/tutorials/users/quickstart/index.html">{% trans 'Getting Started' %}</a></span>
+    <div class="jumbotron_bar">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <ol class="breadcrumb pull-left">
+              <li><a href="">Argentina</a></li>
+              <li class="active"><span>Ministerio de Modernización</span></li>
+            </ol>
+            <ul class="list-inline pull-right">
+              <li>
+                <div class="search imaginary_container">
+                 
+                  <form id="search" action="{% url "search" %}" >
+                     <div class="input-group stylish-input-group">
+                        {% if HAYSTACK_SEARCH %}
+                        <input id="search_input" type="text" placeholder="Buscar" name="q" class="form-control">
+                        {% else %}
+                        <input id="search_input" type="text" placeholder="Buscar" name="title__icontains" class="form-control">
+                        {% endif %}
+                        <span class="input-group-addon">
+                          <button type="submit">
+                            <span class="fa fa-search"></span>
+                          </button>  
+                        </span>
+                     </div>
+                  </form>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="jumbotron_body">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-8 col-md-offset-2 text-center">
+            <h1>{% trans "Welcome" %}</h1>
+            <p>{% blocktrans %}Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis exercitationem reprehenderit dolor vel ducimus voluptate eaque quo suscipit, iste placeat quos facere. Consequuntur praesentium aliquam rerum! Totam aut dolorem velit!{% endblocktrans %}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="overlay"></div>
   </div>
   {% endblock %}
+
