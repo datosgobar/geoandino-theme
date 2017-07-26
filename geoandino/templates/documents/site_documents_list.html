@@ -1,8 +1,9 @@
 {% extends 'documents/document_list.html' %}
+{% load i18n %}
 {% block body %}
 <div class="page-header">
-  <a href="{% url "document_upload" %}" class="btn btn-primary pull-right">Upload Documents</a>
-  <h2>Explore Documents</h2>
+  <a href="{% url "document_upload" %}" class="btn btn-primary pull-right">{% trans 'Upload Documents' %}</a>
+  <h2>{% trans 'Explore Documents' %}</h2>
   <div>{{ site_conf.document_description }}</div>
 </div>
   {% with include_type_filter='true' %}

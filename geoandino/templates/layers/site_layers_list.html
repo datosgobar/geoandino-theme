@@ -1,8 +1,9 @@
 {% extends 'layers/layer_list.html' %}
+{% load i18n %}
 {% block body %}
   <div class="page-header">
-    <a href="{% url "layer_upload" %}" class="btn btn-primary pull-right">Upload Layers</a>
-    <h2 class="page-title">Explore Layers</h2>
+    <a href="{% url "layer_upload" %}" class="btn btn-primary pull-right">{% trans 'Upload Layers' %}</a>
+    <h2 class="page-title">{% trans 'Explore Layers' %}</h2>
     <div>{{ site_conf.layer_description }}</div>
   </div>
   {% with include_type_filter='true' %}
