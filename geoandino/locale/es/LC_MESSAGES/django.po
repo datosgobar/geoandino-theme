@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-27 08:40-0500\n"
+"POT-Creation-Date: 2017-07-27 09:01-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -141,6 +141,14 @@ msgstr ""
 
 #: geoandino/templates/base.html:266
 msgid "Type your search here ..."
+msgstr ""
+
+#: geoandino/templates/base/_resourcebase_snippet.html:6
+msgid "No content created yet"
+msgstr ""
+
+#: geoandino/templates/base/_resourcebase_snippet.html:32
+msgid "Create a Map"
 msgstr ""
 
 #: geoandino/templates/index.html:6
