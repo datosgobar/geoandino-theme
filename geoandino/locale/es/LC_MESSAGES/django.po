@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-27 14:56-0500\n"
+"POT-Creation-Date: 2017-07-27 15:03-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -221,4 +221,81 @@ msgid ""
 "exercitationem reprehenderit dolor vel ducimus voluptate eaque quo suscipit, "
 "iste placeat quos facere. Consequuntur praesentium aliquam rerum! Totam aut "
 "dolorem velit!"
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:5
+msgid "Upload Layer"
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:17
+msgid "Explore Layers"
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:18
+msgid "Upload Layers"
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:40
+msgid "Incomplete Uploads"
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:41
+msgid "You have the following incomplete uploads"
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:44
+msgid "last updated on"
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:46
+msgid "Resume"
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:47
+#: geoandino/templates/upload/layer_upload.html:54
+msgid "Delete"
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:53
+msgid "Are you sure you want to delete this upload?"
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:55
+msgid "Cancel"
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:56
+msgid "Delete, and don't ask me again."
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:73
+msgid "Drop files here"
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:76
+msgid " or select them one by one:"
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:81
+msgid "Choose Files"
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:86
+msgid "Files to be uploaded"
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:94
+msgid "Select the charset or leave default"
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:107
+msgid "Clear"
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:108
+msgid "Upload files"
+msgstr ""
+
+#: geoandino/templates/upload/layer_upload.html:114
+msgid "Permissions"
 msgstr ""
