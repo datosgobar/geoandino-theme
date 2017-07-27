@@ -65,6 +65,7 @@
         templateUrl: "/static/geonode/js/templates/cart.html",
         link: function($scope) {
           $scope.cart_title = window.gettext('Cart');
+          $scope.cart_empty_message = window.gettext('Add resources through the "Add to cart" buttons');
         }
       };
     }])
