@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-27 15:32-0500\n"
+"POT-Creation-Date: 2017-07-27 15:41-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -164,6 +164,23 @@ msgstr ""
 msgid "Document Type"
 msgstr ""
 
+#: geoandino/templates/documents/document_upload.html:5
+msgid "Upload Document"
+msgstr ""
+
+#: geoandino/templates/documents/document_upload.html:21
+msgid "Upload"
+msgstr ""
+
+#: geoandino/templates/documents/document_upload.html:30
+#: geoandino/templates/upload/layer_upload.html:114
+msgid "Permissions"
+msgstr ""
+
+#: geoandino/templates/documents/document_upload.html:50
+msgid "Select layer, map or empty"
+msgstr ""
+
 #: geoandino/templates/index.html:6
 msgid "Welcome!"
 msgstr ""
@@ -311,8 +328,4 @@ msgstr ""
 
 #: geoandino/templates/upload/layer_upload.html:108
 msgid "Upload files"
-msgstr ""
-
-#: geoandino/templates/upload/layer_upload.html:114
-msgid "Permissions"
 msgstr ""
