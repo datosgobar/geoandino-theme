@@ -75,6 +75,18 @@
               <a href="{% url "maps_browse" %}">{% trans "Maps" %}</a>
               {% endif %}
           </li>
+          {% if site_conf.group_visible %}
+            <li id="nav_groups">
+              {% if user.is_authenticated %}
+              <a href="{% url "groups_browse" %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Groups" %}<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url "groups_browse" %}">{% trans "Explore Groups" %}</a></li>
+              </ul>
+              {% else %}
+              <a href="{% url "groups_browse" %}">{% trans "Groups" %}</a>
+              {% endif %}
+            </li>
+          {% endif %}
           {% if site_conf.about_visible %}
           <li>
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "About" %}<span class="caret"></span></a>
