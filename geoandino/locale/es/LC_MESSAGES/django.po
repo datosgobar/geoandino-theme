@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-26 12:04-0500\n"
+"POT-Creation-Date: 2017-07-27 08:40-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,97 +18,187 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: geoandino/templates/overrides/index.html:4
-msgid "Search for Data."
+#: geoandino/templates/base.html:54 geoandino/templates/site_base.html:22
+msgid "Data"
 msgstr ""
 
-#: geoandino/templates/site_base.html:22
+#: geoandino/templates/base.html:56 geoandino/templates/base.html.py:165
+#: geoandino/templates/site_base.html:23
 msgid "Layers"
 msgstr ""
 
-#: geoandino/templates/site_base.html:23
+#: geoandino/templates/base.html:57 geoandino/templates/base.html.py:166
+#: geoandino/templates/site_base.html:24
 msgid "Documents"
 msgstr ""
 
-#: geoandino/templates/site_base.html:25
+#: geoandino/templates/base.html:59 geoandino/templates/base.html.py:168
+#: geoandino/templates/site_base.html:26
 msgid "Remote Services"
 msgstr ""
 
-#: geoandino/templates/site_base.html:28
+#: geoandino/templates/base.html:63 geoandino/templates/base.html.py:171
+#: geoandino/templates/site_base.html:29
 msgid "Add Remote Service"
 msgstr ""
 
+#: geoandino/templates/base.html:69 geoandino/templates/base.html.py:75
 #: geoandino/templates/site_base.html:35
+msgid "Maps"
+msgstr ""
+
+#: geoandino/templates/base.html:71 geoandino/templates/base.html.py:178
+#: geoandino/templates/site_base.html:36
 msgid "Explore Maps"
 msgstr ""
 
-#: geoandino/templates/site_base.html:37
+#: geoandino/templates/base.html:72 geoandino/templates/base.html.py:180
+#: geoandino/templates/site_base.html:38
 msgid "Create Map"
 msgstr ""
 
-#: geoandino/templates/site_base.html:44
-msgid "People"
-msgstr ""
-
-#: geoandino/templates/site_base.html:45
-msgid "Groups"
-msgstr ""
-
-#: geoandino/templates/site_base.html:47
-msgid "Announcements"
-msgstr ""
-
-#: geoandino/templates/site_base.html:50
-msgid "Add User"
-msgstr ""
-
-#: geoandino/templates/site_base.html:51
-msgid "Invite User"
-msgstr ""
-
-#: geoandino/templates/site_base.html:52
-msgid "Create Group"
-msgstr ""
-
-#: geoandino/templates/site_base.html:58
-msgid "Powered by"
-msgstr ""
-
-#: geoandino/templates/site_base.html:58
-msgid "GeoNode"
-msgstr ""
-
-#: geoandino/templates/site_base.html:58
-msgid "version"
-msgstr ""
-
-#: geoandino/templates/site_base.html:59
-msgid "Developers"
-msgstr ""
-
-#: geoandino/templates/site_base.html:59
+#: geoandino/templates/base.html:79 geoandino/templates/site_base.html:44
+#: geoandino/templates/site_base.html:60
 msgid "About"
 msgstr ""
 
-#: geoandino/templates/site_index.html:12
+#: geoandino/templates/base.html:81 geoandino/templates/site_base.html:45
+msgid "People"
+msgstr ""
+
+#: geoandino/templates/base.html:82 geoandino/templates/site_base.html:46
+msgid "Groups"
+msgstr ""
+
+#: geoandino/templates/base.html:84 geoandino/templates/site_base.html:48
+msgid "Announcements"
+msgstr ""
+
+#: geoandino/templates/base.html:88 geoandino/templates/site_base.html:51
+msgid "Add User"
+msgstr ""
+
+#: geoandino/templates/base.html:89 geoandino/templates/site_base.html:52
+msgid "Invite User"
+msgstr ""
+
+#: geoandino/templates/base.html:90 geoandino/templates/site_base.html:53
+msgid "Create Group"
+msgstr ""
+
+#: geoandino/templates/base.html:98
+msgid "Register"
+msgstr ""
+
+#: geoandino/templates/base.html:103
+msgid "Profile"
+msgstr ""
+
+#: geoandino/templates/base.html:104
+msgid "Recent Activity"
+msgstr ""
+
+#: geoandino/templates/base.html:105
+msgid "Inbox"
+msgstr ""
+
+#: geoandino/templates/base.html:110
+msgid "Help"
+msgstr ""
+
+#: geoandino/templates/base.html:116 geoandino/templates/base.html.py:211
+#: geoandino/templates/base.html:229
+msgid "Sign in"
+msgstr ""
+
+#: geoandino/templates/base.html:159 geoandino/templates/site_base.html:59
+msgid "Powered by"
+msgstr ""
+
+#: geoandino/templates/base.html:159 geoandino/templates/site_base.html:59
+msgid "GeoNode"
+msgstr ""
+
+#: geoandino/templates/base.html:159 geoandino/templates/site_base.html:59
+msgid "version"
+msgstr ""
+
+#: geoandino/templates/base.html:183
+msgid "Language"
+msgstr ""
+
+#: geoandino/templates/base.html:217 geoandino/templates/base.html.py:218
+msgid "Username"
+msgstr ""
+
+#: geoandino/templates/base.html:221 geoandino/templates/base.html.py:222
+msgid "Password"
+msgstr ""
+
+#: geoandino/templates/base.html:225
+msgid "Remember Me"
+msgstr ""
+
+#: geoandino/templates/base.html:266
+msgid "Type your search here ..."
+msgstr ""
+
+#: geoandino/templates/index.html:6
+msgid "Welcome!"
+msgstr ""
+
+#: geoandino/templates/index.html:14 geoandino/templates/site_index.html:48
 msgid "Welcome"
 msgstr ""
 
-#: geoandino/templates/site_index.html:13
+#: geoandino/templates/index.html:16
 msgid ""
 "GeoNode is an open source platform for sharing geospatial data and maps."
 msgstr ""
 
-#: geoandino/templates/site_index.html:14
+#: geoandino/templates/index.html:17
 msgid ""
 "If you have any questions about the software or service, join our <a href="
-"\"https://groups.google.com/d/forum/geonode-users\">mailing list</a>."
+"\"http://lists.osgeo.org/cgi-bin/mailman/listinfo/geonode-users\">mailing "
+"list</a>."
 msgstr ""
 
-#: geoandino/templates/site_index.html:15
-msgid "Need help?"
+#: geoandino/templates/index.html:18
+msgid "Get Started &raquo;"
 msgstr ""
 
-#: geoandino/templates/site_index.html:15
-msgid "Getting Started"
+#: geoandino/templates/index.html:29
+msgid "Search for Data"
+msgstr ""
+
+#: geoandino/templates/index.html:34 geoandino/templates/index.html.py:36
+msgid "Search"
+msgstr ""
+
+#: geoandino/templates/index.html:40
+msgid "Advanced Search"
+msgstr ""
+
+#: geoandino/templates/index.html:49
+msgid "Discover the available datasets"
+msgstr ""
+
+#: geoandino/templates/index.html:168
+msgid "Featured Datasets"
+msgstr ""
+
+#: geoandino/templates/index.html:180
+msgid "Explore all datasets"
+msgstr ""
+
+#: geoandino/templates/site_base.html:60
+msgid "Developers"
+msgstr ""
+
+#: geoandino/templates/site_index.html:49
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis "
+"exercitationem reprehenderit dolor vel ducimus voluptate eaque quo suscipit, "
+"iste placeat quos facere. Consequuntur praesentium aliquam rerum! Totam aut "
+"dolorem velit!"
 msgstr ""
