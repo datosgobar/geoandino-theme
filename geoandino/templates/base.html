@@ -75,6 +75,7 @@
               <a href="{% url "maps_browse" %}">{% trans "Maps" %}</a>
               {% endif %}
           </li>
+          {% if site_conf.about_visible %}
           <li>
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "About" %}<span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -91,6 +92,7 @@
                 {% endif %}
               </ul>
             </li>
+            {% endif %}
 	        {% block extra_tab %}
             {% endblock %}
             {% endblock %}
