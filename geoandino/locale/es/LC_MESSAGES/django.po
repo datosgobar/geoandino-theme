@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-27 15:41-0500\n"
+"POT-Creation-Date: 2017-07-27 15:48-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,6 +33,7 @@ msgid "Documents"
 msgstr ""
 
 #: geoandino/templates/base.html:59 geoandino/templates/base.html.py:168
+#: geoandino/templates/services/service_list.html:9
 #: geoandino/templates/site_base.html:26
 msgid "Remote Services"
 msgstr ""
@@ -243,6 +244,18 @@ msgstr ""
 
 #: geoandino/templates/overrides/geonode/search/_text_filter.html:3
 msgid "Search by text"
+msgstr ""
+
+#: geoandino/templates/services/service_list.html:8
+msgid "Register a new Service"
+msgstr ""
+
+#: geoandino/templates/services/service_list.html:15
+msgid "Title"
+msgstr ""
+
+#: geoandino/templates/services/service_list.html:26
+msgid "No services registered"
 msgstr ""
 
 #: geoandino/templates/site_base.html:60
