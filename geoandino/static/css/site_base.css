@@ -1,6 +1,53 @@
+
+/*Customización para Geonode*/
+
 .navbar-brand {
     width: 373px;
-    height: 79px;
     background: transparent url("../img/logo_ministerio.svg") no-repeat scroll 15px 0px;
 }
 
+body {
+	padding-top: 0;
+}
+
+/*HOME*/
+
+.home .jumbotron {
+    background-image: url("../img/bg-jumbotron.jpg");
+    text-shadow: none;
+    padding: 3.75em 0;
+}
+.stylish-input-group .input-group-addon{
+    background: transparent;
+}
+.input-group-addon {
+    color: #fff;
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+.jumbotron_bar .form-control {
+	height: auto !important;
+	font-size: 16px !important;
+	background-color: transparent !important;
+	color: #FFF;
+}
+#datasets .panel-heading {
+    min-height: auto;
+}
+#datasets .panel-default {
+    margin-bottom: 20px;
+}
+.home .big-search {
+    background-color: #e9e9e9;
+    color: #111;
+}
+.home .big-search a {
+    color: #ffffff;
+}
