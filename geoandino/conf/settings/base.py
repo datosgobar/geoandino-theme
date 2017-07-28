@@ -222,6 +222,7 @@ INSTALLED_APPS = INSTALLED_APPS + ('geoandino',)
 TEMPLATES[0]['DIRS'].insert(0, LOCAL_ROOT("templates"))
 
 TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.site_conf')
+TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.taxonomies')
 
 MIDDLEWARE_CLASSES += (
     'geoandino.utils.middlewares.ForceDefaultLanguageMiddleware',

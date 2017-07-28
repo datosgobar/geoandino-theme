@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.contrib import admin
-from geoandino.models import SiteConfiguration, FacebookAndGoogleMetadata, TwitterMetadata
+from geoandino.models import SiteConfiguration, FacebookAndGoogleMetadata, TwitterMetadata, GeoAndinoTopicCategory, TopicTaxonomy
 from django.utils.translation import ugettext as _
 
 
@@ -36,4 +36,22 @@ class SiteConfigurationAdmin(admin.ModelAdmin):
 
     inlines = [FacebookAndGoogleMetadataInline, TwitterMetadataInline]
 
+
+class GeoAndinoTopicCategoryInline(admin.StackedInline):
+    model = GeoAndinoTopicCategory
+    verbose_name_plural = _('Topic Categories')
+    verbose_name = _('Topic Categories')
+    fields = [_('title'), _('identifier')]
+
+
+class TopicTaxonomyAdmin(admin.ModelAdmin):
+    list_display = ('identifier',)
+    fieldsets = [
+        (None, {'fields': [_('identifier')]})
+    ]
+
+    inlines = [GeoAndinoTopicCategoryInline]
+
+
 admin.site.register(SiteConfiguration, SiteConfigurationAdmin)
+admin.site.register(TopicTaxonomy, TopicTaxonomyAdmin)
