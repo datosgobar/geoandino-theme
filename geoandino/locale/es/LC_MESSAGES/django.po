@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-27 15:48-0500\n"
+"POT-Creation-Date: 2017-07-28 08:45-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,38 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: geoandino/overrides/forms.py:12
+msgid "title"
+msgstr ""
+
+#: geoandino/overrides/forms.py:13
+msgid "level"
+msgstr ""
+
+#: geoandino/overrides/forms.py:14
+msgid "content"
+msgstr ""
+
+#: geoandino/overrides/forms.py:15
+msgid "site wide"
+msgstr ""
+
+#: geoandino/overrides/forms.py:16
+msgid "members only"
+msgstr ""
+
+#: geoandino/overrides/forms.py:17
+msgid "dissmissal type"
+msgstr ""
+
+#: geoandino/overrides/forms.py:18
+msgid "publish start"
+msgstr ""
+
+#: geoandino/overrides/forms.py:19
+msgid "publish end"
+msgstr ""
 
 #: geoandino/templates/base.html:54 geoandino/templates/site_base.html:22
 msgid "Data"
