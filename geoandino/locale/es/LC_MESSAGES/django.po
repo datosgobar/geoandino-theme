@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-28 09:47-0500\n"
+"POT-Creation-Date: 2017-07-28 10:30-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,6 +70,7 @@ msgid "Documents"
 msgstr ""
 
 #: geoandino/templates/base.html:59 geoandino/templates/base.html.py:168
+#: geoandino/templates/people/profile_detail.html:142
 #: geoandino/templates/services/service_list.html:9
 #: geoandino/templates/site_base.html:26
 msgid "Remote Services"
@@ -108,7 +109,9 @@ msgstr ""
 msgid "Groups"
 msgstr ""
 
-#: geoandino/templates/base.html:84 geoandino/templates/site_base.html:48
+#: geoandino/templates/base.html:84
+#: geoandino/templates/people/profile_detail.html:137
+#: geoandino/templates/site_base.html:48
 msgid "Announcements"
 msgstr ""
 
@@ -116,7 +119,9 @@ msgstr ""
 msgid "Add User"
 msgstr ""
 
-#: geoandino/templates/base.html:89 geoandino/templates/site_base.html:52
+#: geoandino/templates/base.html:89
+#: geoandino/templates/people/profile_detail.html:143
+#: geoandino/templates/site_base.html:52
 msgid "Invite User"
 msgstr ""
 
@@ -277,6 +282,109 @@ msgstr ""
 
 #: geoandino/templates/overrides/geonode/search/_text_filter.html:3
 msgid "Search by text"
+msgstr ""
+
+#: geoandino/templates/overrides/user_messages/message_create.html:3
+msgid "Content"
+msgstr ""
+
+#: geoandino/templates/overrides/user_messages/message_create.html:4
+msgid "To"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:7
+msgid "Profile of "
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:65
+msgid "Email"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:69
+#: geoandino/templates/people/profile_detail.html:74
+#: geoandino/templates/people/profile_detail.html:78
+#: geoandino/templates/people/profile_detail.html:83
+#: geoandino/templates/people/profile_detail.html:95
+#: geoandino/templates/people/profile_detail.html:99
+msgid "Not provided."
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:73
+msgid "Position"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:77
+msgid "Organization"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:82
+msgid "Location"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:86
+msgid "Voice"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:90
+#: geoandino/templates/people/profile_detail.html:110
+msgid "Not provided"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:94
+msgid "Fax"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:98
+msgid "Description"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:103
+msgid "Keywords"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:120
+msgid "Message User"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:124
+#: geoandino/templates/people/profile_detail.html:156
+msgid "Edit profile"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:125
+msgid "Change password"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:128
+msgid "Upload new layers"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:129
+msgid "Create a new map"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:130
+msgid "My Activities"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:134
+msgid "Notifications"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:144
+msgid "GeoServer"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:147
+msgid "Admin"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:160
+msgid "User Activities"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:173
+msgid "Resources"
 msgstr ""
 
 #: geoandino/templates/services/service_list.html:8
