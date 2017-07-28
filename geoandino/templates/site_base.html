@@ -19,7 +19,7 @@ Add Tab for Third Party Apps
       <div class="row">
         <div class="col-md-2">
           <ul class="list-unstyled">
-            <li>Data</li>
+            <li>{% trans "Data" %}</li>
             <li><a href="{% url "layer_browse" %}">{% trans "Layers" %}</a></li>
             <li><a href="{% url "document_browse" %}">{% trans "Documents" %}</a></li>
             {% if user.is_authenticated %}
@@ -32,7 +32,7 @@ Add Tab for Third Party Apps
         </div>
         <div class="col-md-2">
           <ul class="list-unstyled">
-            <li>Maps</li>
+            <li>{% trans "Maps" %}</li>
             <li><a href="{% url "maps_browse" %}">{% trans "Explore Maps" %}</a></li>
             {% if user.is_authenticated %}
             <li> <a href="{% url "new_map" %}">{% trans "Create Map" %}</a></li>
@@ -41,7 +41,7 @@ Add Tab for Third Party Apps
         </div>
 		<div class="col-md-2">
           <ul class="list-unstyled">
-            <li>About</li>
+            <li>{% trans "About" %}</li>
             <li><a href="{% url "profile_browse" %}">{% trans "People" %}</a></li>
             <li><a href="{% url "group_list" %}">{% trans "Groups" %}</a></li>
             {% if perms.announcements.can_manage %}
