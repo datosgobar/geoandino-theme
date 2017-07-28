@@ -3,6 +3,9 @@ import django.db.models as models
 from django_extensions.db import models as models_db
 from exclusivebooleanfield.fields import ExclusiveBooleanField
 from django.utils.translation import ugettext as _
+from django.contrib.staticfiles.templatetags.staticfiles import static
+import os
+import settings
 
 
 class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionModel):
@@ -10,7 +13,7 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
     about_visible = models.BooleanField(default=False, verbose_name=_('Visible'))
     about_title = models.CharField(_('title'), max_length=255, default=None, blank=True, null=True)
     about_description = models.TextField(_('description'), blank=True, null=True)
-    image_background = models.ImageField(blank=True, null=True)
+    image_background = models.ImageField(upload_to="thumbs/", blank=True, null=True, default=None)
     facebook_url = models.CharField(max_length=150, verbose_name=_('Facebook'), default="www.facebook.com/portal")
     twitter_url = models.CharField(max_length=150, verbose_name=_('Twitter'), default="www.twitter.com/portal")
     github_url = models.CharField(max_length=150, verbose_name=_('GitHub'), default="www.github.com/portal")
@@ -26,6 +29,13 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
     site_url = models.CharField(_('Site url'), max_length=255, default=None, blank=True, null=True)
     logo_footer = models.ImageField(blank=True, null=True)
     logo_header = models.ImageField(blank=True, null=True)
+
+    @property
+    def image_background_url(self):
+        try:
+            return "{}{}".format(settings.SITEURL.rstrip('/'), self.image_background.url)
+        except ValueError:
+            return static('img/bg-jumbotron.jpg')
 
     class Meta:
         ordering = ['created', ]

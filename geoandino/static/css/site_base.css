@@ -13,7 +13,6 @@ body {
 /*HOME*/
 
 .home .jumbotron {
-    background-image: url("../img/bg-jumbotron.jpg");
     text-shadow: none;
     padding: 3.75em 0;
 }

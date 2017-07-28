@@ -1,11 +1,14 @@
 {% extends 'index.html' %}
+{% load staticfiles %}
 {% block title %}
   {{ site_conf.title }}
 {% endblock title %}
 
 {% load i18n %}
   {% block hero %}
-  <div class="jumbotron">
+  {% with background=site_conf.image_background_url %}
+  <div class="jumbotron" style="background-image:url({{background}})">
+  {% endwith %}
     <div class="jumbotron_bar">
       <div class="container">
         <div class="row">
