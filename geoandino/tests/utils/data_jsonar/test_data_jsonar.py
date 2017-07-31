@@ -178,12 +178,12 @@ class DataJsonArDistributionMixin:
         resource, link = self.get_samples()
         acces_url = get_access_url(resource, link)
         distribution = distribution_from(resource, link)
-        assert_equals(acces_url, distribution['accessUrl'])
+        assert_equals(acces_url, distribution['accessURL'])
 
     def test_has_download_url(self):
         resource, link = self.get_samples()
         distribution = distribution_from(resource, link)
-        assert_equals(link.url, distribution['downloadUrl'])
+        assert_equals(link.url, distribution['downloadURL'])
 
     def test_has_title(self):
         resource, link = self.get_samples()

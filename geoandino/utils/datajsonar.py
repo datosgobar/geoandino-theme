@@ -82,8 +82,8 @@ def get_access_url(resource, link):
 
 def distribution_from(resource, link):
     return {
-        "accessUrl": get_access_url(resource, link),
-        "downloadUrl": link.url,
+        "accessURL": get_access_url(resource, link),
+        "downloadURL": link.url,
         "title": link.name,
     }
 
