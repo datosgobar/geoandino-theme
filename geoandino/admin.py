@@ -47,7 +47,7 @@ class GeoAndinoTopicCategoryInline(admin.StackedInline):
 class TopicTaxonomyAdmin(admin.ModelAdmin):
     list_display = ('identifier',)
     fieldsets = [
-        (None, {'fields': [_('identifier')]})
+        (None, {'fields': [_('identifier'), _('description'), _('image')]})
     ]
 
     inlines = [GeoAndinoTopicCategoryInline]

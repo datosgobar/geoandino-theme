@@ -12,6 +12,11 @@ body {
 
 /*HOME*/
 
+.group-image {
+  max-width: 35px;
+  max-height: 35px;
+}
+
 .home .jumbotron {
     text-shadow: none;
     padding: 3.75em 0;

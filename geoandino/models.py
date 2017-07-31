@@ -10,8 +10,17 @@ from geonode.base.models import TopicCategory
 
 class TopicTaxonomy(models.Model):
     identifier = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, default=None, null=True, blank=True)
     limit = models.PositiveIntegerField(default=100)
     offset = models.IntegerField(default=0)
+    image = models.ImageField(upload_to="thumbs/", blank=True, null=True)
+
+    @property
+    def image_url(self):
+        try:
+            return "{}{}".format(settings.SITEURL.rstrip('/'), self.image.url)
+        except ValueError:
+            return static('img/logo.jpg')
 
     @property
     def categories(self):
