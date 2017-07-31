@@ -52,7 +52,6 @@ class GeoAndinoTopicCategory(TopicCategory):
         self._meta.get_field('identifier').default = None
         super(GeoAndinoTopicCategory, self).__init__(*args, **kwargs)
 
-    title = models.CharField(max_length=255, default=None, blank=True, null=True)
     topic_taxonomy = models.ForeignKey(TopicTaxonomy, on_delete=models.CASCADE, related_name='topic_categories_set')
 
 

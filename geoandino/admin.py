@@ -41,7 +41,7 @@ class GeoAndinoTopicCategoryInline(admin.StackedInline):
     model = GeoAndinoTopicCategory
     verbose_name_plural = _('Topic Categories')
     verbose_name = _('Topic Categories')
-    fields = [_('title'), _('identifier')]
+    fields = [_('identifier'), _('gn_description')]
 
 
 class TopicTaxonomyAdmin(admin.ModelAdmin):
