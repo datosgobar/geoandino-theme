@@ -151,7 +151,7 @@ class DataJsonArDatasetMixin:
     def test_has_distributions(self):
         model = self.get_models().first()
         dataset = dataset_from(model)
-        assert_true('distributions' in dataset)
+        assert_true('distribution' in dataset)
 
     def test_has_issued(self):
         model = self.get_model()

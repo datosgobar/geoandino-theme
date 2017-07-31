@@ -105,7 +105,7 @@ def dataset_from(resource):
         "name": resource.poc.organization,
         "mbox": resource.poc.email,
     }
-    record['distributions'] = get_distributions(resource)
+    record['distribution'] = get_distributions(resource)
     return record
 
 def get_datasets():
