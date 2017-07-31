@@ -49,14 +49,14 @@ class TestDataJsonAr(TestCase):
 
     @istest
     def has_dataset_list(self):
-        datasets = data_jsonar()['datasets']
+        datasets = data_jsonar()['dataset']
         assert_equals([], datasets)
 
     @istest
     def dataset_from_layers(self):
         create_models(type='layer')
 
-        datasets = data_jsonar()['datasets']
+        datasets = data_jsonar()['dataset']
         assert_equals(Layer.objects.count(), len(datasets))
 
     @istest
@@ -64,7 +64,7 @@ class TestDataJsonAr(TestCase):
         create_models(type='layer')
         create_models(type='map')
         expected_count = Layer.objects.count() + Map.objects.count()
-        datasets = data_jsonar()['datasets']
+        datasets = data_jsonar()['dataset']
         assert_equals(expected_count, len(datasets))
 
     @istest
@@ -73,7 +73,7 @@ class TestDataJsonAr(TestCase):
         create_models(type='map')
         create_models(type='document')
         expected_count = Layer.objects.count() + Map.objects.count() + Document.objects.count()
-        datasets = data_jsonar()['datasets']
+        datasets = data_jsonar()['dataset']
         assert_equals(expected_count, len(datasets))
 
 class TestStringToAccrualPeriodicity:

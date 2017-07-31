@@ -127,5 +127,5 @@ def data_jsonar():
             "mbox": site_conf.publisher_email(),
         },
         "superThemeTaxonomy": settings.SUPER_THEME_TAXONOMY_URL,
-        "datasets": get_datasets(),
+        "dataset": get_datasets(),
     }
