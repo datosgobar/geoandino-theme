@@ -1,0 +1,114 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-26 12:04-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: geoandino/templates/overrides/index.html:4
+msgid "Search for Data."
+msgstr ""
+
+#: geoandino/templates/site_base.html:22
+msgid "Layers"
+msgstr ""
+
+#: geoandino/templates/site_base.html:23
+msgid "Documents"
+msgstr ""
+
+#: geoandino/templates/site_base.html:25
+msgid "Remote Services"
+msgstr ""
+
+#: geoandino/templates/site_base.html:28
+msgid "Add Remote Service"
+msgstr ""
+
+#: geoandino/templates/site_base.html:35
+msgid "Explore Maps"
+msgstr ""
+
+#: geoandino/templates/site_base.html:37
+msgid "Create Map"
+msgstr ""
+
+#: geoandino/templates/site_base.html:44
+msgid "People"
+msgstr ""
+
+#: geoandino/templates/site_base.html:45
+msgid "Groups"
+msgstr ""
+
+#: geoandino/templates/site_base.html:47
+msgid "Announcements"
+msgstr ""
+
+#: geoandino/templates/site_base.html:50
+msgid "Add User"
+msgstr ""
+
+#: geoandino/templates/site_base.html:51
+msgid "Invite User"
+msgstr ""
+
+#: geoandino/templates/site_base.html:52
+msgid "Create Group"
+msgstr ""
+
+#: geoandino/templates/site_base.html:58
+msgid "Powered by"
+msgstr ""
+
+#: geoandino/templates/site_base.html:58
+msgid "GeoNode"
+msgstr ""
+
+#: geoandino/templates/site_base.html:58
+msgid "version"
+msgstr ""
+
+#: geoandino/templates/site_base.html:59
+msgid "Developers"
+msgstr ""
+
+#: geoandino/templates/site_base.html:59
+msgid "About"
+msgstr ""
+
+#: geoandino/templates/site_index.html:12
+msgid "Welcome"
+msgstr ""
+
+#: geoandino/templates/site_index.html:13
+msgid ""
+"GeoNode is an open source platform for sharing geospatial data and maps."
+msgstr ""
+
+#: geoandino/templates/site_index.html:14
+msgid ""
+"If you have any questions about the software or service, join our <a href="
+"\"https://groups.google.com/d/forum/geonode-users\">mailing list</a>."
+msgstr ""
+
+#: geoandino/templates/site_index.html:15
+msgid "Need help?"
+msgstr ""
+
+#: geoandino/templates/site_index.html:15
+msgid "Getting Started"
+msgstr ""
