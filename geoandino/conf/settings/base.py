@@ -226,3 +226,5 @@ TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_pr
 MIDDLEWARE_CLASSES += (
     'geoandino.utils.middlewares.ForceDefaultLanguageMiddleware',
 )
+
+SUPER_THEME_TAXONOMY_URL = "http://datos.gob.ar/superThemeTaxonomy.json"
