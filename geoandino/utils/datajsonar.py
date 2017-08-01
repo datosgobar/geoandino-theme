@@ -103,7 +103,7 @@ def dataset_from(resource):
     record['superTheme'] = resource_extras.super_theme
     record['accrualPeriodicity'] = string_to_accrual_periodicity(resource.maintenance_frequency)
     record['publisher'] = {
-        "name": resource.poc.organization,
+        "name": resource.poc.get_full_name(),
         "mbox": resource.poc.email,
     }
     record['distribution'] = get_distributions(resource)
