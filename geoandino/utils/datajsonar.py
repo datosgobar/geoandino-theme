@@ -2,6 +2,7 @@
 from django.conf import settings
 from geonode.base.models import ResourceBase
 from geonode.maps.models import Map
+from geonode.layers.models import Layer
 from geonode.documents.models import Document
 from geoandino.utils.conf import get_site_conf
 
@@ -110,8 +111,10 @@ def dataset_from(resource):
 
 def get_datasets():
     json_data = []
-    for resource in ResourceBase.objects.select_related("owner"). \
-                        prefetch_related("link_set").select_related("extra_fields").all():
+    base_query = ResourceBase.objects.select_related("owner"). \
+                        prefetch_related("link_set").select_related("extra_fields").all()
+    query = base_query.instance_of(Layer) | base_query.instance_of(Document)
+    for resource in query:
         json_data.append(dataset_from(resource))
     return json_data
 

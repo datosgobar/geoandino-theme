@@ -60,19 +60,16 @@ class TestDataJsonAr(TestCase):
         assert_equals(Layer.objects.count(), len(datasets))
 
     @istest
-    def dataset_from_layers_and_maps(self):
-        create_models(type='layer')
+    def maps_does_not_create_datasets(self):
         create_models(type='map')
-        expected_count = Layer.objects.count() + Map.objects.count()
         datasets = data_jsonar()['dataset']
-        assert_equals(expected_count, len(datasets))
+        assert_equals(0, len(datasets))
 
     @istest
-    def dataset_from_layers__maps_and_documents(self):
+    def dataset_from_layers_and_documents(self):
         create_models(type='layer')
-        create_models(type='map')
         create_models(type='document')
-        expected_count = Layer.objects.count() + Map.objects.count() + Document.objects.count()
+        expected_count = Layer.objects.count() + Document.objects.count()
         datasets = data_jsonar()['dataset']
         assert_equals(expected_count, len(datasets))
 
@@ -206,11 +203,3 @@ class TestDataJsonArDatasetFromLayers(DataJsonArDatasetMixin,DataJsonArDistribut
 
     def get_models(self):
         return Layer.objects.all()
-
-class TestDataJsonArDatasetFromMaps(DataJsonArDatasetMixin, DataJsonArDistributionMixin,TestCase):
-
-    def create_models(self):
-        create_models(type='map')
-
-    def get_models(self):
-        return Map.objects.all()
