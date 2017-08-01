@@ -5,7 +5,7 @@ from django.db import models
 from django.dispatch import receiver
 
 from django_extensions.db import models as extension_models
-from geonode.base.models import ResourceBase
+from geonode.base.models import ResourceBase, Link
 from geonode.layers.models import Layer
 from geonode.documents.models import Document
 from .utils.enumerators import SUPER_THEME_CHOICES
@@ -26,6 +26,17 @@ class ResourceExtra(extension_models.TimeStampedModel):
             return self.resource.title
         return super(ResourceExtra, self).__str__()
 
+class LinkExtra(extension_models.TimeStampedModel):
+    link = models.OneToOneField(Link,
+                        on_delete=models.CASCADE,
+                        primary_key=True,
+                        related_name="extra_fields",)
+
+def touch_updated_field(instance, created):
+    if created:
+        LinkExtra.objects.create_for(instance)
+    else:
+        instance.extra_fields.save() # Touch "updated" field
 
 def create_resource_extras(instance, created):
     if created:
@@ -38,3 +49,7 @@ def create_layer_extras(sender, instance, created, **kwargs):
 @receiver(post_save, sender=Document)
 def create_document_extras(sender, instance, created, **kwargs):
     create_resource_extras(instance, created)
+
+@receiver(post_save, sender=Link)
+def create_link_extras(sender, instance, created, **kwargs):
+    touch_updated_field(instance, created)
