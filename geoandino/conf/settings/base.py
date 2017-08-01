@@ -217,7 +217,12 @@ LOCALE_PATHS = (
     LOCAL_ROOT('locale'),
     ) + LOCALE_PATHS
 
-INSTALLED_APPS = INSTALLED_APPS + ('geoandino',)
+GEOANDINO_APPS = (
+    'geoandino',
+    'geoandino.apps.datajsonar',
+)
+
+INSTALLED_APPS = INSTALLED_APPS + GEOANDINO_APPS
 
 TEMPLATES[0]['DIRS'].insert(0, LOCAL_ROOT("templates"))
 

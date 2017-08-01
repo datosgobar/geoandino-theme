@@ -7,10 +7,10 @@ from geonode.base.populate_test_data import create_models
 from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from geonode.documents.models import Document
-from geoandino.utils.enumerators import AGRI
-from geoandino.utils.datajsonar import (data_jsonar, dataset_from, string_to_accrual_periodicity, 
-                                        ISO_8601_ACCRUAL_PERIODICITY_DIC, distribution_from, get_access_url, )
 from geoandino.tests.test_utils.factories import SiteConfigurationFactory, TopicCategoryFactory, a_word, LinkFactory
+from ..utils.enumerators import AGRI
+from ..utils.datajsonar import (data_jsonar, dataset_from, string_to_accrual_periodicity, 
+                                        ISO_8601_ACCRUAL_PERIODICITY_DIC, distribution_from, get_access_url, )
 
 
 class TestDataJsonAr(TestCase):
@@ -138,7 +138,7 @@ class DataJsonArDatasetMixin:
     def test_has_publisher_name(self):
         model = self.get_models().first()
         dataset = dataset_from(model)
-        assert_equals(model.poc.organization, dataset['publisher']['name'])
+        assert_equals(model.poc.get_full_name(), dataset['publisher']['name'])
 
     def test_has_publisher_mbox(self):
         model = self.get_models().first()
