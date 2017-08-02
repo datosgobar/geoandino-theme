@@ -3,6 +3,8 @@ from nose.tools import istest, assert_true, assert_equals, assert_not_equals
 from django.test import TestCase
 from django.conf import settings
 from parameterized import parameterized
+from pydatajson import DataJson
+
 from geonode.base.populate_test_data import create_models
 from geonode.base.models import Link
 from geonode.layers.models import Layer
@@ -11,8 +13,7 @@ from geonode.documents.models import Document
 from geoandino.tests.test_utils.factories import SiteConfigurationFactory, TopicCategoryFactory, a_word, LinkFactory
 from ..models import get_default_super_theme
 from ..utils.enumerators import AGRI
-from ..utils.datajsonar import (data_jsonar, dataset_from, string_to_accrual_periodicity, 
-                                        ISO_8601_ACCRUAL_PERIODICITY_DIC, distribution_from, get_access_url, )
+from ..utils.datajsonar import (data_jsonar, dataset_from, distribution_from, get_access_url, )
 
 
 class TestDataJsonAr(TestCase):
@@ -75,26 +76,14 @@ class TestDataJsonAr(TestCase):
         datasets = data_jsonar()['dataset']
         assert_equals(expected_count, len(datasets))
 
-class TestStringToAccrualPeriodicity:
+    @istest
+    def validate_pydatajson(self):
+        create_models(type='layer')
+        create_models(type='document')
+        catalog = data_jsonar()
+        dj = DataJson()
+        assert_true(dj.is_valid_catalog(catalog), dj.validate_catalog(catalog))
 
-    @parameterized.expand([
-        ("continual", "continuously_updated"),
-        ("daily", "daily"),
-        ("annualy", "annual"),
-        ("monthly", "monthly"),
-        ("fortnightly", "biweekly"),
-        ("weekly", "weekly"),
-        ("biannually", "semiannual"),
-        ("quarterly", "quarterly"),
-    ])
-    def test_periodicity_mapping(self, geonode_value, iso_8601_key):
-        iso_formated = string_to_accrual_periodicity(geonode_value)
-        expected = ISO_8601_ACCRUAL_PERIODICITY_DIC[iso_8601_key]
-        assert_equals(expected, iso_formated)
-
-    def test_periodicity_mapping_with_invalid_value(self):
-        iso_formated = string_to_accrual_periodicity(a_word())
-        assert_equals("", iso_formated)
 
 class DataJsonArDatasetMixin:
 
@@ -134,8 +123,7 @@ class DataJsonArDatasetMixin:
     def test_has_accrual_periodicity(self):
         model = self.get_models().first()
         dataset = dataset_from(model)
-        accrual_periodicity = string_to_accrual_periodicity(model.maintenance_frequency)
-        assert_equals(accrual_periodicity, dataset['accrualPeriodicity'])
+        assert_equals(model.extra_fields.accrual_periodicity, dataset['accrualPeriodicity'])
 
     def test_has_publisher_name(self):
         model = self.get_models().first()

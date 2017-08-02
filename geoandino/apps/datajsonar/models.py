@@ -4,6 +4,8 @@ from django.conf import settings
 from django.db.models.signals import post_save
 from django.db import models
 from django.dispatch import receiver
+from django.utils.translation import ugettext as _
+
 
 from django_extensions.db import models as extension_models
 from geonode.base.models import ResourceBase, Link
@@ -15,6 +17,30 @@ from .managers import ResourceExtraManager, LinkExtraManager
 def get_default_super_theme():
     return settings.DEFAULT_SUPER_THEME
 
+ISO_8601_CONTINUOUSLY_UPDATED = "R/PT1S"
+
+ISO_8601_ACCRUAL_PERIODICITY = [
+    ("R/P10Y", _("decennial")),
+    ("R/P4Y", _("quadrennial")),
+    ("R/P1Y", _("annual")),
+    ("R/P2M", _("bimonthly")),
+    ("R/P3.5D", _("semiweekly")),
+    ("R/P1D", _("daily")),
+    ("R/P2W", _("biweekly")),
+    ("R/P6M", _("semiannual")),
+    ("R/P2Y", _("biennial")),
+    ("R/P3Y", _("triennial")),
+    ("R/P0.33W", _("three times a week")),
+    ("R/P0.33M", _("three times a month")),
+    (ISO_8601_CONTINUOUSLY_UPDATED, _("continuously updated")),
+    ("R/P1M", _("monthly")),
+    ("R/P3M", _("quarterly")),
+    ("R/P0.5M", _("semimonthly")),
+    ("R/P4M", _("three times a year")),
+    ("R/P1W", _("weekly")),
+    ("R/PT1H", _("hourly")),
+]
+
 class ResourceExtra(extension_models.TimeStampedModel):
     resource = models.OneToOneField(ResourceBase,
                         on_delete=models.CASCADE,
@@ -22,8 +48,13 @@ class ResourceExtra(extension_models.TimeStampedModel):
                         related_name="extra_fields",)
     
     super_theme  = models.CharField(max_length=10, choices=SUPER_THEME_CHOICES, default=get_default_super_theme)
+    accrual_periodicity = models.CharField(max_length=10, choices=ISO_8601_ACCRUAL_PERIODICITY, default=ISO_8601_CONTINUOUSLY_UPDATED)
     
     objects = ResourceExtraManager()
+
+    @property
+    def issued(self):
+        return self.created.isoformat()
 
     def __str__(self):
         if self.resource is not None:
@@ -40,7 +71,7 @@ class LinkExtra(extension_models.TimeStampedModel):
 
     @property
     def issued(self):
-        return self.created
+        return self.created.isoformat()
 
 def touch_updated_field(instance, created):
     if created:
