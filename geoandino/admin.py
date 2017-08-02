@@ -49,6 +49,7 @@ class TopicTaxonomyForm(ModelForm):
 
     def save(self, *args, **kwargs):
         instance = super(TopicTaxonomyForm, self).save(commit=False)
+        self.fields['categories'].initial.update(topic_taxonomy=None)
         self.cleaned_data['categories'].update(topic_taxonomy=instance)
         return instance
 
