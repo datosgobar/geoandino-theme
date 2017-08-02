@@ -3,6 +3,8 @@ from django.contrib import admin
 from geoandino.models import SiteConfiguration, FacebookAndGoogleMetadata, TwitterMetadata, GeoAndinoTopicCategory, TopicTaxonomy
 from django.utils.translation import ugettext as _
 
+from django.forms import ModelMultipleChoiceField, ModelForm
+
 
 class FacebookAndGoogleMetadataInline(admin.StackedInline):
     model = FacebookAndGoogleMetadata
@@ -37,21 +39,34 @@ class SiteConfigurationAdmin(admin.ModelAdmin):
     inlines = [FacebookAndGoogleMetadataInline, TwitterMetadataInline]
 
 
-class GeoAndinoTopicCategoryInline(admin.StackedInline):
-    model = GeoAndinoTopicCategory
-    verbose_name_plural = _('Topic Categories')
-    verbose_name = _('Topic Categories')
-    fields = [_('identifier'), _('gn_description')]
+class TopicTaxonomyForm(ModelForm):
+    categories = ModelMultipleChoiceField(queryset=GeoAndinoTopicCategory.objects)
+
+    def __init__(self, *args, **kwargs):
+        super(TopicTaxonomyForm, self).__init__(*args, **kwargs)
+        if self.instance:
+            self.fields['categories'].initial = self.instance.topic_categories_set.all()
+
+    def save(self, *args, **kwargs):
+        instance = super(TopicTaxonomyForm, self).save(commit=False)
+        self.cleaned_data['categories'].update(topic_taxonomy=instance)
+        return instance
+
+    class Meta:
+        model = TopicTaxonomy
+        fields = [_('identifier'), _('description'), _('image')]
 
 
 class TopicTaxonomyAdmin(admin.ModelAdmin):
     list_display = ('identifier',)
-    fieldsets = [
-        (None, {'fields': [_('identifier'), _('description'), _('image')]})
-    ]
+    form = TopicTaxonomyForm
 
-    inlines = [GeoAndinoTopicCategoryInline]
+
+class GeoAndinoTopicCategoryAdmin(admin.ModelAdmin):
+    list_display = ('identifier',)
+    fields = ['identifier', 'gn_description', 'is_choice', 'fa_class']
 
 
 admin.site.register(SiteConfiguration, SiteConfigurationAdmin)
 admin.site.register(TopicTaxonomy, TopicTaxonomyAdmin)
+admin.site.register(GeoAndinoTopicCategory, GeoAndinoTopicCategoryAdmin)
