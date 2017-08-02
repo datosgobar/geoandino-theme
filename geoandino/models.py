@@ -107,6 +107,13 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
     site_url = models.CharField(_('Site url'), max_length=255, default=None, blank=True, null=True)
     logo_footer = models.ImageField(upload_to="thumbs/", blank=True, null=True)
     logo_header = models.ImageField(upload_to="thumbs/", blank=True, null=True)
+    facebook_google_image = models.ImageField(upload_to="thumbs/", blank=True, null=True)
+    facebook_google_title = models.CharField(_('title'), max_length=255, default=None, blank=True, null=True)
+    facebook_google_description = models.TextField(_('description'), blank=True, null=True)
+    twitter_image = models.ImageField(upload_to="thumbs/", blank=True, null=True)
+    twitter_title = models.CharField(_('title'), max_length=255, default=None, blank=True, null=True)
+    twitter_description = models.TextField(_('description'), blank=True, null=True)
+    twitter_user = models.CharField(max_length=100, verbose_name=_("Twitter User"), null=True, blank=True)
 
     @property
     def image_background_url(self):
@@ -118,24 +125,6 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
     class Meta:
         ordering = ['created', ]
 
-
-class FacebookAndGoogleMetadata(models_db.TitleDescriptionModel):
-    site_configuration = models.ForeignKey(SiteConfiguration, on_delete=models.CASCADE)
-    image = models.ImageField(null=True)
-
-    @classmethod
-    def create(cls, site_configuration):
-        return cls(site_configuration=site_configuration)
-
-
-class TwitterMetadata(models_db.TitleDescriptionModel):
-    site_configuration = models.ForeignKey(SiteConfiguration, on_delete=models.CASCADE)
-    image = models.ImageField(null=True)
-    tw_user = models.CharField(max_length=100, verbose_name=_("Twitter User"))
-
-    @classmethod
-    def create(cls, site_configuration):
-        return cls(site_configuration=site_configuration)
 
 
 
