@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from nose.tools import istest, assert_true, assert_equals
+from nose.tools import istest, assert_true, assert_equals, assert_not_equals
 from django.test import TestCase
 from django.conf import settings
 from parameterized import parameterized
@@ -187,10 +187,18 @@ class DataJsonArDistributionMixin:
         distribution = distribution_from(resource, link)
         assert_equals(link.name, distribution['title'])
 
-    def test_has_title(self):
+    def test_has_issued(self):
         resource, link = self.get_samples()
         distribution = distribution_from(resource, link)
         assert_equals(link.extra_fields.issued, distribution['issued'])
+
+    def test_issued_gets_modified(self):
+        resource, link = self.get_samples()
+        old_distribution = distribution_from(resource, link)
+        old_issued = old_distribution['issued']
+        link.save()
+        distribution = distribution_from(resource, link)
+        assert_not_equals(old_distribution ,distribution['issued'])
 
 
 class TestDataJsonArDatasetFromDocuments(DataJsonArDatasetMixin,DataJsonArDistributionMixin, TestCase):
