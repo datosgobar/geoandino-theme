@@ -42,7 +42,7 @@ def touch_updated_field(instance, created):
     if created:
         LinkExtra.objects.create_for(instance)
     else:
-        instance.extra_fields.save() # Touch "updated" field
+        LinkExtra.objects.get(link=instance).save() # Touch "updated" field
 
 def create_resource_extras(instance, created):
     if created:

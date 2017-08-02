@@ -4,6 +4,7 @@ from django.test import TestCase
 from django.conf import settings
 from parameterized import parameterized
 from geonode.base.populate_test_data import create_models
+from geonode.base.models import Link
 from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from geonode.documents.models import Document
@@ -191,14 +192,6 @@ class DataJsonArDistributionMixin:
         resource, link = self.get_samples()
         distribution = distribution_from(resource, link)
         assert_equals(link.extra_fields.issued, distribution['issued'])
-
-    def test_issued_gets_modified(self):
-        resource, link = self.get_samples()
-        old_distribution = distribution_from(resource, link)
-        old_issued = old_distribution['issued']
-        link.save()
-        distribution = distribution_from(resource, link)
-        assert_not_equals(old_distribution ,distribution['issued'])
 
 
 class TestDataJsonArDatasetFromDocuments(DataJsonArDatasetMixin,DataJsonArDistributionMixin, TestCase):
