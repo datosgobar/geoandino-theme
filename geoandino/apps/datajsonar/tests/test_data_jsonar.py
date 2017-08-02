@@ -26,34 +26,20 @@ class TestDataJsonAr(TestCase):
         self.settings = settings
 
     @istest
-    def title_from_site_conf(self):
-        title = data_jsonar()['title']
-        assert_equals(self.site_conf.title, title)
-
-    @istest
-    def description_from_site_conf(self):
-        description = data_jsonar()['description']
-        assert_equals(self.site_conf.description, description)
-
-    @istest
-    def publisher_name_from_site_conf(self):
-        publisher_name = data_jsonar()['publisher']['name']
-        assert_equals(self.site_conf.publisher.user.username, publisher_name)
-
-    @istest
-    def publisher_mbox_from_site_conf(self):
-        publisher_mbox = data_jsonar()['publisher']['mbox']
-        assert_equals(self.site_conf.publisher.email, publisher_mbox)
-
-    @istest
-    def super_theme_taxonomy_from_settigs(self):
-        taxonomy = data_jsonar()['superThemeTaxonomy']
-        assert_equals(self.settings.SUPER_THEME_TAXONOMY_URL, taxonomy)
-
-    @istest
-    def has_dataset_list(self):
-        datasets = data_jsonar()['dataset']
-        assert_equals([], datasets)
+    def has_datajsonar_attributes(self):
+        data = data_json()
+        expected = {
+            "title": self.site_conf.title,
+            "description": self.site_conf.description,
+            "publisher": {
+                "name": self.site_conf.publisher.user.username,
+                "mbox": self.site_conf.publisher.email,
+            },
+            "superTHemeTaxonomy": self.settings.SUPER_THEME_TAXONOMY_URL,
+            "dataset": []
+        }
+        for key, value in expected.iteritems():
+            assert_equals(value, data['key'])
 
     @istest
     def dataset_from_layers(self):
