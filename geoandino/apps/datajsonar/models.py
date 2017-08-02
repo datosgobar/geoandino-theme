@@ -9,7 +9,7 @@ from geonode.base.models import ResourceBase, Link
 from geonode.layers.models import Layer
 from geonode.documents.models import Document
 from .utils.enumerators import SUPER_THEME_CHOICES
-from .managers import ResourceExtraManager
+from .managers import ResourceExtraManager, LinkExtraManager
 
 class ResourceExtra(extension_models.TimeStampedModel):
     resource = models.OneToOneField(ResourceBase,
@@ -31,6 +31,12 @@ class LinkExtra(extension_models.TimeStampedModel):
                         on_delete=models.CASCADE,
                         primary_key=True,
                         related_name="extra_fields",)
+
+    objects = LinkExtraManager()
+
+    @property
+    def issued(self):
+        return self.created
 
 def touch_updated_field(instance, created):
     if created:

@@ -5,3 +5,9 @@ class ResourceExtraManager(models.Manager):
 
     def create_for(self, resource):
         return self.create(resource=resource)
+
+
+class LinkExtraManager(models.Manager):
+
+    def create_for(self, link):
+        return self.create(link=link)

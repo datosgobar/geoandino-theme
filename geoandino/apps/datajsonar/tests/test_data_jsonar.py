@@ -187,6 +187,11 @@ class DataJsonArDistributionMixin:
         distribution = distribution_from(resource, link)
         assert_equals(link.name, distribution['title'])
 
+    def test_has_title(self):
+        resource, link = self.get_samples()
+        distribution = distribution_from(resource, link)
+        assert_equals(link.extra_fields.issued, distribution['issued'])
+
 
 class TestDataJsonArDatasetFromDocuments(DataJsonArDatasetMixin,DataJsonArDistributionMixin, TestCase):
 
