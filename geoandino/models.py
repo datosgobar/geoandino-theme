@@ -83,7 +83,7 @@ class GeoAndinoTopicCategory(TopicCategory):
         self._meta.get_field('identifier').default = None
         super(GeoAndinoTopicCategory, self).__init__(*args, **kwargs)
 
-    topic_taxonomy = models.ForeignKey(TopicTaxonomy, on_delete=models.CASCADE, related_name='topic_categories_set')
+    topic_taxonomy = models.ForeignKey(TopicTaxonomy, on_delete=models.CASCADE, related_name='topic_categories_set', null=True, default=None)
 
 
 class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionModel):
