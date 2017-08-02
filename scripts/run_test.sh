@@ -7,5 +7,5 @@ cd ${DIR}/..
 export CATALOG_URL="http://geonetwork:8080/"
 
 echo "Running django-nose's tests"
-python manage.py test
+python manage.py test --settings geoandino.conf.settings.testing -v 3
 echo "pytest OK :)"
