@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from django.conf import settings
 from django.db.models.signals import post_save
 from django.db import models
 from django.dispatch import receiver
@@ -11,13 +12,16 @@ from geonode.documents.models import Document
 from .utils.enumerators import SUPER_THEME_CHOICES
 from .managers import ResourceExtraManager, LinkExtraManager
 
+def get_default_super_theme():
+    return settings.DEFAULT_SUPER_THEME
+
 class ResourceExtra(extension_models.TimeStampedModel):
     resource = models.OneToOneField(ResourceBase,
                         on_delete=models.CASCADE,
                         primary_key=True,
                         related_name="extra_fields",)
     
-    super_theme  = models.CharField(max_length=10, blank=True, null=True, choices=SUPER_THEME_CHOICES, )
+    super_theme  = models.CharField(max_length=10, choices=SUPER_THEME_CHOICES, default=get_default_super_theme)
     
     objects = ResourceExtraManager()
 

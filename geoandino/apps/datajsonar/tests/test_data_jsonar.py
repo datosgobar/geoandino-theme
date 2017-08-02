@@ -9,6 +9,7 @@ from geonode.layers.models import Layer
 from geonode.maps.models import Map
 from geonode.documents.models import Document
 from geoandino.tests.test_utils.factories import SiteConfigurationFactory, TopicCategoryFactory, a_word, LinkFactory
+from ..models import get_default_super_theme
 from ..utils.enumerators import AGRI
 from ..utils.datajsonar import (data_jsonar, dataset_from, string_to_accrual_periodicity, 
                                         ISO_8601_ACCRUAL_PERIODICITY_DIC, distribution_from, get_access_url, )
@@ -156,10 +157,15 @@ class DataJsonArDatasetMixin:
         dataset = dataset_from(model)
         assert_equals(model.extra_fields.created, dataset['issued'])
 
-    def test_has_no_super_theme(self):
+    def test_has_super_theme(self):
         model = self.get_model()
         dataset = dataset_from(model)
-        assert_equals(None, dataset['superTheme'])
+        assert_not_equals(None, dataset['superTheme'])
+
+    def test_has_super_theme_by_settings(self):
+        model = self.get_model()
+        dataset = dataset_from(model)
+        assert_equals(get_default_super_theme(), dataset['superTheme'])
 
     def test_has_super_theme(self):
         model = self.get_AGRI_model()

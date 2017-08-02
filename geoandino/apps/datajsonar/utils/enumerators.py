@@ -14,7 +14,7 @@ SOCI = "soci"
 TECH = "tech"
 TRAN = "tran"
 
-# TODO: Use english texts and trasnlated them
+# TODO: Use english texts and translate them
 SUPER_THEME_CHOICES = (
     (AGRI, "Agroganadería, pesca y forestación"),
     (ECON, "Economía y finanzas"), 

@@ -21,6 +21,8 @@ import os
 import environ
 from geonode.settings import *
 
+from geoandino.apps.datajsonar.utils.enumerators import SUPER_THEME_CHOICES, AGRI
+
 env = environ.Env()
 
 LANGUAGE_CODE = 'es'
@@ -233,3 +235,11 @@ MIDDLEWARE_CLASSES += (
 )
 
 SUPER_THEME_TAXONOMY_URL = "http://datos.gob.ar/superThemeTaxonomy.json"
+
+DEFAULT_SUPER_THEME = env("DEFAULT_SUPER_THEME_CODE", default=AGRI)
+
+def check_default_super_theme(code):
+    if not any(code == super_theme_code for super_theme_code, text in SUPER_THEME_CHOICES):
+        raise Exception("Invalid Super Theme code")
+
+check_default_super_theme(DEFAULT_SUPER_THEME)
