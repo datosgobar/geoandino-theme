@@ -27,7 +27,7 @@ class TestDataJsonAr(TestCase):
 
     @istest
     def has_datajsonar_attributes(self):
-        data = data_json()
+        data = data_jsonar()
         expected = {
             "title": self.site_conf.title,
             "description": self.site_conf.description,
@@ -35,16 +35,15 @@ class TestDataJsonAr(TestCase):
                 "name": self.site_conf.publisher.user.username,
                 "mbox": self.site_conf.publisher.email,
             },
-            "superTHemeTaxonomy": self.settings.SUPER_THEME_TAXONOMY_URL,
+            "superThemeTaxonomy": self.settings.SUPER_THEME_TAXONOMY_URL,
             "dataset": []
         }
         for key, value in expected.iteritems():
-            assert_equals(value, data['key'])
+            assert_equals(value, data[key])
 
     @istest
     def dataset_from_layers(self):
         create_models(type='layer')
-
         datasets = data_jsonar()['dataset']
         assert_equals(Layer.objects.count(), len(datasets))
 
@@ -96,55 +95,34 @@ class DataJsonArDatasetMixin:
         model.extra_fields.save()
         return model
 
-    def test_has_title(self):
+    def test_has_datajsonar_attributes(self):
         model = self.get_models().first()
         dataset = dataset_from(model)
-        assert_equals(model.title, dataset['title'])
-
-    def test_has_description(self):
+        expected = {
+            "title": model.title,
+            "description": model.abstract,
+            "accrualPeriodicity": model.extra_fields.accrual_periodicity,
+            "publisher": {
+                "name": model.poc.get_full_name(),
+                "mbox": model.poc.email,
+            },
+            "issued": model.extra_fields.issued,
+            "superTheme": [get_default_super_theme()],
+        }
+        for key, value in expected.iteritems():
+            assert_equals(value, dataset[key])
+    
+    def test_has_attributes(self):
         model = self.get_models().first()
         dataset = dataset_from(model)
-        assert_equals(model.abstract, dataset['description'])
-
-    def test_has_accrual_periodicity(self):
-        model = self.get_models().first()
-        dataset = dataset_from(model)
-        assert_equals(model.extra_fields.accrual_periodicity, dataset['accrualPeriodicity'])
-
-    def test_has_publisher_name(self):
-        model = self.get_models().first()
-        dataset = dataset_from(model)
-        assert_equals(model.poc.get_full_name(), dataset['publisher']['name'])
-
-    def test_has_publisher_mbox(self):
-        model = self.get_models().first()
-        dataset = dataset_from(model)
-        assert_equals(model.poc.email, dataset['publisher']['mbox'])
-
-    def test_has_distributions(self):
-        model = self.get_models().first()
-        dataset = dataset_from(model)
-        assert_true('distribution' in dataset)
-
-    def test_has_issued(self):
-        model = self.get_model()
-        dataset = dataset_from(model)
-        assert_equals(model.extra_fields.created, dataset['issued'])
-
-    def test_has_super_theme(self):
-        model = self.get_model()
-        dataset = dataset_from(model)
-        assert_not_equals(None, dataset['superTheme'])
-
-    def test_has_super_theme_by_settings(self):
-        model = self.get_model()
-        dataset = dataset_from(model)
-        assert_equals(get_default_super_theme(), dataset['superTheme'])
+        expected = ['distribution']
+        for key in expected:
+            assert_true(key in dataset)
 
     def test_has_super_theme(self):
         model = self.get_AGRI_model()
         dataset = dataset_from(model)
-        assert_equals(model.extra_fields.super_theme, dataset['superTheme'])
+        assert_equals([model.extra_fields.super_theme], dataset['superTheme'])
 
 
 class DataJsonArDistributionMixin:
@@ -152,29 +130,20 @@ class DataJsonArDistributionMixin:
         model = self.get_model()
         return model, LinkFactory.create(resource=model)
 
-    def test_has_access_url(self):
-        resource, link = self.get_samples()
-        acces_url = get_access_url(resource, link)
+    def test_has_datajsonar_attributes(self):
+        esource, link = self.get_samples()
         distribution = distribution_from(resource, link)
-        assert_equals(acces_url, distribution['accessURL'])
-
-    def test_has_download_url(self):
-        resource, link = self.get_samples()
-        distribution = distribution_from(resource, link)
-        assert_equals(link.url, distribution['downloadURL'])
-
-    def test_has_title(self):
-        resource, link = self.get_samples()
-        distribution = distribution_from(resource, link)
-        assert_equals(link.name, distribution['title'])
-
-    def test_has_issued(self):
-        resource, link = self.get_samples()
-        distribution = distribution_from(resource, link)
-        assert_equals(link.extra_fields.issued, distribution['issued'])
+        expected = {
+            "accessURL": get_access_url(resource, link),
+            "downloadURL": link.url,
+            "title": link.name,
+            "issued": link.extra_fields.issued,
+        }
+        for key, value in expect.iteritems():
+            assert_equals(value, distribution[key])
 
 
-class TestDataJsonArDatasetFromDocuments(DataJsonArDatasetMixin,DataJsonArDistributionMixin, TestCase):
+class TestDataJsonArDatasetFromDocuments(DataJsonArDatasetMixin, DataJsonArDistributionMixin, TestCase):
 
     def create_models(self):
         create_models(type='document')
@@ -182,7 +151,7 @@ class TestDataJsonArDatasetFromDocuments(DataJsonArDatasetMixin,DataJsonArDistri
     def get_models(self):
         return Document.objects.all()
 
-class TestDataJsonArDatasetFromLayers(DataJsonArDatasetMixin,DataJsonArDistributionMixin, TestCase):
+class TestDataJsonArDatasetFromLayers(DataJsonArDatasetMixin, DataJsonArDistributionMixin, TestCase):
 
     def create_models(self):
         create_models(type='layer')
