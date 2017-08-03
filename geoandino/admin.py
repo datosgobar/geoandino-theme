@@ -57,7 +57,7 @@ class TopicTaxonomyForm(ModelForm):
 
     class Meta:
         model = TopicTaxonomy
-        fields = [_('identifier'), _('description'), _('image')]
+        fields = ['identifier', 'description', 'image', 'limit', 'offset']
 
 
 class TopicTaxonomyAdmin(admin.ModelAdmin):
