@@ -127,6 +127,10 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
         return self.image_url_or_default('image_background', 'img/bg-jumbotron.jpg')
 
     @property
+    def logo_header_url(self):
+        return self.image_url_or_default('logo_header', 'img/logo_ministerio.svg')
+
+    @property
     def logo_footer_url(self):
         return self.image_url_or_default('logo_footer', 'img/argentinagob.svg')
 
