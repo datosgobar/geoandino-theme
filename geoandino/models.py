@@ -122,6 +122,13 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
         except ValueError:
             return static('img/bg-jumbotron.jpg')
 
+    @property
+    def logo_footer_url(self):
+        try:
+            return "{}{}".format(settings.SITEURL.rstrip('/'), self.logo_footer.url)
+        except ValueError:
+            return static('img/argentinagob.svg')
+
     class Meta:
         ordering = ['created', ]
 
