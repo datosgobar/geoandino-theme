@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import settings
+import geoandino.conf.settings.production as settings
 import django.db.models as models
 from django_extensions.db import models as models_db
 from exclusivebooleanfield.fields import ExclusiveBooleanField
@@ -39,6 +39,14 @@ SUPER_THEME_CHOICES = (
 )
 
 
+def image_url_or_default(self, image_property, default_url):
+    image = getattr(self, image_property)
+    try:
+        return "{}{}".format(settings.SITEURL.rstrip('/'), image.url)
+    except ValueError:
+        return static(default_url)
+
+
 class TopicTaxonomy(models.Model):
     identifier = models.CharField(max_length=255)
     description = models.CharField(max_length=255, default=None, null=True, blank=True)
@@ -48,10 +56,7 @@ class TopicTaxonomy(models.Model):
 
     @property
     def image_url(self):
-        try:
-            return "{}{}".format(settings.SITEURL.rstrip('/'), self.image.url)
-        except ValueError:
-            return static('img/logo.jpg')
+        return image_url_or_default(self, 'image', 'img/logo.jpg')
 
     @property
     def categories(self):
@@ -113,24 +118,17 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
     twitter_description = models.TextField(_('description'), blank=True, null=True)
     twitter_user = models.CharField(max_length=100, verbose_name=_("Twitter User"), null=True, blank=True)
 
-    def image_url_or_default(self, image_property, default_url):
-        image = getattr(self, image_property)
-        try:
-            return "{}{}".format(settings.SITEURL.rstrip('/'), image.url)
-        except ValueError:
-            return static(default_url)
-
     @property
     def image_background_url(self):
-        return self.image_url_or_default('image_background', 'img/bg-jumbotron.jpg')
+        return image_url_or_default(self, 'image_background', 'img/bg-jumbotron.jpg')
 
     @property
     def logo_header_url(self):
-        return self.image_url_or_default('logo_header', 'img/logo_ministerio.svg')
+        return image_url_or_default(self, 'logo_header', 'img/logo_ministerio.svg')
 
     @property
     def logo_footer_url(self):
-        return self.image_url_or_default('logo_footer', 'img/argentinagob.svg')
+        return image_url_or_default(self, 'logo_footer', 'img/argentinagob.svg')
 
     class Meta:
         ordering = ['created', ]
