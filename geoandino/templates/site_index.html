@@ -56,3 +56,99 @@
   </div>
   {% endblock %}
 
+{% block mainbody %}
+  <div class="big-search">
+  	<div class="container">
+  		<h1>{% trans "Search for Data" %}</h1>
+  		<div class="search">
+  			<form id="search" action="{% url "search" %}" >
+  				<span class="fa fa-search fa-2x"></span>
+  				{% if HAYSTACK_SEARCH %}
+  				<input id="search_input" type="text" placeholder="{% trans "Search" %}" class="form-control" name="q">
+  				{% else %}
+  				<input id="search_input" type="text" placeholder="{% trans "Search" %}" class="form-control" name="title__icontains">
+  				{% endif %}
+  			</form>
+  		</div>
+  		<p><a class="btn btn-primary" href="/search/">{% trans "Advanced Search" %}</a></p>
+  	</div>
+  </div>
+
+{% block datasets %}
+  <section id="datasets">
+  	<div class="container">
+  		<div class="row">
+  			<div class="container text-center">
+  				<h1>{% trans "Discover the available datasets" %}</h1>
+				{% for taxonomy in taxonomies %}
+					<div class="col-xs-4 col-sm-2">
+						<a href="{{taxonomy.search_url}}" data-toggle="tooltip" data-placement="auto"
+							title="{{taxonomy.identifier}}">
+							<div class="panel-default panel-icon">
+					{% if site_conf.icon_display %}
+						<div class="panel-heading">
+						  <img src="{{taxonomy.image_url}}" class="group-image">
+						</div>
+					{% endif %}
+					<div class="panel-body">
+					  <h4>{{taxonomy.identifier}}</h4>
+					</div>
+							</div>
+						</a>
+					</div>
+				{% endfor %}
+  			</div>
+  		</div>
+  	</div>
+  </section>
+  {% endblock %}
+
+  {% block showcase %}
+  <section id="showcase">
+    <div class="container">
+      <div class="row">
+        <h2>{% trans "Featured Datasets" %}</h2>
+        {% verbatim %}
+        <div ng-app="featured">
+          <div ng-repeat="item in featured | limitTo:4">
+            <div class="col-md-3">
+              <a class="panel panel-default" href="#">
+                  <div style="background-image:url('{{ item.thumbnail_url }}');" class="panel-heading"></div>
+                  <div class="panel-body">
+                    <h3 class="ng-binding">{{ item.title | limitTo: 20 }}{{item.title.length > 20 ? '...' : ''}}</h3>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+  		{% endverbatim %}
+      </div>
+      <p><a class="btn btn-primary" href="/search/">{% trans "Explore all datasets" %}</a></p>
+    </div>
+  </section>
+  {% endblock %}
+{% endblock %}
+
+{% block extra_script %}
+{{ block.super }}
+{% if DEBUG_STATIC %}
+<script src="{{ STATIC_URL }}lib/js/angular.js"></script>
+{% endif %}
+<script type="text/javascript">
+    FEATURED_URL = '{% url 'api_dispatch_list' api_name='api' resource_name='featured' %}'
+    'use strict';
+    (function(){
+      var module = angular.module('featured', []);
+      module.run(function($http, $rootScope){
+        $http.get(FEATURED_URL).success(function(data){
+          $rootScope.featured = data.objects;
+        });
+      });
+    })();
+</script>
+<script>
+	$('[data-toggle="tooltip"]').tooltip();
+</script>
+{% endblock extra_script %}
+
+
