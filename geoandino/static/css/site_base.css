@@ -10,6 +10,7 @@ body {
 	padding-top: 0;
 }
 
+
 /*HOME*/
 
 .group-image {
@@ -54,4 +55,42 @@ body {
 }
 .home .big-search a {
     color: #ffffff;
+}
+
+/*Footer*/
+
+footer {
+    color: inherit;
+}
+footer a {
+    color: #0695d6 !important;
+    font-weight: 500;
+}
+.main-footer li a {
+    font-size: 16px;
+}
+.main-footer li a {
+    padding: 3px 0;
+}
+
+/*Capas*/
+
+.profile-avatar li a {
+    color: #0695d6;
+    font-size: 0.8em;
+    text-decoration: none;
+}
+.profile-avatar li a:hover, .profile-avatar h4 a:hover {
+    color: #2fbaf9;
+}
+.profile-avatar img {
+    border-right: 1px solid #eee;
+}
+.profile-avatar h4 a {
+    color: #0695d6;
+    text-decoration: none;
+}
+.profile-avatar {
+    border-radius: 4px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }

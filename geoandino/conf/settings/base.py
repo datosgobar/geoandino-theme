@@ -208,10 +208,8 @@ MAP_BASELAYERS = [
     IGN_GEOSERVER,
 ]
 
-
-STATICFILES_DIRS.append(
-    LOCAL_ROOT("static"),
-)
+# Prepending allows to override static files
+STATICFILES_DIRS.insert(0, LOCAL_ROOT("static"))
 
 # Location of url mappings
 ROOT_URLCONF = 'geoandino.urls'
@@ -221,7 +219,7 @@ LOCALE_PATHS = (
     LOCAL_ROOT('locale'),
     ) + LOCALE_PATHS
 
-INSTALLED_APPS = INSTALLED_APPS + ('geoandino',)
+INSTALLED_APPS = ('geoandino',) + INSTALLED_APPS
 
 TEMPLATES[0]['DIRS'].insert(0, LOCAL_ROOT("templates"))
 
