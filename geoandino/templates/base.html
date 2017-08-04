@@ -151,9 +151,11 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-6">
-            {% with logo_footer=site_conf.logo_footer_url %}
-            <img class="image-responsive" alt="Argentina.gob.ar - Presidencia de la Nación" src="{{ logo_footer }}">
-            {% endwith %}
+            <a href="{{site_conf.site_url|default:'#'}}">
+              {% with logo_footer=site_conf.logo_footer_url %}
+                <img class="image-responsive" alt="Argentina.gob.ar - Presidencia de la Nación" src="{{ logo_footer }}">
+              {% endwith %}
+            </a>
             <br>
             <p class="text-muted small">{% trans "Powered by" %} <a href="http://geonode.org">{% trans "GeoNode" %}</a> <em>{% trans "version" %} {{ VERSION }}</em></p>
         </div>
