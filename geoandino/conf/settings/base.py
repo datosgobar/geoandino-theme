@@ -33,18 +33,22 @@ WSGI_APPLICATION = "geoandino.wsgi.application"
 
 SITEURL = env("SITEURL", default="http://localhost/")
 
+ALLOWED_HOST = env("ALLOWED_HOST"),
+ALLOWED_HOST_IP = env("ALLOWED_HOST_IP"),
+
 ALLOWED_HOSTS = [
     'localhost', 
     '127.0.0.1',
     'geonode',
-    env("ALLOWED_HOST_IP", default='127.0.0.1'),
-    env("ALLOWED_HOST_NAME", default='localhost')
+    ALLOWED_HOST,
+    ALLOWED_HOST_IP,
 ]
 PROXY_ALLOWED_HOSTS = (
-    'localhost', '127.0.0.1',
+    'localhost',
+    '127.0.0.1',
     'geonode',
-    env("PROXY_ALLOWED_HOST_IP", default='127.0.0.1'),
-    env("PROXY_ALLOWED_HOST_NAME", default='localhost'), 
+    ALLOWED_HOST,
+    ALLOWED_HOST_IP,
 )
 POSTGIS_VERSION = (2, 1, 2)
 
