@@ -115,19 +115,20 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
     twitter_description = models.TextField(_('description'), blank=True, null=True)
     twitter_user = models.CharField(max_length=100, verbose_name=_("Twitter User"), null=True, blank=True)
 
+    def image_url_or_default(self, image_property, default_url):
+        image = getattr(self, image_property)
+        try:
+            return "{}{}".format(settings.SITEURL.rstrip('/'), image.url)
+        except ValueError:
+            return static(default_url)
+
     @property
     def image_background_url(self):
-        try:
-            return "{}{}".format(settings.SITEURL.rstrip('/'), self.image_background.url)
-        except ValueError:
-            return static('img/bg-jumbotron.jpg')
+        return self.image_url_or_default('image_background', 'img/bg-jumbotron.jpg')
 
     @property
     def logo_footer_url(self):
-        try:
-            return "{}{}".format(settings.SITEURL.rstrip('/'), self.logo_footer.url)
-        except ValueError:
-            return static('img/argentinagob.svg')
+        return self.image_url_or_default('logo_footer', 'img/argentinagob.svg')
 
     class Meta:
         ordering = ['created', ]
