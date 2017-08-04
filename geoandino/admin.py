@@ -25,8 +25,6 @@ class SiteConfigurationAdmin(admin.ModelAdmin):
         (_('Contact'), {'fields': ['facebook_url',
                                    'twitter_url',
                                    'github_url',
-                                   'instagram_url',
-                                   'youtube_url',
                                    'contact_mail']}),
         (_('About (optional)'), {'fields': ['about_title',
                                             'about_description',

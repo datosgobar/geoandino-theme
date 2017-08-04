@@ -95,8 +95,6 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
     facebook_url = models.CharField(max_length=150, verbose_name=_('Facebook'), default="www.facebook.com/portal")
     twitter_url = models.CharField(max_length=150, verbose_name=_('Twitter'), default="www.twitter.com/portal")
     github_url = models.CharField(max_length=150, verbose_name=_('GitHub'), default="www.github.com/portal")
-    instagram_url = models.CharField(max_length=150, verbose_name=_('Instagram'), default="www.instagram.com/portal")
-    youtube_url = models.CharField(max_length=150, verbose_name=_('Youtube'), default="www.youtube.com/portal")
     contact_mail = models.CharField(max_length=250, verbose_name=_('Contact mail'), default="contact@portal.com")
     layer_description = models.TextField(max_length=250, verbose_name=_('Layer description'), blank=True, null=True)
     map_description = models.TextField(max_length=250, verbose_name=_('Map description'), blank=True, null=True)
