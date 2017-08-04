@@ -21,6 +21,8 @@ import os
 import environ
 from geonode.settings import *
 
+from geoandino.apps.datajsonar.utils.enumerators import SUPER_THEME_CHOICES, AGRI
+
 env = environ.Env()
 
 LANGUAGE_CODE = 'es'
@@ -33,8 +35,8 @@ WSGI_APPLICATION = "geoandino.wsgi.application"
 
 SITEURL = env("SITEURL", default="http://localhost/")
 
-ALLOWED_HOST = env("ALLOWED_HOST"),
-ALLOWED_HOST_IP = env("ALLOWED_HOST_IP"),
+ALLOWED_HOST = env("ALLOWED_HOST", default=""),
+ALLOWED_HOST_IP = env("ALLOWED_HOST_IP", default=""),
 
 ALLOWED_HOSTS = [
     'localhost', 
@@ -221,7 +223,12 @@ LOCALE_PATHS = (
     LOCAL_ROOT('locale'),
     ) + LOCALE_PATHS
 
-INSTALLED_APPS = INSTALLED_APPS + ('geoandino',)
+GEOANDINO_APPS = (
+    'geoandino',
+    'geoandino.apps.datajsonar',
+)
+
+INSTALLED_APPS = INSTALLED_APPS + GEOANDINO_APPS
 
 TEMPLATES[0]['DIRS'].insert(0, LOCAL_ROOT("templates"))
 
@@ -230,3 +237,13 @@ TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_pr
 MIDDLEWARE_CLASSES += (
     'geoandino.utils.middlewares.ForceDefaultLanguageMiddleware',
 )
+
+SUPER_THEME_TAXONOMY_URL = "http://datos.gob.ar/superThemeTaxonomy.json"
+
+DEFAULT_SUPER_THEME = env("DEFAULT_SUPER_THEME_CODE", default=AGRI)
+
+def check_default_super_theme(code):
+    if not any(code == super_theme_code for super_theme_code, text in SUPER_THEME_CHOICES):
+        raise Exception("Invalid Super Theme code")
+
+check_default_super_theme(DEFAULT_SUPER_THEME)
