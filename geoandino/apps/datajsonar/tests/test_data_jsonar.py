@@ -13,7 +13,7 @@ from geonode.documents.models import Document
 from geoandino.tests.test_utils.factories import SiteConfigurationFactory, TopicCategoryFactory, a_word, LinkFactory
 from ..models import get_default_super_theme
 from ..utils.enumerators import AGRI
-from ..utils.datajsonar import (data_jsonar, dataset_from, distribution_from, get_access_url, )
+from ..utils.datajsonar import (data_jsonar, dataset_from, distribution_from, get_access_url, translate_accrual_periodicity)
 
 
 class TestDataJsonAr(TestCase):
@@ -101,7 +101,7 @@ class DataJsonArDatasetMixin:
         expected = {
             "title": model.title,
             "description": model.abstract,
-            "accrualPeriodicity": model.extra_fields.accrual_periodicity,
+            "accrualPeriodicity": translate_accrual_periodicity(model.maintenance_frequency),
             "publisher": {
                 "name": model.poc.get_full_name(),
                 "mbox": model.poc.email,
@@ -123,6 +123,12 @@ class DataJsonArDatasetMixin:
         model = self.get_AGRI_model()
         dataset = dataset_from(model)
         assert_equals([model.extra_fields.super_theme], dataset['superTheme'])
+
+    def test_has_accrual_periodicity(self):
+        model = self.get_model()
+        dataset = dataset_from(model)
+        assert_not_equals(None, dataset['accrualPeriodicity'])
+        assert_not_equals("", dataset['accrualPeriodicity'])
 
 
 class DataJsonArDistributionMixin:

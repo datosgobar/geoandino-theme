@@ -5,6 +5,7 @@ from geonode.maps.models import Map
 from geonode.layers.models import Layer
 from geonode.documents.models import Document
 from geoandino.utils.conf import get_site_conf
+from .enumerators import ACCRUAL_PERIODICITY_DICT
 
 
 def get_access_url(resource, link):
@@ -13,6 +14,8 @@ def get_access_url(resource, link):
         return links[0].url
     return link.url
 
+def translate_accrual_periodicity(string):
+    return ACCRUAL_PERIODICITY_DICT.get(string, "")
 
 def distribution_from(resource, link):
     return {
@@ -35,7 +38,7 @@ def dataset_from(resource):
     record['description'] = resource.abstract
     record['issued'] = resource_extras.issued
     record['superTheme'] = [resource_extras.super_theme]
-    record['accrualPeriodicity'] = resource_extras.accrual_periodicity
+    record['accrualPeriodicity'] = translate_accrual_periodicity(resource.maintenance_frequency)
     record['publisher'] = {
         "name": resource.poc.get_full_name(),
         "mbox": resource.poc.email,

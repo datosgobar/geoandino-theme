@@ -30,3 +30,20 @@ SUPER_THEME_CHOICES = (
     (TECH, "Ciencia y tecnología"),
     (TRAN, "Transporte"),
 )
+
+EVENTUAL_ACCRUAL_PERIODICITY = "eventual"
+
+ACCRUAL_PERIODICITY_DICT = {    
+    "quarterly" : "R/P3M",
+    "biannually": "R/P6M",
+    "weekly": "R/P1W",
+    "irregular": EVENTUAL_ACCRUAL_PERIODICITY,
+    "fortnightly": "R/P2W",
+    "monthly": "R/P1M",
+    "asNeeded": EVENTUAL_ACCRUAL_PERIODICITY,
+    "annually": "R/P1Y",
+    "daily": "R/P1D",
+    "notPlanned": EVENTUAL_ACCRUAL_PERIODICITY,
+    "continual": "R/PT1S",
+    "unknown": EVENTUAL_ACCRUAL_PERIODICITY
+}
