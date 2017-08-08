@@ -73,6 +73,27 @@ footer a {
     padding: 3px 0;
 }
 
+.main-footer a.social-link i {
+  display: inline-block;
+  font-size: 28px;
+  border-radius: 4px;
+  padding: 8px;
+  text-align: center;
+  width: 46px;
+  height: 46px;
+}
+.main-footer a.social-link:hover i {
+  display: inline-block;
+  background: #0695d6;
+  color: white;
+  font-size: 28px;
+  border-radius: 4px;
+  padding: 8px;
+  text-align: center;
+  width: 46px;
+  height: 46px;
+}
+
 /*Capas*/
 
 .profile-avatar li a {

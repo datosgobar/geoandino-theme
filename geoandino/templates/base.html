@@ -155,6 +155,17 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-6">
+            <p>
+              <a href="{{ site_conf.twitter_url }}" class="social-link">
+                  <i class="fa fa-twitter"></i>
+              </a>
+              <a href="{{ site_conf.facebook_url }}" class="social-link">
+                  <i class="fa fa-facebook"></i>
+              </a>
+              <a href="{{ site_conf.github_url }}" class="social-link">
+                  <i class="fa fa-github-alt"></i>
+              </a>
+            </p>
             <a href="{{site_conf.site_url|default:'#'}}">
               {% with logo_footer=site_conf.logo_footer_url %}
                 <img class="image-responsive" alt="Argentina.gob.ar - Presidencia de la Nación" src="{{ logo_footer }}">
