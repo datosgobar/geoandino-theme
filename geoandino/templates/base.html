@@ -186,6 +186,7 @@
             <li><strong>{% trans "Maps" %}</strong></li>
             <li><a href="{% url "maps_browse" %}">{% trans "Explore Maps" %}</a></li>
             <li><strong><br>{% trans "About" %}</strong></li>
+            <li><a href="mailto:{{ site_conf.contact_mail }}">{% trans "Contact" %}</a></li>
             <li><a href="{% url "profile_browse" %}">{% trans "People" %}</a></li>
             <li><a href="{% url "group_list" %}">{% trans "Groups" %}</a></li>
           </ul>
