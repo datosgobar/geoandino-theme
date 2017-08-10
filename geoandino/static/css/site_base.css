@@ -69,6 +69,7 @@ footer a {
     padding: 3px 0;
 }
 
+
 /*Layers*/
 
 .profile-avatar li a {
@@ -90,6 +91,7 @@ footer a {
     border-radius: 4px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
+
 .item-details {
     padding: 15px;
 }
@@ -106,3 +108,4 @@ nav.filter ul.nav {
 .item-details .btn-sm {
     margin-right: 0;
 }
+
