@@ -151,34 +151,35 @@
   </div>
 
   {% block footer %}
-  <footer>
+  <footer class="main-footer">
     <div class="container">
       <div class="row">
-        <div class="col-md-2">
-          <ul class="list-unstyled">
-            <li>{% trans "Data" %}</li>
-            <li><a href="{% url "layer_browse" %}">{% trans "Layers" %}</a></li>
-            <li><a href="{% url "document_browse" %}">{% trans "Documents" %}</a></li>
-            {% if user.is_authenticated %}
-            <li><a href="{% url "services" %}">{% trans "Remote Services" %}</a></li>
-            <li><a href="{% url "layer_upload" %}">Upload Layer</a></li>
-            <li><a href="{% url "document_upload" %}">Upload Document</a></li>
-            <li><a href="{% url "register_service" %}">{% trans "Add Remote Service" %}</a></li>
-            {% endif %}
-          </ul>
+        <div class="col-sm-6">
+            <img class="image-responsive" alt="Argentina.gob.ar - Presidencia de la Nación" src="../static/img/argentinagob.svg">
+            <br>
+            <p class="text-muted small">{% trans "Powered by" %} <a href="http://geonode.org">{% trans "GeoNode" %}</a> <em>{% trans "version" %} {{ VERSION }}</em></p>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3 col-sm-6">
+            <ul class="list-unstyled">
+              <li><strong>Data</strong></li>
+              <li><a href="{% url "layer_browse" %}">{% trans "Layers" %}</a></li>
+              <li><a href="{% url "document_browse" %}">{% trans "Documents" %}</a></li>
+              {% if user.is_authenticated %}
+              <li><a href="{% url "services" %}">{% trans "Remote Services" %}</a></li>
+              <li><a href="{% url "layer_upload" %}">Upload Layer</a></li>
+              <li><a href="{% url "document_upload" %}">Upload Document</a></li>
+              <li><a href="{% url "register_service" %}">{% trans "Add Remote Service" %}</a></li>
+              {% endif %}
+            </ul>
+        </div>
+        <div class="col-md-3 col-sm-6">
           <ul class="list-unstyled">
-            <li>{% trans "Maps" %}</li>
+            <li><strong>{% trans "Maps" %}</strong></li>
             <li><a href="{% url "maps_browse" %}">{% trans "Explore Maps" %}</a></li>
             {% if user.is_authenticated %}
             <li> <a href="{% url "new_map" %}">{% trans "Create Map" %}</a></li>
             {% endif %}
-          </ul>
-        </div>
-		<div class="col-md-2">
-          <ul class="list-unstyled">
-            <li>{% trans "About" %}</li>
+            <li><strong><br>{% trans "About" %}</strong></li>
             <li><a href="{% url "profile_browse" %}">{% trans "People" %}</a></li>
             <li><a href="{% url "group_list" %}">{% trans "Groups" %}</a></li>
             {% if perms.announcements.can_manage %}
@@ -189,12 +190,6 @@
             <li><a href="{% url "account_invite_user" %}">{% trans "Invite User" %}</a></li>
             <li><a href="{% url "group_create" %}">{% trans "Create Group" %}</a></li>
             {% endif %}
-          </ul>
-        </div>
-        <div class="col-md-6 text-right">
-          <ul class="list-unstyled">
-            <li>{% trans "Powered by" %} <a href="http://geonode.org">{% trans "GeoNode" %}</a> <em>{% trans "version" %} {{ VERSION }}</em></li>
-            <li><a href="{% url "developer" %}">{% trans "Developers" %}</a> | <a href="{% url "about" %}">{% trans "About" %}</a><li>
           </ul>
         </div>
       </div>
