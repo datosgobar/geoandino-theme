@@ -208,10 +208,8 @@ MAP_BASELAYERS = [
     IGN_GEOSERVER,
 ]
 
-
-STATICFILES_DIRS.append(
-    LOCAL_ROOT("static"),
-)
+# Prepending allows to override static files
+STATICFILES_DIRS.insert(0, LOCAL_ROOT("static"))
 
 # Location of url mappings
 ROOT_URLCONF = 'geoandino.urls'
@@ -221,11 +219,13 @@ LOCALE_PATHS = (
     LOCAL_ROOT('locale'),
     ) + LOCALE_PATHS
 
-INSTALLED_APPS = INSTALLED_APPS + ('geoandino',)
+INSTALLED_APPS = ('geoandino',) + INSTALLED_APPS
 
 TEMPLATES[0]['DIRS'].insert(0, LOCAL_ROOT("templates"))
 
 TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.site_conf')
+TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.taxonomies')
+TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.super_theme_taxonomies')
 
 MIDDLEWARE_CLASSES += (
     'geoandino.utils.middlewares.ForceDefaultLanguageMiddleware',

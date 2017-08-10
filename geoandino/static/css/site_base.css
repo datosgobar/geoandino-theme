@@ -1,5 +1,133 @@
+
+/*Customización para Geonode*/
+
 .navbar-brand {
     width: 373px;
-    height: 79px;
-    background: transparent url("../img/logo_ministerio.svg") no-repeat scroll 15px 0px;
+    background: transparent no-repeat scroll 15px 0px;
 }
+
+body {
+	padding-top: 0;
+}
+
+
+/*HOME*/
+
+.group-image {
+  max-width: 35px;
+  max-height: 35px;
+}
+
+.home .jumbotron {
+    text-shadow: none;
+    padding: 3.75em 0;
+}
+.stylish-input-group .input-group-addon{
+    background: transparent;
+}
+.input-group-addon {
+    color: #fff;
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
+}
+.jumbotron_bar .form-control {
+	height: auto !important;
+	font-size: 16px !important;
+	background-color: transparent !important;
+	color: #FFF;
+}
+#datasets .panel-heading {
+    min-height: auto;
+}
+#datasets .panel-default {
+    margin-bottom: 20px;
+}
+.home .big-search {
+    background-color: #e9e9e9;
+    color: #111;
+}
+.home .big-search a {
+    color: #ffffff;
+}
+
+/*Footer*/
+
+footer {
+    color: inherit;
+}
+footer a {
+    color: #0695d6 !important;
+    font-weight: 500;
+}
+.main-footer li a {
+    font-size: 16px;
+}
+.main-footer li a {
+    padding: 3px 0;
+}
+
+.main-footer a.social-link i {
+  display: inline-block;
+  font-size: 28px;
+  border-radius: 4px;
+  padding: 8px;
+  text-align: center;
+  width: 46px;
+  height: 46px;
+}
+.main-footer a.social-link:hover i {
+  display: inline-block;
+  background: #0695d6;
+  color: white;
+  font-size: 28px;
+  border-radius: 4px;
+  padding: 8px;
+  text-align: center;
+  width: 46px;
+  height: 46px;
+}
+
+.profile-avatar li a {
+    color: #0695d6;
+    font-size: 0.8em;
+    text-decoration: none;
+}
+.profile-avatar li a:hover, .profile-avatar h4 a:hover {
+    color: #2fbaf9;
+}
+.profile-avatar img {
+    border-right: 1px solid #eee;
+}
+.profile-avatar h4 a {
+    color: #0695d6;
+    text-decoration: none;
+}
+.profile-avatar {
+    border-radius: 4px;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+}
+
+.item-details {
+    padding: 15px;
+}
+.list-group-item {
+    padding: 10px;
+    font-size: 0.85em;
+}
+nav.filter ul.nav {
+    padding: 15px 0;
+}
+.list-group-item .icon {
+    display: none;
+}
+.item-details .btn-sm {
+    margin-right: 0;
+}
+

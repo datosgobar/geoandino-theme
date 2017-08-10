@@ -1,0 +1,18 @@
+{% extends 'groups/group_list.html' %}
+{% load i18n %}
+{% block body %}
+  <div class="page-header">
+    {% if user.is_authenticated %}
+    <a href="{% url "group_create" %}" class="btn btn-primary pull-right">{% trans 'Create a New Group' %}</a>
+    {% endif %}
+    <h2>{% trans 'Explore Groups' %}</h2>
+    <div>{{ site_conf.group_description }}</div>
+  </div>
+
+  {% with include_type_filter='true' %}
+  {% with facet_type='groups' %}
+  {% include "search/_search_user_content.html" %}
+  {% endwith %}
+  {% endwith %}
+  {% include "_bulk_permissions_form.html" %}
+{% endblock %}

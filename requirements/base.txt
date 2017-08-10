@@ -1,3 +1,4 @@
 geonode==2.6.1
+django-exclusivebooleanfield==0.3.0
 django-jsonfield-compat==0.4.4
 django-environ==0.4.3

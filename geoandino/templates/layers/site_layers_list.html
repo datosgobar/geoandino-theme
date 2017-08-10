@@ -1,0 +1,18 @@
+{% extends 'layers/layer_list.html' %}
+{% load i18n %}
+{% block body %}
+  <div class="page-header">
+    <a href="{% url "layer_upload" %}" class="btn btn-primary pull-right">{% trans 'Upload Layers' %}</a>
+    <h2 class="page-title">{% trans 'Explore Layers' %}</h2>
+    <div>{{ site_conf.layer_description }}</div>
+  </div>
+  {% with include_type_filter='true' %}
+  {% with header='Type' %}
+  {% with filter='type__in' %}
+  {% include "search/_search_content.html" %}
+  {% endwith %}
+  {% endwith %}
+  {% endwith %}
+  {% include "_bulk_permissions_form.html" %}
+{% endblock body %}
+

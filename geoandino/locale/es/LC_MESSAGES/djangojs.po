@@ -1,0 +1,89 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-27 15:17-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: geoandino/static/geonode/js/search/cart.js:67
+msgid "Cart"
+msgstr ""
+
+#: geoandino/static/geonode/js/search/cart.js:68
+msgid "Add resources through the \"Add to cart\" buttons"
+msgstr ""
+
+#: geoandino/static/geonode/js/upload/LayerInfo.js:304
+msgid "Your upload has started"
+msgstr ""
+
+#: geoandino/static/geonode/js/upload/LayerInfo.js:333
+msgid "Layer Info"
+msgstr ""
+
+#: geoandino/static/geonode/js/upload/LayerInfo.js:334
+msgid "Edit Metadata"
+msgstr ""
+
+#: geoandino/static/geonode/js/upload/LayerInfo.js:335
+msgid "Manage Styles"
+msgstr ""
+
+#: geoandino/static/geonode/js/upload/LayerInfo.js:338
+msgid "The column %1 was renamed to %2 <br/>"
+msgstr ""
+
+#: geoandino/static/geonode/js/upload/LayerInfo.js:344
+msgid "Your layer was successfully uploaded"
+msgstr ""
+
+#: geoandino/static/geonode/js/upload/LayerInfo.js:373
+msgid "Performing Final GeoServer Config Step"
+msgstr ""
+
+#: geoandino/static/geonode/js/upload/LayerInfo.js:388
+#: geoandino/static/geonode/js/upload/LayerInfo.js:414
+msgid "You need to specify more information in order to complete your upload"
+msgstr ""
+
+#: geoandino/static/geonode/js/upload/LayerInfo.js:406
+msgid "You need to specify more information in order to complete your upload."
+msgstr ""
+
+#: geoandino/static/geonode/js/upload/LayerInfo.js:406
+msgid "You can continue configuring your layer."
+msgstr ""
+
+#: geoandino/static/geonode/js/upload/LayerInfo.js:424
+#: geoandino/static/geonode/js/upload/LayerInfo.js:511
+msgid "Unexpected Error"
+msgstr ""
+
+#: geoandino/static/geonode/js/upload/LayerInfo.js:440
+msgid "Performing GeoServer Config Step"
+msgstr ""
+
+#: geoandino/static/geonode/js/upload/LayerInfo.js:518
+msgid "Layer files uploaded, configuring in GeoServer"
+msgstr ""
+
+#: geoandino/static/geonode/js/upload/LayerInfo.js:534
+msgid "Select or create a Geogig repository."
+msgstr ""
+
+#: geoandino/static/geonode/js/upload/LayerInfo.js:697
+msgid "Remove"
+msgstr ""
