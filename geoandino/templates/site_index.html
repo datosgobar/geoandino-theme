@@ -86,9 +86,15 @@
 							title="{{taxonomy.identifier}}">
 							<div class="panel-default panel-icon">
 					{% if site_conf.icon_display %}
-						<div class="panel-heading">
-						  <img src="{{taxonomy.image_url}}" class="group-image">
-						</div>
+                        {% if taxonomy.image_url %}
+                          <div class="panel-heading">
+						    <img src="{{taxonomy.image_url}}" class="group-image">
+                          </div>
+                        {% else %}
+                          {% with fa_class=taxonomy.categories.0.fa_class %}
+                            <i class="fa {{fa_class}} fa-4x"></i>
+                          {% endwith %}
+                        {% endif %}
 					{% endif %}
 					<div class="panel-body">
 					  <h4>{{taxonomy.identifier}}</h4>

@@ -44,7 +44,10 @@ def image_url_or_default(self, image_property, default_url):
     try:
         return "{}{}".format(settings.SITEURL.rstrip('/'), image.url)
     except ValueError:
-        return static(default_url)
+        if default_url is None:
+            return default_url
+        else:
+            return static(default_url)
 
 
 class TopicTaxonomy(models.Model):
@@ -59,7 +62,7 @@ class TopicTaxonomy(models.Model):
 
     @property
     def image_url(self):
-        return image_url_or_default(self, 'image', 'img/logo.jpg')
+        return image_url_or_default(self, 'image', None)
 
     @property
     def categories(self):
