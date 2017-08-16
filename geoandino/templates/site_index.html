@@ -81,15 +81,18 @@
   			<div class="container text-center">
   				<h1>{% trans "Discover the available datasets" %}</h1>
 				{% for taxonomy in taxonomies %}
-					<div class="col-xs-4 col-sm-2">
-						<a href="{{taxonomy.search_url}}" data-toggle="tooltip" data-placement="auto"
+
+
+
+
+                <div class="col-xs-4 col-sm-2">
+  					<a href="{{taxonomy.search_url}}" data-toggle="tooltip" data-placement="auto"
 							title="{{taxonomy.identifier}}">
-							<div class="panel-default panel-icon">
-					{% if site_conf.icon_display %}
-                        {% if taxonomy.has_image %}
-                          <div class="panel-heading">
+                  {% if site_conf.icon_display %}
+                      <div class="panel-default panel-icon">
+                        <div class="panel-heading">
+                          {% if taxonomy.has_image %}
 						    <img src="{{taxonomy.image_url}}" >
-                          </div>
                         {% elif taxonomy.has_icon %}
                           <i class="fa {{taxonomy.icon}} fa-4x"></i>
                         {% else %}
@@ -97,13 +100,14 @@
                             <i class="fa {{fa_class}} fa-4x"></i>
                           {% endwith %}
                         {% endif %}
-					{% endif %}
-					<div class="panel-body">
-					  <h4>{{taxonomy.identifier}}</h4>
-					</div>
-							</div>
-						</a>
-					</div>
+                        </div>
+                        <div class="panel-body">
+                          <h4>{{taxonomy.identifier}}</h4>
+                        </div>
+                      </div>
+                  {% endif %}
+  					</a>
+  				</div>
 				{% endfor %}
   			</div>
   		</div>
