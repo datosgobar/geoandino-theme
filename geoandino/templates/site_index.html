@@ -81,13 +81,9 @@
   			<div class="container text-center">
   				<h1>{% trans "Discover the available datasets" %}</h1>
 				{% for taxonomy in taxonomies %}
-
-
-
-
                 <div class="col-xs-4 col-sm-2">
   					<a href="{{taxonomy.search_url}}" data-toggle="tooltip" data-placement="auto"
-							title="{{taxonomy.identifier}}">
+							title="{{taxonomy.description}}">
                   {% if site_conf.icon_display %}
                       <div class="panel-default panel-icon">
                         <div class="panel-heading">
