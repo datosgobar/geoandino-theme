@@ -86,10 +86,12 @@
 							title="{{taxonomy.identifier}}">
 							<div class="panel-default panel-icon">
 					{% if site_conf.icon_display %}
-                        {% if taxonomy.image_url %}
+                        {% if taxonomy.has_image %}
                           <div class="panel-heading">
-						    <img src="{{taxonomy.image_url}}" class="group-image">
+						    <img src="{{taxonomy.image_url}}" >
                           </div>
+                        {% elif taxonomy.has_icon %}
+                          <i class="fa {{taxonomy.icon}} fa-4x"></i>
                         {% else %}
                           {% with fa_class=taxonomy.categories.0.fa_class %}
                             <i class="fa {{fa_class}} fa-4x"></i>

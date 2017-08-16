@@ -56,6 +56,7 @@ class TopicTaxonomy(models.Model):
     limit = models.PositiveIntegerField(default=100)
     offset = models.IntegerField(default=0)
     image = models.ImageField(upload_to="thumbs/", blank=True, null=True)
+    icon = models.CharField(max_length=20, default=None, null=True, blank=True)
 
     class Meta:
         ordering = ['identifier', ]
@@ -87,6 +88,14 @@ class TopicTaxonomy(models.Model):
     def search_url(self):
         search_string = "/search/?limit={}&offset={}&".format(self.limit, self.offset)
         return self.add_categories_identifiers_to_url(search_string)
+
+    def has_icon(self):
+        return True if self.icon else False
+    has_icon.boolean = True
+
+    def has_image(self):
+        return True if self.image else False
+    has_image.boolean = True
 
 
 class GeoAndinoTopicCategory(TopicCategory):

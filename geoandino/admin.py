@@ -56,17 +56,17 @@ class TopicTaxonomyForm(ModelForm):
 
     class Meta:
         model = TopicTaxonomy
-        fields = ['identifier', 'description', 'image', 'limit', 'offset']
+        fields = ['identifier', 'description', 'image', 'icon', 'limit', 'offset']
 
 
 class TopicTaxonomyAdmin(admin.ModelAdmin):
-    list_display = ('identifier',)
+    list_display = ('identifier', 'description', 'has_icon', 'has_image')
     form = TopicTaxonomyForm
 
 
 class GeoAndinoTopicCategoryAdmin(admin.ModelAdmin):
-    list_display = ('identifier',)
-    fields = ['identifier', 'gn_description', 'is_choice', 'fa_class']
+    list_display = ('gn_description', 'description', 'is_choice')
+    fields = ['identifier', 'description', 'gn_description', 'is_choice', 'fa_class']
 
 
 admin.site.register(SiteConfiguration, SiteConfigurationAdmin)
