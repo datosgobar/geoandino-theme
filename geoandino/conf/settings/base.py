@@ -33,8 +33,8 @@ WSGI_APPLICATION = "geoandino.wsgi.application"
 
 SITEURL = env("SITEURL", default="http://localhost/")
 
-ALLOWED_HOST = env("ALLOWED_HOST", default=""),
-ALLOWED_HOST_IP = env("ALLOWED_HOST_IP", default=""),
+ALLOWED_HOST = env("ALLOWED_HOST", default="")
+ALLOWED_HOST_IP = env("ALLOWED_HOST_IP", default="")
 
 ALLOWED_HOSTS = [
     'localhost', 
