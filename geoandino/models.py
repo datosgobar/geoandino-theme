@@ -125,13 +125,13 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
     site_url = models.CharField(_('Site url'), max_length=255, default=None, blank=True, null=True)
     logo_footer = models.ImageField(upload_to="thumbs/", blank=True, null=True)
     logo_header = models.ImageField(upload_to="thumbs/", blank=True, null=True)
-    facebook_google_image = models.ImageField(upload_to="thumbs/", blank=True, null=True)
-    facebook_google_title = models.CharField(_('title'), max_length=255, default=None, blank=True, null=True)
-    facebook_google_description = models.TextField(_('description'), blank=True, null=True)
-    twitter_image = models.ImageField(upload_to="thumbs/", blank=True, null=True)
-    twitter_title = models.CharField(_('title'), max_length=255, default=None, blank=True, null=True)
-    twitter_description = models.TextField(_('description'), blank=True, null=True)
-    twitter_user = models.CharField(max_length=100, verbose_name=_("Twitter User"), null=True, blank=True)
+    facebook_google_image = models.ImageField(_('Facebook and Google image'), upload_to="thumbs/", blank=True, null=True)
+    facebook_google_title = models.CharField(_('Facebook and Google title'), max_length=255, default=None, blank=True, null=True)
+    facebook_google_description = models.TextField(_('Facebook and Google description'), blank=True, null=True)
+    twitter_image = models.ImageField(_('Twitter image'), upload_to="thumbs/", blank=True, null=True)
+    twitter_title = models.CharField(_('Twitter title'), max_length=255, default=None, blank=True, null=True)
+    twitter_description = models.TextField(_('Twitter description'), blank=True, null=True)
+    twitter_user = models.CharField(_("Twitter user"), max_length=100, null=True, blank=True)
 
     @property
     def image_background_url(self):
