@@ -84,23 +84,23 @@
                 <div class="col-xs-4 col-sm-2">
   					<a href="{{taxonomy.search_url}}" data-toggle="tooltip" data-placement="auto"
 							title="{{taxonomy.description}}">
-                  {% if site_conf.icon_display %}
-                      <div class="panel-default panel-icon">
-                        <div class="panel-heading">
-                          {% if taxonomy.has_image %}
-						    <img src="{{taxonomy.image_url}}" >
-                        {% elif taxonomy.has_icon %}
-                          <i class="fa {{taxonomy.icon}} fa-4x"></i>
-                        {% else %}
-                          {% with fa_class=taxonomy.categories.0.fa_class %}
-                            <i class="fa {{fa_class}} fa-4x"></i>
-                          {% endwith %}
-                        {% endif %}
-                        </div>
-                        {% endif %}
-                        <div class="panel-body">
-                          <h4>{{taxonomy.identifier}}</h4>
-                        </div>
+                        <div class="panel-default panel-icon">
+                          {% if site_conf.icon_display %}
+                                  <div class="panel-heading">
+                                  {% if taxonomy.has_image %}
+                                    <img src="{{taxonomy.image_url}}" >
+                                  {% elif taxonomy.has_icon %}
+                                    <i class="fa {{taxonomy.icon}} fa-4x"></i>
+                                  {% else %}
+                                    {% with fa_class=taxonomy.categories.0.fa_class %}
+                                    <i class="fa {{fa_class}} fa-4x"></i>
+                                    {% endwith %}
+                                  {% endif %}
+                                </div>
+                          {% endif %}
+                            <div class="panel-body">
+                              <h4>{{taxonomy.identifier}}</h4>
+                            </div>
                       </div>
   					</a>
   				</div>
