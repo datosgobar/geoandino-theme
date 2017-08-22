@@ -145,6 +145,14 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
     def logo_footer_url(self):
         return image_url_or_default(self, 'logo_footer', 'img/argentinagob.svg')
 
+    @property
+    def facebook_google_image_url(self):
+        return image_url_or_default(self, 'facebook_google_image', None)
+
+    @property
+    def twitter_image_url(self):
+        return image_url_or_default(self, 'twitter_image', None)
+
     class Meta:
         ordering = ['created', ]
 

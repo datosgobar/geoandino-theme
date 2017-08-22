@@ -23,6 +23,22 @@
       <link href="{{ STATIC_URL }}css/poncho.css" rel="stylesheet"/>
       <link href="{{ STATIC_URL }}css/site_base.css" rel="stylesheet"/>
       {% block extra_head %}
+        <meta property="og:url" content="{{ site_conf.site_url|default_if_none:'' }}">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="{{ site_conf.facebook_google_title|default_if_none:'' }}">
+        <meta property="og:site_name" content="{{ site_conf.facebook_google_title|default_if_none:'' }}">
+        <meta property="og:description" content="{{ site_conf.facebook_google_description|default_if_none:'' }}">
+        <meta property="og:image" content="{{ site_conf.facebook_google_image_url|default_if_none:''}}">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="2400">
+        <meta property="og:image:height" content="1260">
+        <meta property="og:locale" content="es_AR">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site:id" content="@{{ site_conf.twitter_user|default_if_none:'' }}"/>
+        <meta name="twitter:image:src" content="{{ site_conf.twitter_image_url|default_if_none:'' }}">
+        <meta name="twitter:title" content="{{ site_conf.twitter_title|default_if_none:'' }}">
+        <meta name="twitter:description" content="{{ site_conf.twitter_description|default_if_none:'' }}">
       {% endblock %}
     {% endblock %}
     <!--[if IE]>
