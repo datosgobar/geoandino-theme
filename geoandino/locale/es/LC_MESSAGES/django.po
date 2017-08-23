@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-23 09:13-0500\n"
+"POT-Creation-Date: 2017-08-23 12:15-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -205,7 +205,7 @@ msgstr ""
 #: geoandino/templates/base.html:86 geoandino/templates/base.html.py:200
 #: geoandino/templates/maps/site_maps_list.html:6
 msgid "Explore Maps"
-msgstr ""
+msgstr "Explorar mapas"
 
 #: geoandino/templates/base.html:87
 msgid "Create Map"
@@ -480,16 +480,6 @@ msgstr "Regresar a la capa"
 msgid "page"
 msgstr "página"
 
-#: geoandino/templates/overrides/geonode/search/_search_content.html:3
-#: geoandino/templates/search/_search_content.html:23
-msgid "Filters"
-msgstr "Filtros"
-
-#: geoandino/templates/overrides/geonode/search/_text_filter.html:3
-#: geoandino/templates/search/_text_filter.html:10
-msgid "Search by text"
-msgstr "Buscar por texto"
-
 #: geoandino/templates/overrides/user_messages/message_create.html:3
 msgid "Content"
 msgstr "Contenido"
@@ -637,9 +627,17 @@ msgstr ""
 msgid "Regions"
 msgstr ""
 
+#: geoandino/templates/search/_region_filter.html:10
+msgid "Search by region"
+msgstr "Buscar por región"
+
 #: geoandino/templates/search/_search_content.html:11
 msgid "Set permissions"
 msgstr ""
+
+#: geoandino/templates/search/_search_content.html:23
+msgid "Filters"
+msgstr "Filtros"
 
 #: geoandino/templates/search/_search_content.html:24
 #: geoandino/templates/upload/layer_upload.html:107
@@ -677,6 +675,10 @@ msgstr ""
 #: geoandino/templates/search/_text_filter.html:5
 msgid "Text"
 msgstr ""
+
+#: geoandino/templates/search/_text_filter.html:10
+msgid "Search by text"
+msgstr "Buscar por texto"
 
 #: geoandino/templates/services/service_list.html:8
 msgid "Register a new Service"
@@ -780,3 +782,30 @@ msgstr ""
 msgid "Upload files"
 msgstr ""
 
+msgid ""
+"formalised word(s) or phrase(s) from a fixed thesaurus used to describe "
+"the subject (space or comma-separated"
+msgstr ""
+"palabras de uso común o palabras o frases de uso formal usadas para "
+"describir el tema (separados por espacios o comas)"
+
+msgid "Return to Map"
+msgstr "Volver a mapa"
+
+msgid "map"
+msgstr "mapa"
+
+msgid "document"
+msgstr "documento"
+
+msgid "Publication"
+msgstr "Publicación"
+
+msgid "Revision"
+msgstr "Revisión"
+
+msgid "Creation"
+msgstr "Creación"
+
+msgid "Identification"
+msgstr "Identificación"
