@@ -688,7 +688,7 @@ msgstr ""
 
 #: geoandino/templates/services/service_list.html:26
 msgid "No services registered"
-msgstr ""
+msgstr "No hay servicios registrados"
 
 #: geoandino/templates/site_index.html:62
 msgid "Search for Data"
