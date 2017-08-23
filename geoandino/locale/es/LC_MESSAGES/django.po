@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-22 13:51-0500\n"
+"POT-Creation-Date: 2017-08-23 09:13-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -209,7 +209,7 @@ msgstr ""
 
 #: geoandino/templates/base.html:87
 msgid "Create Map"
-msgstr ""
+msgstr "Crear mapa"
 
 #: geoandino/templates/base.html:102 geoandino/templates/base.html.py:201
 msgid "About"
@@ -279,11 +279,13 @@ msgstr ""
 
 #: geoandino/templates/documents/document_list.html:6
 #: geoandino/templates/documents/document_list.html:13
+#: geoandino/templates/documents/document_upload_base.html:11
 #: geoandino/templates/documents/site_documents_list.html:6
 msgid "Explore Documents"
 msgstr ""
 
 #: geoandino/templates/documents/document_list.html:12
+#: geoandino/templates/documents/document_upload_base.html:12
 #: geoandino/templates/documents/site_documents_list.html:5
 msgid "Upload Documents"
 msgstr ""
@@ -308,6 +310,10 @@ msgstr ""
 #: geoandino/templates/documents/document_upload.html:50
 msgid "Select layer, map or empty"
 msgstr ""
+
+#: geoandino/templates/documents/document_upload_base.html:13
+msgid "Allowed document types:"
+msgstr "Tipos de documentos permitidos:"
 
 #: geoandino/templates/groups/site_groups_list.html:6
 msgid "Create a New Group"
@@ -490,7 +496,7 @@ msgstr "Contenido"
 
 #: geoandino/templates/overrides/user_messages/message_create.html:4
 msgid "To"
-msgstr "Hasta"
+msgstr "Para"
 
 #: geoandino/templates/people/profile_detail.html:7
 msgid "Profile of "
@@ -599,10 +605,8 @@ msgid "Resources"
 msgstr ""
 
 #: geoandino/templates/search/_extent_filter.html:3
-#, fuzzy
-#| msgid "Content"
 msgid "Extent"
-msgstr "Contenido"
+msgstr "Extensión"
 
 #: geoandino/templates/search/_general_filters.html:4
 msgid "Categories"
@@ -775,3 +779,4 @@ msgstr ""
 #: geoandino/templates/upload/layer_upload.html:108
 msgid "Upload files"
 msgstr ""
+

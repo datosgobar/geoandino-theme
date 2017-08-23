@@ -20,15 +20,15 @@ msgstr ""
 
 #: geoandino/static/geonode/js/search/cart.js:67
 msgid "Cart"
-msgstr ""
+msgstr "Carro"
 
 #: geoandino/static/geonode/js/search/cart.js:68
 msgid "Add resources through the \"Add to cart\" buttons"
-msgstr ""
+msgstr "Agregá recursos con los botones \"Agregar a carro\""
 
 #: geoandino/static/geonode/js/upload/LayerInfo.js:304
 msgid "Your upload has started"
-msgstr ""
+msgstr "Tu carga ha comenzado"
 
 #: geoandino/static/geonode/js/upload/LayerInfo.js:333
 msgid "Layer Info"
