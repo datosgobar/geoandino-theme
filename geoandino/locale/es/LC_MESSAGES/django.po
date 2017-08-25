@@ -824,3 +824,19 @@ msgstr "Tiene tiempo"
 
 msgid "Has elevation"
 msgstr "Tiene elevación"
+
+msgid "Is Published"
+msgstr "Está publicado"
+
+msgid "Metadata uploaded preserve"
+msgstr "Preservar metadatos cargados"
+
+msgid "Time regex"
+msgstr "Expresión regular del tiempo"
+
+msgid "Elevation regex"
+msgstr "Expresión regular de la elevación"
+
+msgid "type some text to search in this autocomplete"
+msgstr "Escribí una palabra clave y apretá la coma"
+

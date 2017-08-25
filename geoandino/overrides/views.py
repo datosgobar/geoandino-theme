@@ -15,6 +15,7 @@ from django.forms.models import inlineformset_factory
 from django.forms.util import ErrorList
 
 import django.forms as forms
+import geonode
 
 from geonode.layers.forms import LayerForm, LayerUploadForm, NewLayerUploadForm, LayerAttributeForm
 from geonode.base.forms import CategoryForm
@@ -44,6 +45,13 @@ _PERMISSION_MSG_MODIFY = _("You are not permitted to modify this layer")
 _PERMISSION_MSG_METADATA = _(
     "You are not permitted to modify this layer's metadata")
 _PERMISSION_MSG_VIEW = _("You are not permitted to view this layer")
+
+TIME_REGEX = (
+    ('-----------', '-----------'),
+    ('[0-9]{8}', _('YYYYMMDD')),
+    ('[0-9]{8}T[0-9]{6}', _("YYYYMMDD'T'hhmmss")),
+    ('[0-9]{8}T[0-9]{6}Z', _("YYYYMMDD'T'hhmmss'Z'")),
+)
 
 
 from announcements import views
@@ -97,9 +105,7 @@ def layer_metadata(request, layername, template='layers/site_layers_metadata.htm
                 request.POST["category_choice_field"]) if "category_choice_field" in request.POST else None)
 
     else:
-        LayerForm.base_fields['is_mosaic'] = forms.BooleanField(label=_('Is mosaic'))
-        LayerForm.base_fields['has_time'] = forms.BooleanField(label=_('Has time'))
-        LayerForm.base_fields['has_elevation'] = forms.BooleanField(label=_('Has elevation'))
+        internationalize_fields()
         layer_form = LayerForm(instance=layer, prefix="resource")
         attribute_form = layer_attribute_set(
             instance=layer,
@@ -209,6 +215,15 @@ def layer_metadata(request, layername, template='layers/site_layers_metadata.htm
         "attribute_form": attribute_form,
         "category_form": category_form,
 }))
+
+
+def internationalize_fields():
+    LayerForm.base_fields['elevation_regex'] = forms.CharField(label=_('Elevation regex'))
+    LayerForm.base_fields['time_regex'] = forms.ChoiceField(label=_('Time regex'), choices=TIME_REGEX)
+    LayerForm.base_fields['metadata_uploaded_preserve'] = forms.BooleanField(label=_('Metadata uploaded preserve'))
+    LayerForm.base_fields['is_mosaic'] = forms.BooleanField(label=_('Is mosaic'))
+    LayerForm.base_fields['has_time'] = forms.BooleanField(label=_('Has time'))
+    LayerForm.base_fields['has_elevation'] = forms.BooleanField(label=_('Has elevation'))
 
 
 class CreateAnnouncementI18nView(views.CreateAnnouncementView):
