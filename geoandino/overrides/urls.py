@@ -27,4 +27,9 @@ urlpatterns = patterns(
     url(r'^groups/?$',
        TemplateView.as_view(template_name='groups/site_groups_list.html'),
        name='groups_browse'),
-)
+) + patterns(
+    'geoandino.overrides.views',
+    url(r'^layers/(?P<layername>[^/]*)/metadata$',
+        'layer_metadata',
+        name="layer_metadata"),
+    )

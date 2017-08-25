@@ -809,3 +809,18 @@ msgstr "Creación"
 
 msgid "Identification"
 msgstr "Identificación"
+
+msgid "Climate"
+msgstr "Clima"
+
+msgid "Economy"
+msgstr "Economía"
+
+msgid "Is mosaic"
+msgstr "Es mosaico"
+
+msgid "Has time"
+msgstr "Tiene tiempo"
+
+msgid "Has elevation"
+msgstr "Tiene elevación"
