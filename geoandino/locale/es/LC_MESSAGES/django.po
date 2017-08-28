@@ -930,4 +930,7 @@ msgstr "Volver al documento"
 msgid "Download the document:"
 msgstr "Descargar el documento:"
 
+msgid "No abstract provided"
+msgstr "No hay resumen proporcionado"
+
 
