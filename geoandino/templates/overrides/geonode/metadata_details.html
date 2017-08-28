@@ -38,7 +38,7 @@
 
         {% if resource.abstract %}
         <dt>{% trans "Abstract" %}</dt>
-        <dd>{{ resource.abstract|escape|urlize|linebreaks|safe|truncatechars:1000 }}</dd>
+        <dd>{% trans resource.abstract|escape|urlize|linebreaks|safe|truncatechars:1000 %}</dd>
         {% endif %}
 
     </dl>

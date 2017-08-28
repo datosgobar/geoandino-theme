@@ -924,4 +924,7 @@ msgstr "Servicio OGC WMS: geonode"
 msgid "OGC WFS: geonode Service"
 msgstr "Servicio OGC WFS: geonode"
 
+msgid "Return to Document"
+msgstr "Volver al documento"
+
 
