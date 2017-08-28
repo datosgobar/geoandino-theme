@@ -51,4 +51,7 @@ documents_urlpatterns = patterns(
                         url(r'^documents/(?P<docid>[^/]*)/metadata_detail$',
                             'document_metadata_detail',
                             name="document_metadata_detail"),
+                        url(r'^documents/(?P<docid>\d+)/?$',
+                            'document_detail',
+                            name='document_detail'),
                     )

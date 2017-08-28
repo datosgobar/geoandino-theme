@@ -927,4 +927,7 @@ msgstr "Servicio OGC WFS: geonode"
 msgid "Return to Document"
 msgstr "Volver al documento"
 
+msgid "Download the document:"
+msgstr "Descargar el documento:"
+
 
