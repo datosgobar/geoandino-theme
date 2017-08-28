@@ -801,11 +801,20 @@ msgstr "documento"
 msgid "Publication"
 msgstr "Publicación"
 
+msgid "publication"
+msgstr "publicación"
+
 msgid "Revision"
 msgstr "Revisión"
 
+msgid "revision"
+msgstr "revisión"
+
 msgid "Creation"
 msgstr "Creación"
+
+msgid "creation"
+msgstr "creación"
 
 msgid "Identification"
 msgstr "Identificación"
@@ -815,6 +824,9 @@ msgstr "Clima"
 
 msgid "Economy"
 msgstr "Economía"
+
+msgid "Thumbnail url"
+msgstr "URL de miniatura"
 
 msgid "Is mosaic"
 msgstr "Es mosaico"
@@ -839,4 +851,77 @@ msgstr "Expresión regular de la elevación"
 
 msgid "type some text to search in this autocomplete"
 msgstr "Escribí una palabra clave y apretá la coma"
+
+msgid "Published"
+msgstr "Publicado"
+
+msgid "Information"
+msgstr "Información"
+
+msgid "Identification Image"
+msgstr "Imagen de identificación"
+
+msgid "Spatial Resolution"
+msgstr "Resolución espacial"
+
+msgid "Projetion System"
+msgstr "Sistema de proyección"
+
+msgid "Extension x0"
+msgstr "Extensión x0"
+
+msgid "Extension x1"
+msgstr "Extensión x1"
+
+msgid "Extension y0"
+msgstr "Extensión y0"
+
+msgid "Extension y1"
+msgstr "Extensión y1"
+
+msgid "Features"
+msgstr "Características"
+
+msgid "Contact Points"
+msgstr "Puntos de contacto"
+
+msgid "References"
+msgstr "Referencias"
+
+msgid "Link Online"
+msgstr "Enlace"
+
+msgid "Metadata Page"
+msgstr "Página de metadatos"
+
+msgid "Online Link"
+msgstr "Enlace de descarga"
+
+msgid "Thumbnail"
+msgstr "Miniatura"
+
+msgid "Hosted Document"
+msgstr "Documento alojado"
+
+msgid "Zipped Shapefile"
+msgstr "Archivo zip"
+
+msgid "View in Google Earth"
+msgstr "Vista en Google Earth"
+
+msgid "Remote Thumbnail"
+msgstr "Miniatura remota"
+
+msgid "Legend"
+msgstr "Leyenda"
+
+msgid "Tiles"
+msgstr "Azulejos"
+
+msgid "OGC WMS: geonode Service"
+msgstr "Servicio OGC WMS: geonode"
+
+msgid "OGC WFS: geonode Service"
+msgstr "Servicio OGC WFS: geonode"
+
 
