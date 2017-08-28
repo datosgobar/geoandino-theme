@@ -81,8 +81,8 @@ def layer_metadata(request, layername, template='layers/site_layers_metadata.htm
                 content_type='application/json',
                 status=400)
 
-        layer_form = LayerForm(request.POST, instance=layer, prefix="resource")
         internationalize_fields()
+        layer_form = LayerForm(request.POST, instance=layer, prefix="resource")
 
         attribute_form = layer_attribute_set(
             request.POST,
