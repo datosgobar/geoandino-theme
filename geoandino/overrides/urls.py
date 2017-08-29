@@ -48,6 +48,9 @@ maps_urlpatterns = patterns(
 
 documents_urlpatterns = patterns(
                         'geoandino.overrides.documents.views',
+                        url(r'^documents/(?P<docid>[^/]*)/metadata$',
+                            'document_metadata',
+                            name="document_metadata"),
                         url(r'^documents/(?P<docid>[^/]*)/metadata_detail$',
                             'document_metadata_detail',
                             name="document_metadata_detail"),

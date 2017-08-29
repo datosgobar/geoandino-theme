@@ -92,3 +92,5 @@ msgstr ""
 msgid "Zip Archive"
 msgstr "Archivo zip"
 
+msgid "No abstract provided"
+msgstr "No hay resumen proporcionado"
