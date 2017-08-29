@@ -936,6 +936,12 @@ msgstr "No hay resumen proporcionado"
 msgid "Link to"
 msgstr "Enlazar con"
 
+msgid "Search by name"
+msgstr "Buscar por nombre"
+
+msgid "search"
+msgstr "buscar"
+
 
 
 

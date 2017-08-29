@@ -27,6 +27,9 @@ urlpatterns = patterns(
     url(r'^groups/?$',
        TemplateView.as_view(template_name='groups/site_groups_list.html'),
        name='groups_browse'),
+    url(r'^people/?$',
+        TemplateView.as_view(template_name='people/site_profile_list.html'),
+        name='people_browse'),
 )
 
 layers_urlpatterns = patterns(
@@ -58,3 +61,4 @@ documents_urlpatterns = patterns(
                             'document_detail',
                             name='document_detail'),
                     )
+
