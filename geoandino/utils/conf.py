@@ -9,6 +9,8 @@ class NullSiteConfiguration:
         self.title = "Portal Geoandino"
         self.description = "Portal Geoandino"
         self.image_background_url = static('img/bg-jumbotron.jpg')
+        self.logo_header_url = static('img/logo_ministerio.svg')
+        self.logo_footer_url = static('img/argentinagob.svg')
         self.default = True
     
 
