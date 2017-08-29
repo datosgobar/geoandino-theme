@@ -942,6 +942,9 @@ msgstr "Buscar por nombre"
 msgid "search"
 msgstr "buscar"
 
+msgid "No Organization Info"
+msgstr "Sin info. de organización"
+
 
 
 
