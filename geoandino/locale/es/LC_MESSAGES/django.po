@@ -945,6 +945,15 @@ msgstr "buscar"
 msgid "No Organization Info"
 msgstr "Sin info. de organización"
 
+msgid "Add Group Members"
+msgstr "Agregar miembros"
+
+msgid "Manager"
+msgstr "Administrador"
+
+msgid "User identifiers"
+msgstr "Identificaciones de usuario"
+
 
 
 

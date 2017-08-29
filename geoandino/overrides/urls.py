@@ -62,3 +62,10 @@ documents_urlpatterns = patterns(
                             name='document_detail'),
                     )
 
+groups_urlpatterns = patterns(
+                        'geoandino.overrides.groups.views',
+                        url(r'^groups/group/(?P<slug>[-\w]+)/members/$',
+                            'group_members',
+                            name="group_members"),
+                    )
+
