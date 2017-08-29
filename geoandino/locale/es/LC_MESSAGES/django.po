@@ -309,7 +309,7 @@ msgstr ""
 
 #: geoandino/templates/documents/document_upload.html:50
 msgid "Select layer, map or empty"
-msgstr ""
+msgstr "Seleccionar una capa, mapa o nada"
 
 #: geoandino/templates/documents/document_upload_base.html:13
 msgid "Allowed document types:"
@@ -935,6 +935,7 @@ msgstr "No hay resumen proporcionado"
 
 msgid "Link to"
 msgstr "Enlazar con"
+
 
 
 
