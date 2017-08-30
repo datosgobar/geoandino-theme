@@ -9,6 +9,9 @@
 body {
 	padding-top: 0;
 }
+#wrap {
+    background: #F9F9F9;
+}
 
 
 /*HOME*/
@@ -69,7 +72,6 @@ footer a {
     padding: 3px 0;
 }
 
-
 /*Layers*/
 
 .profile-avatar li a {
@@ -91,7 +93,6 @@ footer a {
     border-radius: 4px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
 }
-
 .item-details {
     padding: 15px;
 }
@@ -108,4 +109,16 @@ nav.filter ul.nav {
 .item-details .btn-sm {
     margin-right: 0;
 }
-
+.form-control {
+    color: #111;
+    font-size: 14px;
+}
+.d-inline-block {
+    display: inline-block;
+}
+.d-block {
+    display: block;
+}
+.d-inline {
+    display: inline;
+} 
