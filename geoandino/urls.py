@@ -1,4 +1,4 @@
 from geonode.urls import *
-from geoandino.overrides.urls import urlpatterns as override_urls
+import geoandino.overrides.urls as override_urls
 
-urlpatterns = override_urls + urlpatterns
+urlpatterns = override_urls.urlpatterns + override_urls.documents_urlpatterns + urlpatterns
