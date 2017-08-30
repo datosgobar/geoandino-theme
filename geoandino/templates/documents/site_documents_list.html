@@ -2,7 +2,9 @@
 {% load i18n %}
 {% block body %}
 <div class="page-header">
-  <a href="{% url "document_upload" %}" class="btn btn-primary pull-right">{% trans 'Upload Documents' %}</a>
+  {% if user.is_authenticated %}
+    <a href="{% url "document_upload" %}" class="btn btn-primary pull-right">{% trans 'Upload Documents' %}</a>
+  {% endif %}
   <h2>{% trans 'Explore Documents' %}</h2>
   <div>{{ site_conf.document_description }}</div>
 </div>
