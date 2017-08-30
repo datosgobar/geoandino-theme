@@ -43,11 +43,6 @@ msgstr "Categorías"
 msgid "Layers, documents and maps"
 msgstr "Capas, documentos y mapas"
 
-#: geoandino/admin.py:23 geoandino/templates/base.html:96
-#: geoandino/templates/base.html.py:105 geoandino/templates/base.html:204
-msgid "Groups"
-msgstr ""
-
 #: geoandino/admin.py:25 geoandino/templates/base.html:202
 msgid "Contact"
 msgstr "Contacto"
@@ -56,37 +51,13 @@ msgstr "Contacto"
 msgid "About (optional)"
 msgstr "Acerca"
 
-#: geoandino/admin.py:32
-msgid "Social media metadata"
-msgstr ""
-
 #: geoandino/models.py:111 geoandino/models.py:123
 msgid "Visible"
-msgstr ""
-
-#: geoandino/models.py:112 geoandino/overrides/forms.py:14
-msgid "title"
-msgstr ""
-
-#: geoandino/models.py:113
-msgid "description"
-msgstr ""
+msgstr "Visible"
 
 #: geoandino/models.py:114
 msgid "Image background"
 msgstr "Imagen de fondo"
-
-#: geoandino/models.py:115
-msgid "Facebook"
-msgstr ""
-
-#: geoandino/models.py:116
-msgid "Twitter"
-msgstr ""
-
-#: geoandino/models.py:117
-msgid "GitHub"
-msgstr ""
 
 #: geoandino/models.py:118
 msgid "Contact mail"
@@ -152,56 +123,6 @@ msgstr "Descripción de Twitter"
 msgid "Twitter user"
 msgstr "Usuario de Twitter"
 
-#: geoandino/overrides/forms.py:15
-msgid "level"
-msgstr ""
-
-#: geoandino/overrides/forms.py:16
-msgid "content"
-msgstr ""
-
-#: geoandino/overrides/forms.py:17
-msgid "site wide"
-msgstr ""
-
-#: geoandino/overrides/forms.py:18
-msgid "members only"
-msgstr ""
-
-#: geoandino/overrides/forms.py:19
-msgid "dissmissal type"
-msgstr ""
-
-#: geoandino/overrides/forms.py:20
-msgid "publish start"
-msgstr ""
-
-#: geoandino/overrides/forms.py:21
-msgid "publish end"
-msgstr ""
-
-#: geoandino/overrides/forms.py:25 geoandino/templates/base.html:226
-#: geoandino/templates/base.html.py:227
-msgid "Username"
-msgstr ""
-
-#: geoandino/templates/base.html:76
-msgid "Data"
-msgstr ""
-
-#: geoandino/templates/base.html:78 geoandino/templates/base.html.py:193
-msgid "Layers"
-msgstr ""
-
-#: geoandino/templates/base.html:79 geoandino/templates/base.html.py:194
-msgid "Documents"
-msgstr ""
-
-#: geoandino/templates/base.html:84 geoandino/templates/base.html.py:90
-#: geoandino/templates/base.html:199
-msgid "Maps"
-msgstr ""
-
 #: geoandino/templates/base.html:86 geoandino/templates/base.html.py:200
 #: geoandino/templates/maps/site_maps_list.html:6
 msgid "Explore Maps"
@@ -211,101 +132,17 @@ msgstr "Explorar mapas"
 msgid "Create Map"
 msgstr "Crear mapa"
 
-#: geoandino/templates/base.html:102 geoandino/templates/base.html.py:201
-msgid "About"
-msgstr ""
-
-#: geoandino/templates/base.html:104 geoandino/templates/base.html.py:203
-msgid "People"
-msgstr ""
-
-#: geoandino/templates/base.html:113
-msgid "Register"
-msgstr ""
-
-#: geoandino/templates/base.html:118
-msgid "Profile"
-msgstr ""
-
-#: geoandino/templates/base.html:119
-msgid "Recent Activity"
-msgstr ""
-
-#: geoandino/templates/base.html:120
-msgid "Inbox"
-msgstr ""
-
-#: geoandino/templates/base.html:125
-msgid "Help"
-msgstr ""
-
-#: geoandino/templates/base.html:131 geoandino/templates/base.html.py:220
-#: geoandino/templates/base.html:238
-msgid "Sign in"
-msgstr ""
-
-#: geoandino/templates/base.html:188
-msgid "Powered by"
-msgstr ""
-
-#: geoandino/templates/base.html:188
-msgid "GeoNode"
-msgstr ""
-
-#: geoandino/templates/base.html:188
-msgid "version"
-msgstr ""
-
-#: geoandino/templates/base.html:230 geoandino/templates/base.html.py:231
-msgid "Password"
-msgstr ""
-
-#: geoandino/templates/base.html:234
-msgid "Remember Me"
-msgstr ""
-
-#: geoandino/templates/base.html:275
-msgid "Type your search here ..."
-msgstr ""
-
 #: geoandino/templates/base/_resourcebase_snippet.html:6
 msgid "No content created yet"
 msgstr "No hay contenido creado todavía"
-
-#: geoandino/templates/base/_resourcebase_snippet.html:32
-#: geoandino/templates/search/_search_content.html:16
-msgid "Create a Map"
-msgstr ""
-
-#: geoandino/templates/documents/document_list.html:6
-#: geoandino/templates/documents/document_list.html:13
-#: geoandino/templates/documents/document_upload_base.html:11
-#: geoandino/templates/documents/site_documents_list.html:6
-msgid "Explore Documents"
-msgstr ""
-
-#: geoandino/templates/documents/document_list.html:12
-#: geoandino/templates/documents/document_upload_base.html:12
-#: geoandino/templates/documents/site_documents_list.html:5
-msgid "Upload Documents"
-msgstr ""
 
 #: geoandino/templates/documents/document_list.html:17
 msgid "Document Type"
 msgstr "Tipo de documento"
 
-#: geoandino/templates/documents/document_upload.html:5
-msgid "Upload Document"
-msgstr ""
-
 #: geoandino/templates/documents/document_upload.html:21
 msgid "Upload"
 msgstr "Cargar archivos"
-
-#: geoandino/templates/documents/document_upload.html:30
-#: geoandino/templates/upload/layer_upload.html:114
-msgid "Permissions"
-msgstr ""
 
 #: geoandino/templates/documents/document_upload.html:50
 msgid "Select layer, map or empty"
@@ -314,163 +151,6 @@ msgstr "Seleccionar una capa, mapa o nada"
 #: geoandino/templates/documents/document_upload_base.html:13
 msgid "Allowed document types:"
 msgstr "Tipos de documentos permitidos:"
-
-#: geoandino/templates/groups/site_groups_list.html:6
-msgid "Create a New Group"
-msgstr ""
-
-#: geoandino/templates/groups/site_groups_list.html:8
-msgid "Explore Groups"
-msgstr ""
-
-#: geoandino/templates/help.html:4
-msgid "User Guide"
-msgstr ""
-
-#: geoandino/templates/help.html:8
-msgid "GeoNode Help"
-msgstr ""
-
-#: geoandino/templates/help.html:12
-msgid ""
-"This page provides helpful information about how to use the GeoNode. You can "
-"use the sidebar links to navigate to what you want to know."
-msgstr ""
-
-#: geoandino/templates/help.html:14
-msgid ""
-"\n"
-"    <p>The GeoNode provides access to data sets and a map editing "
-"application allows users to browse existing maps and contribute their own.</"
-"p>\n"
-"\n"
-"    <h4 id=\"browsing-data\">Browsing Layers</h4>\n"
-"    <p>The <a href=\"/layers\">Layers</a> tab allows you to browse data "
-"uploaded to this GeoNode.</p>\n"
-"    <p>All data can be downloaded in a variety of formats, for use in other "
-"applications.</p>\n"
-"\n"
-"    <h4 id=\"developer-access\">Developer Access</h4>\n"
-"    <p>The <a href=\"/developer\"> Developer</a> page is the place for "
-"developers to get started building applications against the GeoNode. It "
-"includes instructions on using the web services, links to the source code of "
-"the GeoNode, and information about the open source projects used to create "
-"it.</p>\n"
-"\n"
-"    <h4 id=\"browsing-maps\">Browsing Maps</h4>\n"
-"    <p>The GeoNode allows users to create and share maps with one another.</"
-"p>\n"
-"    <p>The <a href=\"/maps\">Maps</a> tab is a gateway to map exploration on "
-"GeoNode.  From here you can <strong>search for a map</strong> or "
-"<strong>create a map</strong>, which will open the <a href=\"/maps/new\">Map "
-"Composer</a>.</p>\n"
-"    <h5>Google Earth Mode</h5>\n"
-"    <p>Any map viewed in the interactive map editor can be seen in 3D mode "
-"with the Google Earth plugin. To switch to 3D mode select the Google Earth "
-"globe logo, the rightmost button on top toolbar. If you do not have the "
-"Google Earth plugin installed you will be prompted to install it.</p>\n"
-"\n"
-"    <h4 id=\"creating-a-map\">Creating a Map</h4>\n"
-"    <p>To create a new map go to the <a href=\"/maps\">Contributed Maps</a> "
-"tab and click the <a href=\"/maps/new\">create your own map</a> link.</p>\n"
-"    <p>This will take you to the <a href=\"/maps/new\">Map Composer</a> with "
-"a base layer loaded.</p>\n"
-"    <p>To add data layers from the GeoNode click on the green plus button "
-"located below the layers tab on the left hand side of the screen. This will "
-"open a dialog listing all the layers available on the GeoNode.</p>\n"
-"    <p>To add layers to your map select them and hit the <strong>Add Layers</"
-"strong> button. When finished you may hit <strong>Done</strong> to close the "
-"dialog and go back to the map.</p>\n"
-"\n"
-"    <h5>Reordering and Removing Layers</h5>\n"
-"    <p>Change the display order of the layers listed in the data tab by "
-"simply dragging and dropping their names. The order in the map will be "
-"updated to reflect that. To turn a layer's visibility off simply uncheck it, "
-"and to remove it entirely select it and hit the red minus button.</p>\n"
-"\n"
-"    <h5>Saving your map</h5>\n"
-"    <p>Once a suitable set of layers and zoom level has been found it's time "
-"to save it so others can see it.  Click the Save button--the left most icon "
-"on the top toolbar, an image of a map with a disk--on the top menu and fill "
-"out the title and abstract of the map.</p>\n"
-"\n"
-"    <h4 id=\"exporting-a-map\">Publishing a Map</h4>\n"
-"    <p>Any map from the GeoNode can be embedded for use in another site or "
-"blog. To publish a map:</p>\n"
-"    <ol>\n"
-"      <li>Select the from the list of maps on the community or map page and "
-"then hit the 'Publish map' button.</li> \n"
-"      <li>Choose your desired height and width for the widget in the wizard."
-"</li> \n"
-"      <li>Copy the HTML snippet provided in the wizard to any HTML page or "
-"iFrame-supporting blog post.</li>\n"
-"    </ol>\n"
-"    <p>This will put an interactive widget showing you map in your web page "
-"or blog post.</p>\n"
-"    <p>Note that the <a href=\"/maps/new\">Map Composer</a> also has a "
-"button to publish the map. Just be sure to save the map before publishing if "
-"there are changes that you want others to see. It publishes the last saved "
-"version, not the last viewed version.</p>\n"
-"\n"
-"    <h4 id=\"remixing-a-map\">Remixing a Map</h4>\n"
-"    <p>Any map available can serve as a starting point for a new map.</p>\n"
-"    <ol>\n"
-"      <li>Open the map in the Map Composer.</li>\n"
-"      <li>Add and remove layers as you like.</li>\n"
-"      <li>Pan and zoom to highlight the area of interest.</li>\n"
-"      <li><strong>IMPORTANT:</strong> Update the title, abstract, contact "
-"info and tags to reflect the new map.</li>\n"
-"      <li>Save the map.</li>\n"
-"    </ol>\n"
-"    <p>You will be able to see your new map when you search for it from the "
-"<a href=\"/maps\">Maps</a> tab.</p> \n"
-"    "
-msgstr ""
-
-#: geoandino/templates/help.html:66
-msgid "Sections"
-msgstr ""
-
-#: geoandino/templates/help.html:67
-msgid "Browsing Layers"
-msgstr ""
-
-#: geoandino/templates/help.html:68
-msgid "Developer Access"
-msgstr ""
-
-#: geoandino/templates/help.html:69
-msgid "Browsing Maps"
-msgstr ""
-
-#: geoandino/templates/help.html:70
-msgid "Creating a Map"
-msgstr ""
-
-#: geoandino/templates/help.html:71
-msgid "Exporting a Map"
-msgstr ""
-
-#: geoandino/templates/help.html:72
-msgid "Remixing a Map"
-msgstr ""
-
-#: geoandino/templates/layers/layer_list.html:6
-#: geoandino/templates/layers/layer_list.html:13
-#: geoandino/templates/layers/site_layers_list.html:6
-#: geoandino/templates/upload/layer_upload.html:17
-msgid "Explore Layers"
-msgstr ""
-
-#: geoandino/templates/layers/layer_list.html:12
-#: geoandino/templates/layers/site_layers_list.html:5
-#: geoandino/templates/upload/layer_upload.html:18
-msgid "Upload Layers"
-msgstr ""
-
-#: geoandino/templates/maps/site_maps_list.html:5
-msgid "Create a New Map"
-msgstr ""
 
 #: geoandino/templates/overrides/geonode/metadata_details.html:3
 msgid "Return to Layer"
@@ -496,17 +176,6 @@ msgstr "Perfil de"
 msgid "Email"
 msgstr "Email"
 
-#: geoandino/templates/people/profile_detail.html:69
-#: geoandino/templates/people/profile_detail.html:74
-#: geoandino/templates/people/profile_detail.html:78
-#: geoandino/templates/people/profile_detail.html:83
-#: geoandino/templates/people/profile_detail.html:90
-#: geoandino/templates/people/profile_detail.html:95
-#: geoandino/templates/people/profile_detail.html:99
-#: geoandino/templates/people/profile_detail.html:110
-msgid "Not provided"
-msgstr ""
-
 #: geoandino/templates/people/profile_detail.html:73
 msgid "Position"
 msgstr "Posición"
@@ -525,168 +194,28 @@ msgstr "Voz"
 
 #: geoandino/templates/people/profile_detail.html:94
 msgid "Fax"
-msgstr ""
-
-#: geoandino/templates/people/profile_detail.html:98
-msgid "Description"
-msgstr ""
-
-#: geoandino/templates/people/profile_detail.html:103
-#: geoandino/templates/search/_h_keywords_filter.html:3
-msgid "Keywords"
-msgstr ""
-
-#: geoandino/templates/people/profile_detail.html:120
-msgid "Message User"
-msgstr ""
-
-#: geoandino/templates/people/profile_detail.html:124
-#: geoandino/templates/people/profile_detail.html:156
-msgid "Edit profile"
-msgstr ""
-
-#: geoandino/templates/people/profile_detail.html:125
-msgid "Change password"
-msgstr ""
-
-#: geoandino/templates/people/profile_detail.html:128
-msgid "Upload new layers"
-msgstr ""
-
-#: geoandino/templates/people/profile_detail.html:129
-msgid "Create a new map"
-msgstr ""
-
-#: geoandino/templates/people/profile_detail.html:130
-msgid "My Activities"
-msgstr ""
-
-#: geoandino/templates/people/profile_detail.html:134
-msgid "Notifications"
-msgstr ""
-
-#: geoandino/templates/people/profile_detail.html:137
-msgid "Announcements"
-msgstr ""
-
-#: geoandino/templates/people/profile_detail.html:142
-#: geoandino/templates/services/service_list.html:9
-msgid "Remote Services"
-msgstr ""
-
-#: geoandino/templates/people/profile_detail.html:143
-msgid "Invite User"
-msgstr ""
-
-#: geoandino/templates/people/profile_detail.html:144
-msgid "GeoServer"
-msgstr ""
-
-#: geoandino/templates/people/profile_detail.html:147
-msgid "Admin"
-msgstr ""
-
-#: geoandino/templates/people/profile_detail.html:160
-msgid "User Activities"
-msgstr ""
-
-#: geoandino/templates/people/profile_detail.html:173
-msgid "Resources"
-msgstr ""
+msgstr "Fax"
 
 #: geoandino/templates/search/_extent_filter.html:3
 msgid "Extent"
 msgstr "Extensión"
 
-#: geoandino/templates/search/_general_filters.html:4
-msgid "Categories"
-msgstr ""
-
-#: geoandino/templates/search/_general_filters.html:19
-msgid "Owners"
-msgstr ""
-
-#: geoandino/templates/search/_general_filters.html:33
-msgid "Date"
-msgstr ""
-
-#: geoandino/templates/search/_general_filters.html:35
-msgid "Date begins after:"
-msgstr ""
-
 #: geoandino/templates/search/_general_filters.html:36
 #: geoandino/templates/search/_general_filters.html:40
 msgid "yyyy-mm-dd"
-msgstr ""
-
-#: geoandino/templates/search/_general_filters.html:39
-msgid "Date ends before:"
-msgstr ""
-
-#: geoandino/templates/search/_region_filter.html:5
-msgid "Regions"
-msgstr ""
+msgstr "aaaa-mm-dd"
 
 #: geoandino/templates/search/_region_filter.html:10
 msgid "Search by region"
 msgstr "Buscar por región"
 
-#: geoandino/templates/search/_search_content.html:11
-msgid "Set permissions"
-msgstr ""
-
 #: geoandino/templates/search/_search_content.html:23
 msgid "Filters"
 msgstr "Filtros"
 
-#: geoandino/templates/search/_search_content.html:24
-#: geoandino/templates/upload/layer_upload.html:107
-msgid "Clear"
-msgstr ""
-
-#: geoandino/templates/search/_sort_filters.html:10
-#: geoandino/templates/search/_sort_filters.html:16
-#: geoandino/templates/search/_sort_filters.html:21
-msgid "Most recent"
-msgstr ""
-
-#: geoandino/templates/search/_sort_filters.html:11
-#: geoandino/templates/search/_sort_filters.html:17
-#: geoandino/templates/search/_sort_filters.html:22
-msgid "Less recent"
-msgstr ""
-
-#: geoandino/templates/search/_sort_filters.html:12
-#: geoandino/templates/search/_sort_filters.html:18
-#: geoandino/templates/search/_sort_filters.html:23
-msgid "A - Z"
-msgstr ""
-
-#: geoandino/templates/search/_sort_filters.html:13
-#: geoandino/templates/search/_sort_filters.html:19
-#: geoandino/templates/search/_sort_filters.html:24
-msgid "Z - A"
-msgstr ""
-
-#: geoandino/templates/search/_sort_filters.html:14
-msgid "Most popular"
-msgstr ""
-
-#: geoandino/templates/search/_text_filter.html:5
-msgid "Text"
-msgstr ""
-
 #: geoandino/templates/search/_text_filter.html:10
 msgid "Search by text"
 msgstr "Buscar por texto"
-
-#: geoandino/templates/services/service_list.html:8
-msgid "Register a new Service"
-msgstr ""
-
-#: geoandino/templates/services/service_list.html:15
-msgid "Title"
-msgstr ""
 
 #: geoandino/templates/services/service_list.html:26
 msgid "No services registered"
@@ -721,66 +250,9 @@ msgstr "Explorá todos los conjuntos de datos"
 msgid "Super theme taxonomy"
 msgstr ""
 
-#: geoandino/templates/upload/layer_upload.html:5
-msgid "Upload Layer"
-msgstr ""
-
-#: geoandino/templates/upload/layer_upload.html:40
-msgid "Incomplete Uploads"
-msgstr ""
-
-#: geoandino/templates/upload/layer_upload.html:41
-msgid "You have the following incomplete uploads"
-msgstr ""
-
-#: geoandino/templates/upload/layer_upload.html:44
-msgid "last updated on"
-msgstr ""
-
-#: geoandino/templates/upload/layer_upload.html:46
-msgid "Resume"
-msgstr ""
-
-#: geoandino/templates/upload/layer_upload.html:47
-#: geoandino/templates/upload/layer_upload.html:54
-msgid "Delete"
-msgstr ""
-
-#: geoandino/templates/upload/layer_upload.html:53
-msgid "Are you sure you want to delete this upload?"
-msgstr ""
-
-#: geoandino/templates/upload/layer_upload.html:55
-msgid "Cancel"
-msgstr ""
-
-#: geoandino/templates/upload/layer_upload.html:56
-msgid "Delete, and don't ask me again."
-msgstr ""
-
-#: geoandino/templates/upload/layer_upload.html:73
-msgid "Drop files here"
-msgstr ""
-
-#: geoandino/templates/upload/layer_upload.html:76
-msgid " or select them one by one:"
-msgstr ""
-
 #: geoandino/templates/upload/layer_upload.html:81
 msgid "Choose Files"
 msgstr "Elegir archivos"
-
-#: geoandino/templates/upload/layer_upload.html:86
-msgid "Files to be uploaded"
-msgstr ""
-
-#: geoandino/templates/upload/layer_upload.html:94
-msgid "Select the charset or leave default"
-msgstr ""
-
-#: geoandino/templates/upload/layer_upload.html:108
-msgid "Upload files"
-msgstr ""
 
 msgid ""
 "formalised word(s) or phrase(s) from a fixed thesaurus used to describe "
