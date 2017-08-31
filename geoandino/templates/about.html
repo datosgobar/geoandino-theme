@@ -1,0 +1,13 @@
+{% extends "site_base.html" %}
+
+{% block title %} {{ site_conf.about_title }} {% endblock %}
+
+{% block body_outer %}
+<div class="page-header">
+  <h2>{{ site_conf.about_title }}</h2>
+</div>
+<p>
+{{ site_conf.about_description }}
+</p>
+
+{% endblock %}

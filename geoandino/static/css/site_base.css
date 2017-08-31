@@ -28,8 +28,8 @@ body {
     color: #fff;
 }
 .stylish-input-group .form-control{
-	border-right:0; 
-	box-shadow:0 0 0; 
+	border-right:0;
+	box-shadow:0 0 0;
 	border-color:#ccc;
 }
 .stylish-input-group button{
@@ -71,8 +71,6 @@ footer a {
 .main-footer li a {
     padding: 3px 0;
 }
-
-/*Layers*/
 
 .profile-avatar li a {
     color: #0695d6;

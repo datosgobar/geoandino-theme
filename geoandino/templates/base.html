@@ -23,6 +23,22 @@
       <link href="{{ STATIC_URL }}css/poncho.css" rel="stylesheet"/>
       <link href="{{ STATIC_URL }}css/site_base.css" rel="stylesheet"/>
       {% block extra_head %}
+        <meta property="og:url" content="{{ site_conf.site_url|default_if_none:'' }}">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="{{ site_conf.facebook_google_title|default_if_none:'' }}">
+        <meta property="og:site_name" content="{{ site_conf.facebook_google_title|default_if_none:'' }}">
+        <meta property="og:description" content="{{ site_conf.facebook_google_description|default_if_none:'' }}">
+        <meta property="og:image" content="{{ site_conf.facebook_google_image_url|default_if_none:''}}">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:image:width" content="2400">
+        <meta property="og:image:height" content="1260">
+        <meta property="og:locale" content="es_AR">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:site:id" content="@{{ site_conf.twitter_user|default_if_none:'' }}"/>
+        <meta name="twitter:image:src" content="{{ site_conf.twitter_image_url|default_if_none:'' }}">
+        <meta name="twitter:title" content="{{ site_conf.twitter_title|default_if_none:'' }}">
+        <meta name="twitter:description" content="{{ site_conf.twitter_description|default_if_none:'' }}">
       {% endblock %}
     {% endblock %}
     <!--[if IE]>
@@ -47,7 +63,11 @@
 	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 	        <i class="fa fa-navicon fa-lg"></i>
 	      </button>
-	      <a class="navbar-brand" href="{% url "home" %}">GeoNode</a>
+          {% with logo_header=site_conf.logo_header_url %}
+            <a class="navbar-brand" style="background-image:url({{logo_header}})" href="{% url "home" %}">
+              GeoNode
+            </a>
+          {% endwith %}
 	    </div>
 	    <div id="navbar" class="navbar-collapse collapse">
 	      <ul class="nav navbar-nav toolbar navbar-right">
@@ -57,13 +77,6 @@
               <ul class="dropdown-menu">
                 <li><a href="{% url "layer_browse" %}">{% trans "Layers" %}</a></li>
                 <li><a href="{% url "document_browse" %}">{% trans "Documents" %}</a></li>
-                {% if user.is_authenticated %}
-                <li><a href="{% url "services" %}">{% trans "Remote Services" %}</a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="{% url "layer_upload" %}">Upload Layer</a></li>
-                <li><a href="{% url "document_upload" %}">Upload Document</a></li>
-                <li><a href="{% url "register_service" %}">{% trans "Add Remote Service" %}</a></li>
-                {% endif %}
               </ul>
           </li>
 	        <li id="nav_maps">
@@ -77,22 +90,22 @@
               <a href="{% url "maps_browse" %}">{% trans "Maps" %}</a>
               {% endif %}
           </li>
-          <li>
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "About" %}<span class="caret"></span></a>
+          {% if site_conf.group_visible %}
+            <li id="nav_groups">
+              {% if user.is_authenticated %}
+              <a href="{% url "groups_browse" %}" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Groups" %}</a>
+              {% endif %}
+            </li>
+          {% endif %}
+          {% if site_conf.about_visible %}
+            <li>
+	          <a href="{% url 'about' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "About" %}<span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="{% url "profile_browse" %}">{% trans "People" %}</a></li>
-                <li><a href="{% url "group_list" %}">{% trans "Groups" %}</a></li>
-                {% if perms.announcements.can_manage %}
-                <li><a href="{% url "announcements_list" %}">{% trans "Announcements" %}</a></li>
-                {% endif %}
-                {% if user.is_superuser %}
-                <li role="separator" class="divider"></li>
-                <li><a href="/admin/people/profile/add/">{% trans "Add User" %}</a></li>
-                <li><a href="{% url "account_invite_user" %}">{% trans "Invite User" %}</a></li>
-                <li><a href="{% url "group_create" %}">{% trans "Create Group" %}</a></li>
-                {% endif %}
+                <li> <a href="{% url "group_list" %}">{% trans "Groups" %}</a></li>
               </ul>
             </li>
+            {% endif %}
 	        {% block extra_tab %}
             {% endblock %}
             {% endblock %}
@@ -155,7 +168,22 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-6">
-            <img class="image-responsive" alt="Argentina.gob.ar - Presidencia de la Nación" src="../static/img/argentinagob.svg">
+            <p>
+              <a href="{{ site_conf.twitter_url }}" class="social-link">
+                  <i class="fa fa-twitter"></i>
+              </a>
+              <a href="{{ site_conf.facebook_url }}" class="social-link">
+                  <i class="fa fa-facebook"></i>
+              </a>
+              <a href="{{ site_conf.github_url }}" class="social-link">
+                  <i class="fa fa-github-alt"></i>
+              </a>
+            </p>
+            <a href="{{site_conf.site_url|default:'#'}}">
+              {% with logo_footer=site_conf.logo_footer_url %}
+                <img class="image-responsive" alt="Argentina.gob.ar - Presidencia de la Nación" src="{{ logo_footer }}">
+              {% endwith %}
+            </a>
             <br>
             <p class="text-muted small">{% trans "Powered by" %} <a href="http://geonode.org">{% trans "GeoNode" %}</a> <em>{% trans "version" %} {{ VERSION }}</em></p>
         </div>
@@ -164,32 +192,16 @@
               <li><strong>Data</strong></li>
               <li><a href="{% url "layer_browse" %}">{% trans "Layers" %}</a></li>
               <li><a href="{% url "document_browse" %}">{% trans "Documents" %}</a></li>
-              {% if user.is_authenticated %}
-              <li><a href="{% url "services" %}">{% trans "Remote Services" %}</a></li>
-              <li><a href="{% url "layer_upload" %}">Upload Layer</a></li>
-              <li><a href="{% url "document_upload" %}">Upload Document</a></li>
-              <li><a href="{% url "register_service" %}">{% trans "Add Remote Service" %}</a></li>
-              {% endif %}
             </ul>
         </div>
         <div class="col-md-3 col-sm-6">
           <ul class="list-unstyled">
             <li><strong>{% trans "Maps" %}</strong></li>
             <li><a href="{% url "maps_browse" %}">{% trans "Explore Maps" %}</a></li>
-            {% if user.is_authenticated %}
-            <li> <a href="{% url "new_map" %}">{% trans "Create Map" %}</a></li>
-            {% endif %}
             <li><strong><br>{% trans "About" %}</strong></li>
+            <li><a href="mailto:{{ site_conf.contact_mail }}">{% trans "Contact" %}</a></li>
             <li><a href="{% url "profile_browse" %}">{% trans "People" %}</a></li>
             <li><a href="{% url "group_list" %}">{% trans "Groups" %}</a></li>
-            {% if perms.announcements.can_manage %}
-            <li><a href="{% url "announcements_list" %}">{% trans "Announcements" %}</a></li>
-            {% endif %}
-            {% if user.is_superuser %}
-            <li><a href="/admin/people/profile/add/">{% trans "Add User" %}</a></li>
-            <li><a href="{% url "account_invite_user" %}">{% trans "Invite User" %}</a></li>
-            <li><a href="{% url "group_create" %}">{% trans "Create Group" %}</a></li>
-            {% endif %}
           </ul>
         </div>
       </div>

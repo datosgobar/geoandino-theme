@@ -33,18 +33,22 @@ WSGI_APPLICATION = "geoandino.wsgi.application"
 
 SITEURL = env("SITEURL", default="http://localhost/")
 
+ALLOWED_HOST = env("ALLOWED_HOST", default="")
+ALLOWED_HOST_IP = env("ALLOWED_HOST_IP", default="")
+
 ALLOWED_HOSTS = [
     'localhost', 
     '127.0.0.1',
     'geonode',
-    env("ALLOWED_HOST_IP", default='127.0.0.1'),
-    env("ALLOWED_HOST_NAME", default='localhost')
+    ALLOWED_HOST,
+    ALLOWED_HOST_IP,
 ]
 PROXY_ALLOWED_HOSTS = (
-    'localhost', '127.0.0.1',
+    'localhost',
+    '127.0.0.1',
     'geonode',
-    env("PROXY_ALLOWED_HOST_IP", default='127.0.0.1'),
-    env("PROXY_ALLOWED_HOST_NAME", default='localhost'), 
+    ALLOWED_HOST,
+    ALLOWED_HOST_IP,
 )
 POSTGIS_VERSION = (2, 1, 2)
 
@@ -220,6 +224,8 @@ INSTALLED_APPS = ('geoandino',) + INSTALLED_APPS
 TEMPLATES[0]['DIRS'].insert(0, LOCAL_ROOT("templates"))
 
 TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.site_conf')
+TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.taxonomies')
+TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.super_theme_taxonomies')
 
 MIDDLEWARE_CLASSES += (
     'geoandino.utils.middlewares.ForceDefaultLanguageMiddleware',
