@@ -103,6 +103,10 @@ class TopicTaxonomy(models.Model):
     def referenced_by_data(self):
         return any(category.referenced_by_data() for category in self.categories)
 
+    @property
+    def get_description(self):
+        return self.description or self.categories[0].description
+
 
 class GeoAndinoTopicCategory(TopicCategory):
     def __init__(self, *args, **kwargs):

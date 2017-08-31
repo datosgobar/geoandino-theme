@@ -85,7 +85,7 @@
 				{% for taxonomy in taxonomies_with_data %}
                 <div class="col-xs-4 col-sm-2">
   					<a href="{{taxonomy.search_url}}" data-toggle="tooltip" data-placement="auto"
-							title="{{taxonomy.description}}">
+							title="{{taxonomy.get_description}}">
                         <div class="panel-default panel-icon">
                           {% if site_conf.icon_display %}
                                   <div class="panel-heading">
