@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}{{ SITE_NAME }}{% endblock %}</title>
+    <title>{% block title %} {{ site_conf.title }} {% endblock %}</title>
     {% block head %}
       {% if DEBUG_STATIC %}
       <link href="{{ STATIC_URL }}lib/css/jquery.dataTables.css?v={{ VERSION }}" rel="stylesheet" />
@@ -92,10 +92,28 @@
             <li>
 	          <a href="{% url 'about' %}" >{% trans "About" %}</a>
             </li>
-            {% endif %}
-	        {% block extra_tab %}
-            {% endblock %}
-            {% endblock %}
+          {% endif %}
+
+	      {% block extra_tab %}
+            <div >
+                <form id="search" action="{% url "search" %}" >
+                 <div class="input-group stylish-input-group">
+                    {% if HAYSTACK_SEARCH %}
+                    <input id="search_input" type="text" placeholder='{% trans "What data are you looking for?" %}' name="q" class="form-control">
+                    {% else %}
+                    <input id="search_input" type="text" placeholder='{% trans "What data are you looking for?" %}' name="title__icontains" class="form-control">
+                    {% endif %}
+                    <span class="input-group-addon">
+                      <button type="submit">
+                        <span class="fa fa-search"></span>
+                      </button>
+                    </span>
+                 </div>
+                </form>
+            </div>
+          {% endblock %}
+
+          {% endblock %}
             {% if user.is_authenticated %}
             <li><a href="#" class="dropdown-toggle avatar" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% avatar user 42 %} {{ user.username }}<span class="caret"></span></a>
               <ul class="dropdown-menu">

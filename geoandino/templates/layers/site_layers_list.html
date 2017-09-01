@@ -1,18 +1,48 @@
-{% extends 'layers/layer_list.html' %}
+{% extends "base.html" %}
 {% load i18n %}
-{% block body %}
-  <div class="page-header">
-    <a href="{% url "layer_upload" %}" class="btn btn-primary pull-right">{% trans 'Upload Layers' %}</a>
-    <h2 class="page-title">{% trans 'Explore Layers' %}</h2>
-    <div>{{ site_conf.layer_description }}</div>
-  </div>
-  {% with include_type_filter='true' %}
-  {% with header='Type' %}
-  {% with filter='type__in' %}
-  {% include "search/_search_content.html" %}
+{% load url from future %}
+{% load staticfiles %}
+
+{% block title %} {% trans "Layers" %} - {{ block.super }} {% endblock %}
+
+{% block body_class %}layers explore{% endblock body_class %}
+
+{% block body_outer %}
+    {% block body %}
+      <div class="page-header">
+        <a href="{% url "layer_upload" %}" class="btn btn-primary pull-right">{% trans 'Upload Layers' %}</a>
+        <h2 class="page-title">{% trans 'Layers' %}</h2>
+        <div>{{ site_conf.layer_description }}</div>
+      </div>
+      {% with include_type_filter='true' %}
+      {% with header='Type' %}
+      {% with filter='type__in' %}
+      {% include "search/_search_content.html" %}
+      {% endwith %}
+      {% endwith %}
+      {% endwith %}
+      {% include "_bulk_permissions_form.html" %}
+    {% endblock body %}
+
+    {% block sidebar %}{% endblock sidebar %}
+{% endblock body_outer %}
+
+{% block extra_script %}
+{{ block.super }}
+  {% if GEONODE_SECURITY_ENABLED %}
+    {% include "_permissions_form_js.html" %}
+  {% endif %}
+  <script type="text/javascript">
+      {% if HAYSTACK_SEARCH %}
+          SEARCH_URL = '{% url 'api_get_search' api_name='api' resource_name='base' %}?type__in=layer'
+      {% else %}
+          SEARCH_URL = '{% url 'api_dispatch_list' api_name='api' resource_name='layers' %}';
+      {% endif %}
+    FILTER_TYPE = 'layer';
+  </script>
+  {% with include_spatial='true' %}
+  {% include 'search/search_scripts.html' %}
   {% endwith %}
-  {% endwith %}
-  {% endwith %}
-  {% include "_bulk_permissions_form.html" %}
-{% endblock body %}
+{% endblock extra_script %}
+
 
