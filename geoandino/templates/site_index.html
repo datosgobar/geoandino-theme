@@ -81,28 +81,29 @@
   {% endblock %}
 
   {% block showcase %}
-  <section id="showcase">
-    <div class="container">
-      <div class="row">
-        <h2>{% trans "Featured Datasets" %}</h2>
-        {% verbatim %}
-        <div ng-app="featured">
-          <div ng-repeat="item in featured | limitTo:4">
-            <div class="col-md-3">
-              <a class="panel panel-default" href="#">
-                  <div style="background-image:url('{{ item.thumbnail_url }}');" class="panel-heading"></div>
-                  <div class="panel-body">
-                    <h3 class="ng-binding">{{ item.title | limitTo: 20 }}{{item.title.length > 20 ? '...' : ''}}</h3>
+    {% if featured %}
+      <section id="showcase">
+        <div class="container">
+          <div class="row">
+            <h2>{% trans "Featured Datasets" %}</h2>
+            {% verbatim %}
+            <div ng-app="featured">
+              <div ng-repeat="item in featured | limitTo:4">
+                <div class="col-md-3">
+                  <a class="panel panel-default" href="#">
+                      <div style="background-image:url('{{ item.thumbnail_url }}');" class="panel-heading"></div>
+                      <div class="panel-body">
+                        <h3 class="ng-binding">{{ item.title | limitTo: 20 }}{{item.title.length > 20 ? '...' : ''}}</h3>
+                    </div>
+                  </a>
                 </div>
-              </a>
+              </div>
             </div>
+            {% endverbatim %}
           </div>
         </div>
-  		{% endverbatim %}
-      </div>
-      <p><a class="btn btn-primary" href="/search/">{% trans "Explore all datasets" %}</a></p>
-    </div>
-  </section>
+      </section>
+    {% endif %}
   {% endblock %}
 {% endblock %}
 
