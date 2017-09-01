@@ -11,39 +11,6 @@
   {% with background=site_conf.image_background_url %}
   <div class="jumbotron" style="background-image:url({{background}})">
   {% endwith %}
-    <div class="jumbotron_bar">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <ol class="breadcrumb pull-left">
-              <li><a href="">Argentina</a></li>
-              <li class="active"><span>Ministerio de Modernización</span></li>
-            </ol>
-            <ul class="list-inline pull-right">
-              <li>
-                <div class="search imaginary_container">
-                 
-                  <form id="search" action="{% url "search" %}" >
-                     <div class="input-group stylish-input-group">
-                        {% if HAYSTACK_SEARCH %}
-                        <input id="search_input" type="text" placeholder="Buscar" name="q" class="form-control">
-                        {% else %}
-                        <input id="search_input" type="text" placeholder="Buscar" name="title__icontains" class="form-control">
-                        {% endif %}
-                        <span class="input-group-addon">
-                          <button type="submit">
-                            <span class="fa fa-search"></span>
-                          </button>  
-                        </span>
-                     </div>
-                  </form>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="jumbotron_body">
       <div class="container">
         <div class="row">
