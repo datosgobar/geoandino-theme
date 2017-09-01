@@ -15,6 +15,8 @@ class NullSiteConfiguration:
         self.image_background_url = static('img/bg-jumbotron.jpg')
         self.logo_header_url = static('img/logo_ministerio.svg')
         self.logo_footer_url = static('img/argentinagob.svg')
+        self.about_visible = True
+        self.group_visible = True
         self.default = True
     
 
