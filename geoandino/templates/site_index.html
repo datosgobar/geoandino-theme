@@ -19,29 +19,30 @@
             <p>{{ site_conf.description }}</p>
           </div>
         </div>
+          <div >
+                <form id="search" action="{% url "search" %}" >
+                 <div class="input-group stylish-input-group">
+                    {% if HAYSTACK_SEARCH %}
+                    <input id="search_input" type="text" placeholder='{% trans "What data are you looking for?" %}' name="q" class="form-control">
+                    {% else %}
+                    <input id="search_input" type="text" placeholder='{% trans "What data are you looking for?" %}' name="title__icontains" class="form-control">
+                    {% endif %}
+                    <span class="input-group-addon">
+                      <button type="submit">
+                        <span class="fa fa-search"></span>
+                      </button>
+                    </span>
+                 </div>
+                </form>
+            </div>
       </div>
     </div>
+
     <div class="overlay"></div>
   </div>
   {% endblock %}
 
 {% block mainbody %}
-  <div class="big-search">
-  	<div class="container">
-  		<h1>{% trans "Search for Data" %}</h1>
-  		<div class="search">
-  			<form id="search" action="{% url "search" %}" >
-  				<span class="fa fa-search fa-2x"></span>
-  				{% if HAYSTACK_SEARCH %}
-  				<input id="search_input" type="text" placeholder='{% trans "What data are you looking for?" %}' class="form-control" name="q">
-  				{% else %}
-  				<input id="search_input" type="text" placeholder='{% trans "What data are you looking for?" %}' class="form-control" name="title__icontains">
-  				{% endif %}
-  			</form>
-  		</div>
-  		<p><a class="btn btn-primary" href="/search/">{% trans "Advanced Search" %}</a></p>
-  	</div>
-  </div>
 
 {% block datasets %}
   <section id="datasets">
