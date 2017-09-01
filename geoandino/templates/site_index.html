@@ -82,27 +82,26 @@
 
   {% block showcase %}
     {% if featured %}
-      <section id="showcase">
-        <div class="container">
-          <div class="row">
+    <section id="showcase">
+    <div class="container">
+        <div class="row">
             <h2>{% trans "Featured Datasets" %}</h2>
-            {% verbatim %}
-            <div ng-app="featured">
-              <div ng-repeat="item in featured | limitTo:4">
-                <div class="col-md-3">
-                  <a class="panel panel-default" href="#">
+            <div class="row panels-row">
+            {% for item in featured %}
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <a class="panel panel-default" href="#">
                       <div style="background-image:url('{{ item.thumbnail_url }}');" class="panel-heading"></div>
                       <div class="panel-body">
-                        <h3 class="ng-binding">{{ item.title | limitTo: 20 }}{{item.title.length > 20 ? '...' : ''}}</h3>
-                    </div>
-                  </a>
+                        <h3>{{ item.title }}</h3>
+                        <p class="text-muted">{{ item.abstract }}</p>
+                      </div>
+                    </a>
                 </div>
-              </div>
+            {% endfor %}
             </div>
-            {% endverbatim %}
-          </div>
         </div>
-      </section>
+    </div>
+    </section>
     {% endif %}
   {% endblock %}
 {% endblock %}
