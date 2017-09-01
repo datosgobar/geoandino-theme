@@ -183,24 +183,11 @@
               {% endwith %}
             </a>
             <br>
-            <p class="text-muted small">{% trans "Powered by" %} <a href="http://geonode.org">{% trans "GeoNode" %}</a> <em>{% trans "version" %} {{ VERSION }}</em></p>
+
         </div>
         <div class="col-md-3 col-sm-6">
-            <ul class="list-unstyled">
-              <li><strong>Data</strong></li>
-              <li><a href="{% url "layer_browse" %}">{% trans "Layers" %}</a></li>
-              <li><a href="{% url "document_browse" %}">{% trans "Documents" %}</a></li>
-            </ul>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <ul class="list-unstyled">
-            <li><strong>{% trans "Maps" %}</strong></li>
-            <li><a href="{% url "maps_browse" %}">{% trans "Explore Maps" %}</a></li>
-            <li><strong><br>{% trans "About" %}</strong></li>
             <li><a href="mailto:{{ site_conf.contact_mail }}">{% trans "Contact" %}</a></li>
-            <li><a href="{% url "profile_browse" %}">{% trans "People" %}</a></li>
-            <li><a href="{% url "group_list" %}">{% trans "Groups" %}</a></li>
-          </ul>
+            <p class="text-muted small">Geoandino {% trans "developed on" %} <a href="http://geonode.org">{% trans "GeoNode" %}</a></p>
         </div>
       </div>
     </div>
