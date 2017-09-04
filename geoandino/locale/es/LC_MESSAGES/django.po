@@ -45,7 +45,7 @@ msgstr "Capas, documentos y mapas"
 
 #: geoandino/admin.py:25 geoandino/templates/base.html:202
 msgid "Contact"
-msgstr "Contacto"
+msgstr "Contactanos"
 
 #: geoandino/admin.py:29
 msgid "About (optional)"
@@ -126,7 +126,7 @@ msgstr "Usuario de Twitter"
 #: geoandino/templates/base.html:86 geoandino/templates/base.html.py:200
 #: geoandino/templates/maps/site_maps_list.html:6
 msgid "Explore Maps"
-msgstr "Explorar mapas"
+msgstr "Mapas"
 
 #: geoandino/templates/base.html:87
 msgid "Create Map"
@@ -240,7 +240,7 @@ msgstr "Descubrí los conjuntos de datos disponibles"
 
 #: geoandino/templates/site_index.html:118
 msgid "Featured Datasets"
-msgstr "Conjuntos de datos destacados"
+msgstr "Destacados"
 
 #: geoandino/templates/site_index.html:134
 msgid "Explore all datasets"
@@ -426,7 +426,16 @@ msgstr "Administrador"
 msgid "User identifiers"
 msgstr "Identificaciones de usuario"
 
+msgid "Explore Documents"
+msgstr "Documentos"
 
+msgid "Explore Layers"
+msgstr "Capas geográficas"
 
+msgid "Date begins after:"
+msgstr "Inicio"
+
+msgid "Date ends before:"
+msgstr "Fin"
 
 
