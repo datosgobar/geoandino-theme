@@ -43,7 +43,9 @@
     </div>
     {% include "search/_sort_filters.html" %}
     <div class="col-md-12 grid-spacer">
-    {% include 'base/_resourcebase_snippet.html' %}
+    {% block card %}
+        {% include 'base/_resourcebase_snippet.html' %}
+    {% endblock %}
     {% include 'search/_pagination.html' %}
     </div>
   </div>

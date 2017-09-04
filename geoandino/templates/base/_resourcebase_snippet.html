@@ -14,7 +14,8 @@
         </div>
         <div class="col-xs-8 item-details">
           {% endverbatim %}
-          <button class="btn-primary btn-sm pull-right" ng-if="cart" ng-click="cart.toggleItem(item)"><i class="fa fa-plus"></i></button>
+          {% block icon %}
+          {% endblock %}
           {% verbatim %}
           <p class="item-meta"><span class="item-category">{{ item.category__gn_description }}</span></p>
           <h4><a href="{{ item.detail_url }}">{{ item.title }}</a></h4>

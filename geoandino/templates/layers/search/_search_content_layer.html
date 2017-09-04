@@ -12,3 +12,7 @@
 {% block bulk_perms_button %}
     <button type="button" class="btn btn-primary" ng-disabled="!cart.getCart().items.length" ng-click="newMap()">{% trans "Create a Map" %}</button>
 {% endblock %}
+
+{% block card %}
+    {% include 'layers/_layer_snippet.html' %}
+{% endblock %}
