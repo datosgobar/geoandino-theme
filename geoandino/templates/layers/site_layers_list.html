@@ -12,12 +12,12 @@
       <div class="page-header">
         <a href="{% url "layer_upload" %}" class="btn btn-primary pull-right">{% trans 'Upload Layers' %}</a>
         <h2 class="page-title">{% trans 'Layers' %}</h2>
-        <div>{{ site_conf.layer_description }}</div>
+        <h5>{{ site_conf.layer_description }}</h5>
       </div>
       {% with include_type_filter='true' %}
       {% with header='Type' %}
       {% with filter='type__in' %}
-      {% include "search/_search_content.html" %}
+      {% include "layers/search/_search_content_layer.html" %}
       {% endwith %}
       {% endwith %}
       {% endwith %}
