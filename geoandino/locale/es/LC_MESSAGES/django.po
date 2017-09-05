@@ -198,7 +198,7 @@ msgstr "Fax"
 
 #: geoandino/templates/search/_extent_filter.html:3
 msgid "Extent"
-msgstr "Extensión"
+msgstr "Alcance"
 
 #: geoandino/templates/search/_general_filters.html:36
 #: geoandino/templates/search/_general_filters.html:40
