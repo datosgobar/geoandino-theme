@@ -38,8 +38,11 @@
   </div>
   <div class="col-md-9">
     <div class="col-md-2">
-      <span>Total: </span>
-      <span ng-bind="total_counts"></span>
+      <ng-pluralize count="total_counts"
+                    when="{'0': 'No hay resultados',
+                           '1': '1 resultado',
+                           'other': '{} resultados'}">
+      </ng-pluralize>
     </div>
     {% include "search/_sort_filters.html" %}
     <div class="col-md-12 grid-spacer">
