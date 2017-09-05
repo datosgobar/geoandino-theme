@@ -8,6 +8,10 @@
 
 {% block body_outer %}
   {% block body %}
+    <ol class="breadcrumb">
+      <li><a href="#">{{site_conf.title}}</a></li>
+      <li class="active">{% trans "Documents" %}</li>
+    </ol>
     <div class="page-header">
       <a href="{% url "document_upload" %}" class="btn btn-primary pull-right">{% trans 'Upload Documents' %}</a>
       <h2>{% trans 'Documents' %}</h2>
