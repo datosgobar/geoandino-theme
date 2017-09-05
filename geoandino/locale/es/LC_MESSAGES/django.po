@@ -432,6 +432,9 @@ msgstr "Documentos"
 msgid "Explore Layers"
 msgstr "Capas geográficas"
 
+msgid "Type"
+msgstr "Tipo de recurso"
+
 msgid "Date begins after:"
 msgstr "Inicio"
 
