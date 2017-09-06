@@ -27,12 +27,45 @@ urlpatterns = patterns(
     url(r'^groups/?$',
        TemplateView.as_view(template_name='groups/site_groups_list.html'),
        name='groups_browse'),
+    url(r'^people/?$',
+        TemplateView.as_view(template_name='people/site_profile_list.html'),
+        name='people_browse'),
 )
 
+layers_urlpatterns = patterns(
+                        'geoandino.overrides.layers.views',
+                        url(r'^layers/(?P<layername>[^/]*)/metadata$',
+                            'layer_metadata',
+                            name="layer_metadata"),
+                        url(r'^layers/(?P<layername>[^/]*)/metadata_detail$',
+                            'layer_metadata_detail',
+                            name="layer_metadata_detail"),
+                    )
+
+maps_urlpatterns = patterns(
+                        'geoandino.overrides.maps.views',
+                        url(r'^maps/(?P<mapid>[^/]*)/metadata_detail$',
+                            'map_metadata_detail',
+                            name="map_metadata_detail"),
+                    )
 
 documents_urlpatterns = patterns(
                         'geoandino.overrides.documents.views',
-                        url(r'^documents/(?P<docid>[^/]*)$',
+                        url(r'^documents/(?P<docid>[^/]*)/metadata$',
+                            'document_metadata',
+                            name="document_metadata"),
+                        url(r'^documents/(?P<docid>[^/]*)/metadata_detail$',
+                            'document_metadata_detail',
+                            name="document_metadata_detail"),
+                        url(r'^documents/(?P<docid>\d+)/?$',
                             'document_detail',
-                            name="document_detail"),
-)
+                            name='document_detail'),
+                    )
+
+groups_urlpatterns = patterns(
+                        'geoandino.overrides.groups.views',
+                        url(r'^groups/group/(?P<slug>[-\w]+)/members/$',
+                            'group_members',
+                            name="group_members"),
+                    )
+

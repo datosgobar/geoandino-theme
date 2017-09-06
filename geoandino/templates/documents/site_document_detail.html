@@ -23,9 +23,9 @@
         </a>
       </div>
       {% elif resource.doc_file %}
-      <p><a href="{% url "document_download" resource.id %}" target="_blank">Download the {{ resource }} document</a></p>
+      <p><a href="{% url "document_download" resource.id %}" target="_blank">{% trans "Download the document:" %} {{ resource }}</a></p>
       {% elif  resource.doc_url %}
-      <p><a href="{{ resource.doc_url }}" target="_blank">Download the {{ resource }} document.</a> <small>({% trans 'External Resource' %})</small></p>
+      <p><a href="{{ resource.doc_url }}" target="_blank">{% trans "Download the document:" %} {{ resource }}</a> <small>({% trans 'External Resource' %})</small></p>
       {%  endif %}
     {%  endif %}
 
@@ -93,11 +93,9 @@
         {%  endif %}
       {%  endif %}
       </li>
-      {% if user.is_authenticated %}
-          <li class="list-group-item">
-            <button class="btn btn-primary btn-md btn-block" data-toggle="modal" data-target="#edit-document">{% trans "Edit Document" %}</button>
-          </li>
-      {% endif %}
+      <li class="list-group-item">
+        <button class="btn btn-primary btn-md btn-block" data-toggle="modal" data-target="#edit-document">{% trans "Edit Document" %}</button>
+      </li>
       <div class="modal fade" id="edit-document" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -202,4 +200,3 @@
   </div>
 </div>
 {% endblock %}
-

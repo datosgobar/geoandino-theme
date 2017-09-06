@@ -11,6 +11,9 @@ class NullSiteConfiguration:
         self.image_background_url = static('img/bg-jumbotron.jpg')
         self.logo_header_url = static('img/logo_ministerio.svg')
         self.logo_footer_url = static('img/argentinagob.svg')
+        self.about_title = 'Acerca de este portal'
+        self.about_description = '<b>Describí tu portal con más detalle.</b> ' \
+                           'Podés contar cuál es el alcance de los datos geoespaciales que se incluyen.'
         self.default = True
     
 
