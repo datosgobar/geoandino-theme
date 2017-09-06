@@ -28,3 +28,11 @@ urlpatterns = patterns(
        TemplateView.as_view(template_name='groups/site_groups_list.html'),
        name='groups_browse'),
 )
+
+
+documents_urlpatterns = patterns(
+                        'geoandino.overrides.documents.views',
+                        url(r'^documents/(?P<docid>[^/]*)$',
+                            'document_detail',
+                            name="document_detail"),
+)

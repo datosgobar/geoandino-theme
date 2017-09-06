@@ -2,7 +2,9 @@
 {% load i18n %}
 {% block body %}
 <div class="page-header">
-  <a href="{% url "new_map" %}" class="btn btn-primary pull-right">{% trans 'Create a New Map' %}</a>
+  {% if user.is_authenticated %}
+    <a href="{% url "new_map" %}" class="btn btn-primary pull-right">{% trans 'Create a New Map' %}</a>
+  {% endif %}
   <h2>{% trans 'Explore Maps' %}</h2>
   <div>{{ site_conf.map_description }}</div>
 </div>
