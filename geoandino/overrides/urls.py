@@ -69,3 +69,5 @@ groups_urlpatterns = patterns(
                             name="group_members"),
                     )
 
+
+urlpatterns = layers_urlpatterns + maps_urlpatterns + documents_urlpatterns + groups_urlpatterns + urlpatterns

@@ -7,13 +7,12 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('geoandino', '0001_initial'),
+        ('datajsonar', '0004_resourceextra_accrual_periodicity'),
     ]
 
     operations = [
-        migrations.AddField(
-            model_name='siteconfiguration',
-            name='default',
-            field=models.BooleanField(default=False),
+        migrations.RemoveField(
+            model_name='resourceextra',
+            name='accrual_periodicity',
         ),
     ]
