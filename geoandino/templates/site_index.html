@@ -75,15 +75,17 @@
   </div>
 
 {% block datasets %}
+{% if taxonomies_with_data %}
   <section id="datasets">
   	<div class="container">
   		<div class="row">
   			<div class="container text-center">
   				<h1>{% trans "Discover the available datasets" %}</h1>
-				{% for taxonomy in taxonomies %}
+  				<h1>{{ tax_quantity }}</h1>
+				{% for taxonomy in taxonomies_with_data %}
                 <div class="col-xs-4 col-sm-2">
   					<a href="{{taxonomy.search_url}}" data-toggle="tooltip" data-placement="auto"
-							title="{{taxonomy.description}}">
+							title="{{taxonomy.get_description}}">
                         <div class="panel-default panel-icon">
                           {% if site_conf.icon_display %}
                                   <div class="panel-heading">
@@ -109,7 +111,8 @@
   		</div>
   	</div>
   </section>
-  {% endblock %}
+{% endif %}
+{% endblock %}
 
   {% block showcase %}
   <section id="showcase">

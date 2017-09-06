@@ -6,6 +6,8 @@ from exclusivebooleanfield.fields import ExclusiveBooleanField
 from django.utils.translation import ugettext as _
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from geonode.base.models import TopicCategory
+from geonode.layers.models import Layer
+from geonode.documents.models import Document
 
 
 AGRI = "agri"
@@ -97,13 +99,30 @@ class TopicTaxonomy(models.Model):
         return True if self.image else False
     has_image.boolean = True
 
+    @property
+    def referenced_by_data(self):
+        return any(category.referenced_by_data() for category in self.categories)
+
+    @property
+    def get_description(self):
+        return self.description or self.categories[0].description
+
 
 class GeoAndinoTopicCategory(TopicCategory):
     def __init__(self, *args, **kwargs):
         self._meta.get_field('identifier').default = None
         super(GeoAndinoTopicCategory, self).__init__(*args, **kwargs)
 
-    topic_taxonomy = models.ForeignKey(TopicTaxonomy, on_delete=models.CASCADE, related_name='topic_categories_set', null=True, blank=True, default=None)
+    topic_taxonomy = models.ForeignKey(TopicTaxonomy, on_delete=models.SET_NULL, related_name='topic_categories_set', null=True, blank=True, default=None)
+
+    def referenced_by_layer(self):
+        return Layer.objects.filter(category=self).exists()
+
+    def referenced_by_document(self):
+        return Document.objects.filter(category=self).exists()
+
+    def referenced_by_data(self):
+        return self.referenced_by_document() or self.referenced_by_layer()
 
 
 class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionModel):
