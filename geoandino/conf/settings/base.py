@@ -227,6 +227,7 @@ TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_pr
 TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.taxonomies')
 TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.taxonomies_with_data')
 TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.super_theme_taxonomies')
+TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.featured')
 
 MIDDLEWARE_CLASSES += (
     'geoandino.utils.middlewares.ForceDefaultLanguageMiddleware',

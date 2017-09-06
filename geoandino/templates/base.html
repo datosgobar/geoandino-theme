@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}{{ SITE_NAME }}{% endblock %}</title>
+    <title>{% block title %} {{ site_conf.title }} {% endblock %}</title>
     {% block head %}
       {% if DEBUG_STATIC %}
       <link href="{{ STATIC_URL }}lib/css/jquery.dataTables.css?v={{ VERSION }}" rel="stylesheet" />
@@ -73,42 +73,45 @@
 	      <ul class="nav navbar-nav toolbar navbar-right">
 	        {% block tabs %}
 	        <li id="nav_layers">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Data" %}<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="{% url "layer_browse" %}">{% trans "Layers" %}</a></li>
-                <li><a href="{% url "document_browse" %}">{% trans "Documents" %}</a></li>
-              </ul>
-          </li>
-	        <li id="nav_maps">
-              {% if user.is_authenticated %}
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Maps" %}<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="{% url "maps_browse" %}">{% trans "Explore Maps" %}</a></li>
-                <li> <a href="{% url "new_map" %}">{% trans "Create Map" %}</a></li>
-              </ul>
-              {% else %}
+              <a href="{% url "layer_browse" %}">{% trans "Layers" %}</a>
+            </li>
+            <li id="nav_maps">
               <a href="{% url "maps_browse" %}">{% trans "Maps" %}</a>
-              {% endif %}
-          </li>
+            </li>
+            <li id="nav_documents">
+              <a href="{% url "document_browse" %}">{% trans "Documents" %}</a>
+            </li>
           {% if site_conf.group_visible %}
             <li id="nav_groups">
-              {% if user.is_authenticated %}
               <a href="{% url "groups_browse" %}" role="button" aria-haspopup="true" aria-expanded="false">{% trans "Groups" %}</a>
-              {% endif %}
             </li>
           {% endif %}
           {% if site_conf.about_visible %}
             <li>
-	          <a href="{% url 'about' %}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans "About" %}<span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="{% url "profile_browse" %}">{% trans "People" %}</a></li>
-                <li> <a href="{% url "group_list" %}">{% trans "Groups" %}</a></li>
-              </ul>
+	          <a href="{% url 'about' %}" >{% trans "About" %}</a>
             </li>
-            {% endif %}
-	        {% block extra_tab %}
-            {% endblock %}
-            {% endblock %}
+          {% endif %}
+
+	      {% block extra_tab %}
+            <div >
+                <form id="search" action="{% url "search" %}" >
+                 <div class="input-group stylish-input-group">
+                    {% if HAYSTACK_SEARCH %}
+                    <input id="search_input" type="text" placeholder='{% trans "What data are you looking for?" %}' name="q" class="form-control">
+                    {% else %}
+                    <input id="search_input" type="text" placeholder='{% trans "What data are you looking for?" %}' name="title__icontains" class="form-control">
+                    {% endif %}
+                    <span class="input-group-addon">
+                      <button type="submit">
+                        <span class="fa fa-search"></span>
+                      </button>
+                    </span>
+                 </div>
+                </form>
+            </div>
+          {% endblock %}
+
+          {% endblock %}
             {% if user.is_authenticated %}
             <li><a href="#" class="dropdown-toggle avatar" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% avatar user 42 %} {{ user.username }}<span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -124,7 +127,7 @@
                 <li><a href="/account/logout/">Logout</a></li>
                 </ul>
               </li>
-              {% endif %}
+            {% endif %}
           </ul>
           </div> <!--/.nav-collapse -->
         </div>
@@ -180,24 +183,11 @@
               {% endwith %}
             </a>
             <br>
-            <p class="text-muted small">{% trans "Powered by" %} <a href="http://geonode.org">{% trans "GeoNode" %}</a> <em>{% trans "version" %} {{ VERSION }}</em></p>
+
         </div>
         <div class="col-md-3 col-sm-6">
-            <ul class="list-unstyled">
-              <li><strong>Data</strong></li>
-              <li><a href="{% url "layer_browse" %}">{% trans "Layers" %}</a></li>
-              <li><a href="{% url "document_browse" %}">{% trans "Documents" %}</a></li>
-            </ul>
-        </div>
-        <div class="col-md-3 col-sm-6">
-          <ul class="list-unstyled">
-            <li><strong>{% trans "Maps" %}</strong></li>
-            <li><a href="{% url "maps_browse" %}">{% trans "Explore Maps" %}</a></li>
-            <li><strong><br>{% trans "About" %}</strong></li>
             <li><a href="mailto:{{ site_conf.contact_mail }}">{% trans "Contact" %}</a></li>
-            <li><a href="{% url "profile_browse" %}">{% trans "People" %}</a></li>
-            <li><a href="{% url "group_list" %}">{% trans "Groups" %}</a></li>
-          </ul>
+            <p class="text-muted small">Geoandino {% trans "developed on" %} <a href="http://geonode.org">{% trans "GeoNode" %}</a></p>
         </div>
       </div>
     </div>
