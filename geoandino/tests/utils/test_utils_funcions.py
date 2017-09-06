@@ -26,6 +26,14 @@ class TestWithoutDefaultSiteConfiguration(TestCase):
     def has_default_boolean(self):
         assert_true(self.conf_module.get_site_conf().default)
 
+    @istest
+    def has_publisher_email(self):
+        assert self.conf_module.get_site_conf().publisher_email()
+
+    @istest
+    def has_publisher_name(self):
+        assert self.conf_module.get_site_conf().publisher_name()
+
 class TestWithDefaultSiteConfiguration(TestWithoutDefaultSiteConfiguration):
 
     def setUp(self):
