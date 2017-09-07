@@ -224,6 +224,7 @@ LOCALE_PATHS = (
 GEOANDINO_APPS = (
     'geoandino',
     'geoandino.apps.datajsonar',
+    'ckeditor'
 )
 
 INSTALLED_APPS = GEOANDINO_APPS + INSTALLED_APPS

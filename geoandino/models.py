@@ -7,6 +7,7 @@ from django.utils.translation import ugettext as _
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from geonode.base.models import TopicCategory
 from account.models import EmailAddress
+from ckeditor.fields import RichTextField
 
 
 AGRI = "agri"
@@ -112,7 +113,8 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
     publisher = models.ForeignKey(EmailAddress)
     about_visible = models.BooleanField(default=False, verbose_name=_('Visible'))
     about_title = models.CharField(_('title'), max_length=255, default=None, blank=True, null=True)
-    about_description = models.TextField(_('description'), blank=True, null=True)
+    #about_description = models.TextField(_('description'), blank=True, null=True)
+    about_description = RichTextField()
     image_background = models.ImageField(upload_to="thumbs/", blank=True, null=True, default=None)
     facebook_url = models.CharField(max_length=150, verbose_name=_('Facebook'), default="http://www.facebook.com/portal", null=True, blank=True)
     twitter_url = models.CharField(max_length=150, verbose_name=_('Twitter'), default="http://www.twitter.com/portal", null=True, blank=True)

@@ -3,3 +3,4 @@ Shapely==1.5.17
 django-exclusivebooleanfield==0.3.0
 django-jsonfield-compat==0.4.4
 django-environ==0.4.3
+django-ckeditor==5.3.0

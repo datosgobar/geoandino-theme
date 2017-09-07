@@ -7,7 +7,7 @@
   <h2>{{ site_conf.about_title }}</h2>
 </div>
 <p>
-{{ site_conf.about_description }}
+{{ site_conf.about_description|safe }}
 </p>
 
 {% endblock %}
