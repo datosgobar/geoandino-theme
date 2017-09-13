@@ -89,7 +89,7 @@
             <div class="row panels-row">
             {% for item in featured %}
                 <div class="col-xs-12 col-sm-6 col-md-3">
-                    <a class="panel panel-default" href="#">
+                    <a class="panel panel-default" href="{{ item.detail_url }}">
                       <div style="background-image:url('{{ item.thumbnail_url }}');" class="panel-heading"></div>
                       <div class="panel-body">
                         <h3>{{ item.title }}</h3>
