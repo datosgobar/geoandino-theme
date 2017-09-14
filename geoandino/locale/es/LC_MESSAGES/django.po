@@ -22,6 +22,130 @@ msgstr ""
 #: geoandino/admin.py:12
 msgid "default"
 msgstr ""
+<<<<<<< HEAD
+=======
+
+#: geoandino/models.py:112 geoandino/overrides/forms.py:14
+msgid "title"
+msgstr ""
+
+#: geoandino/models.py:113
+msgid "description"
+msgstr ""
+
+#: geoandino/models.py:115
+msgid "Facebook"
+msgstr ""
+
+#: geoandino/models.py:116
+msgid "Twitter"
+msgstr ""
+
+#: geoandino/models.py:117
+msgid "GitHub"
+msgstr ""
+
+#: geoandino/overrides/forms.py:15
+msgid "level"
+msgstr ""
+
+#: geoandino/overrides/forms.py:16
+msgid "content"
+msgstr ""
+
+#: geoandino/overrides/forms.py:17
+msgid "site wide"
+msgstr ""
+
+#: geoandino/overrides/forms.py:18
+msgid "members only"
+msgstr ""
+
+#: geoandino/overrides/forms.py:19
+msgid "dissmissal type"
+msgstr ""
+
+#: geoandino/overrides/forms.py:20
+msgid "publish start"
+msgstr ""
+
+#: geoandino/overrides/forms.py:21
+msgid "publish end"
+msgstr ""
+
+#: geoandino/overrides/forms.py:25 geoandino/templates/base.html:211
+#: geoandino/templates/base.html.py:212
+msgid "Username"
+msgstr ""
+
+#: geoandino/templates/base.html:76
+#: geoandino/templates/layers/site_layers_list.html:6
+#: geoandino/templates/layers/site_layers_list.html:14
+msgid "Layers"
+msgstr ""
+
+#: geoandino/templates/base.html:79
+#: geoandino/templates/maps/site_maps_list.html:6
+#: geoandino/templates/maps/site_maps_list.html:14
+msgid "Maps"
+msgstr ""
+
+#: geoandino/templates/base.html:82
+#: geoandino/templates/documents/site_documents_list.html:5
+#: geoandino/templates/documents/site_documents_list.html:13
+msgid "Documents"
+msgstr ""
+
+#: geoandino/templates/base.html:100 geoandino/templates/base.html.py:102
+#: geoandino/templates/site_index.html:26
+#: geoandino/templates/site_index.html:28
+msgid "What data are you looking for?"
+msgstr "¿Qué datos buscás?"
+
+#: geoandino/templates/base.html:118
+msgid "Profile"
+msgstr ""
+
+#: geoandino/templates/base.html:119
+msgid "Recent Activity"
+msgstr ""
+
+#: geoandino/templates/base.html:120
+msgid "Inbox"
+msgstr ""
+
+#: geoandino/templates/base.html:125
+msgid "Help"
+msgstr ""
+
+#: geoandino/templates/base.html:190
+msgid "developed on"
+msgstr "desarrollado sobre"
+
+#: geoandino/templates/base.html:190
+msgid "GeoNode"
+msgstr ""
+
+#: geoandino/templates/base.html:205 geoandino/templates/base.html.py:223
+msgid "Sign in"
+msgstr ""
+
+#: geoandino/templates/base.html:215 geoandino/templates/base.html.py:216
+msgid "Password"
+msgstr ""
+
+#: geoandino/templates/base.html:219
+msgid "Remember Me"
+msgstr ""
+
+#: geoandino/templates/base.html:260
+msgid "Type your search here ..."
+msgstr ""
+
+#: geoandino/templates/documents/document_upload.html:5
+msgid "Upload Document"
+msgstr ""
+>>>>>>> layout_changes
 
 #: geoandino/admin.py:13
 msgid "Landing"
@@ -77,7 +201,7 @@ msgstr "Descripción de documentos"
 
 #: geoandino/models.py:122
 msgid "Group description"
-msgstr "Descripción de grupos"
+msgstr "Descripción de organizaciones"
 
 #: geoandino/models.py:124
 msgid "Icon display"
@@ -94,6 +218,10 @@ msgstr "Logo de pie de página"
 #: geoandino/models.py:127
 msgid "Logo header"
 msgstr "Logo de encabezamiento"
+
+#: geoandino/admin.py:32
+msgid "Social media metadata"
+msgstr "Metadatos de redes sociales"
 
 #: geoandino/models.py:128
 msgid "Facebook and Google image"
@@ -139,6 +267,7 @@ msgstr "No hay contenido creado todavía"
 #: geoandino/templates/documents/document_list.html:17
 msgid "Document Type"
 msgstr "Tipo de documento"
+<<<<<<< HEAD
 
 #: geoandino/templates/base.html:100 geoandino/templates/base.html.py:102
 #: geoandino/templates/site_index.html:26
@@ -153,6 +282,8 @@ msgstr "desarrollado sobre"
 #: geoandino/templates/base.html:190
 msgid "GeoNode"
 msgstr ""
+=======
+>>>>>>> layout_changes
 
 #: geoandino/templates/documents/document_upload.html:21
 msgid "Upload"
@@ -162,6 +293,25 @@ msgstr "Cargar archivos"
 msgid "Select layer, map or empty"
 msgstr "Seleccionar una capa, mapa o nada"
 
+<<<<<<< HEAD
+=======
+#: geoandino/templates/documents/site_documents_list.html:12
+msgid "Upload Documents"
+msgstr ""
+
+#: geoandino/templates/groups/site_groups_list.html:6
+msgid "Create a New Group"
+msgstr ""
+
+#: geoandino/templates/groups/site_groups_list.html:8
+msgid "Explore Groups"
+msgstr ""
+
+#: geoandino/templates/help.html:4
+msgid "User Guide"
+msgstr ""
+
+>>>>>>> layout_changes
 #: geoandino/templates/documents/document_upload_base.html:13
 msgid "Allowed document types:"
 msgstr "Tipos de documentos permitidos:"
@@ -227,10 +377,6 @@ msgstr "Buscar por región"
 msgid "Filters"
 msgstr "Filtros"
 
-#: geoandino/templates/search/_text_filter.html:10
-msgid "Search by text"
-msgstr "Buscar por texto"
-
 #: geoandino/templates/services/service_list.html:26
 msgid "No services registered"
 msgstr "No hay servicios registrados"
@@ -259,10 +405,13 @@ msgstr "Destacados"
 #: geoandino/templates/site_index.html:134
 msgid "Explore all datasets"
 msgstr "Explorá todos los conjuntos de datos"
+<<<<<<< HEAD
 
 #: geoandino/templates/snippets/super_theme_taxonomy_field.html:3
 msgid "Super theme taxonomy"
 msgstr ""
+=======
+>>>>>>> layout_changes
 
 #: geoandino/templates/upload/layer_upload.html:81
 msgid "Choose Files"
@@ -275,6 +424,14 @@ msgstr ""
 "palabras de uso común o palabras o frases de uso formal usadas para "
 "describir el tema (separados por espacios o comas)"
 
+<<<<<<< HEAD
+=======
+#: geoandino/templates/overrides/geonode/search/_text_filter.html:3
+#: geoandino/templates/search/_text_filter.html:10
+msgid "Search by text"
+msgstr "Buscar por texto"
+
+>>>>>>> layout_changes
 msgid "Return to Map"
 msgstr "Volver a mapa"
 
@@ -314,13 +471,22 @@ msgstr "Economía"
 msgid "Thumbnail url"
 msgstr "URL de miniatura"
 
+<<<<<<< HEAD
 msgid "Is mosaic"
 msgstr "Es mosaico"
 
+=======
+>>>>>>> layout_changes
 #: geoandino/templates/people/profile_detail.html:103
 #: geoandino/templates/search/_h_keywords_filter.html:3
 msgid "Keywords"
 msgstr "Palabras claves"
+<<<<<<< HEAD
+=======
+
+msgid "Is mosaic"
+msgstr "Es mosaico"
+>>>>>>> layout_changes
 
 msgid "Has time"
 msgstr "Tiene tiempo"
@@ -343,6 +509,26 @@ msgstr "Expresión regular de la elevación"
 msgid "type some text to search in this autocomplete"
 msgstr "Escribí una palabra clave y apretá la coma"
 
+<<<<<<< HEAD
+=======
+#: geoandino/templates/people/profile_detail.html:137
+msgid "Announcements"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:142
+#: geoandino/templates/services/service_list.html:9
+msgid "Remote Services"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:143
+msgid "Invite User"
+msgstr ""
+
+#: geoandino/templates/people/profile_detail.html:144
+msgid "GeoServer"
+msgstr ""
+
+>>>>>>> layout_changes
 msgid "Published"
 msgstr "Publicado"
 
@@ -355,6 +541,7 @@ msgstr "Imagen de identificación"
 msgid "Spatial Resolution"
 msgstr "Resolución espacial"
 
+<<<<<<< HEAD
 msgid "Projetion System"
 msgstr "Sistema de proyección"
 
@@ -365,6 +552,75 @@ msgstr "Inicio"
 #: geoandino/templates/search/_general_filters.html:39
 msgid "Date ends before:"
 msgstr "Fin"
+=======
+#: geoandino/templates/search/_general_filters.html:4
+msgid "Categories"
+msgstr ""
+
+#: geoandino/templates/search/_general_filters.html:19
+msgid "Owners"
+msgstr ""
+
+#: geoandino/templates/search/_general_filters.html:33
+msgid "Date"
+msgstr ""
+
+#: geoandino/templates/search/_region_filter.html:5
+msgid "Regions"
+msgstr ""
+
+#: geoandino/templates/search/_search_content.html:11
+msgid "Set permissions"
+msgstr ""
+
+#: geoandino/templates/search/_search_content.html:24
+#: geoandino/templates/upload/layer_upload.html:107
+msgid "Clear"
+msgstr ""
+
+#: geoandino/templates/search/_sort_filters.html:11
+#: geoandino/templates/search/_sort_filters.html:17
+#: geoandino/templates/search/_sort_filters.html:22
+msgid "Less recent"
+msgstr ""
+
+#: geoandino/templates/search/_sort_filters.html:12
+#: geoandino/templates/search/_sort_filters.html:18
+#: geoandino/templates/search/_sort_filters.html:23
+msgid "A - Z"
+msgstr ""
+
+#: geoandino/templates/search/_sort_filters.html:13
+#: geoandino/templates/search/_sort_filters.html:19
+#: geoandino/templates/search/_sort_filters.html:24
+msgid "Z - A"
+msgstr ""
+
+#: geoandino/templates/search/_sort_filters.html:14
+msgid "Most popular"
+msgstr ""
+
+#: geoandino/templates/search/_text_filter.html:5
+msgid "Text"
+msgstr ""
+
+#: geoandino/templates/services/service_list.html:8
+msgid "Register a new Service"
+msgstr ""
+
+msgid "Projetion System"
+msgstr "Sistema de proyección"
+
+msgid "Extension x0"
+msgstr "Extensión x0"
+
+msgid "Extension x1"
+msgstr "Extensión x1"
+
+#: geoandino/templates/snippets/super_theme_taxonomy_field.html:3
+msgid "Super theme taxonomy"
+msgstr ""
+>>>>>>> layout_changes
 
 msgid "Extension y0"
 msgstr "Extensión y0"
@@ -378,11 +634,23 @@ msgstr "Características"
 msgid "Contact Points"
 msgstr "Puntos de contacto"
 
+<<<<<<< HEAD
+=======
+
+#: geoandino/templates/upload/layer_upload.html:40
+msgid "Incomplete Uploads"
+msgstr ""
+
+>>>>>>> layout_changes
 msgid "References"
 msgstr "Referencias"
 
 msgid "Link Online"
 msgstr "Enlace"
+<<<<<<< HEAD
+=======
+
+>>>>>>> layout_changes
 
 msgid "Metadata Page"
 msgstr "Página de metadatos"
@@ -456,8 +724,42 @@ msgstr "Capas geográficas"
 msgid "Type"
 msgstr "Tipo de recurso"
 
+<<<<<<< HEAD
 msgid "Selected layers"
 msgstr "Capas seleccionadas"
 
 msgid "No layers selected"
 msgstr "No hay capas seleccionadas"
+=======
+msgid "Date begins after:"
+msgstr "Inicio"
+
+msgid "Date ends before:"
+msgstr "Fin"
+
+msgid "About"
+msgstr "Acerca"
+
+msgid "Groups"
+msgstr "Organizaciones"
+
+msgid "SORT BY"
+msgstr "Ordenar por"
+
+msgid "Most recent"
+msgstr "Más recientes"
+
+msgid "Create a Map"
+msgstr "Crear mapa"
+
+msgid "Selected layers"
+msgstr "Capas seleccionadas"
+
+msgid "No layers selected"
+msgstr "No hay capas seleccionadas"
+
+#: geoandino/templates/upload/layer_upload.html:108
+msgid "Upload files"
+msgstr ""
+
+>>>>>>> layout_changes

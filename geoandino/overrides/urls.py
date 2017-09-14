@@ -70,4 +70,4 @@ groups_urlpatterns = patterns(
                     )
 
 
-urlpatterns = layers_urlpatterns + maps_urlpatterns + documents_urlpatterns + groups_urlpatterns + urlpatterns
+urlpatterns = layers_urlpatterns + documents_urlpatterns + maps_urlpatterns + groups_urlpatterns + urlpatterns
