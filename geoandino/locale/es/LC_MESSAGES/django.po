@@ -77,7 +77,7 @@ msgstr "Descripción de documentos"
 
 #: geoandino/models.py:122
 msgid "Group description"
-msgstr "Descripción de grupos"
+msgstr "Descripción de organizaciones"
 
 #: geoandino/models.py:124
 msgid "Icon display"
@@ -94,6 +94,10 @@ msgstr "Logo de pie de página"
 #: geoandino/models.py:127
 msgid "Logo header"
 msgstr "Logo de encabezamiento"
+
+#: geoandino/admin.py:32
+msgid "Social media metadata"
+msgstr "Metadatos de redes sociales"
 
 #: geoandino/models.py:128
 msgid "Facebook and Google image"
@@ -440,5 +444,20 @@ msgstr "Inicio"
 
 msgid "Date ends before:"
 msgstr "Fin"
+
+msgid "About"
+msgstr "Acerca"
+
+msgid "Groups"
+msgstr "Organizaciones"
+
+msgid "SORT BY"
+msgstr "Ordenar por"
+
+msgid "Most recent"
+msgstr "Más recientes"
+
+msgid "Create a Map"
+msgstr "Crear mapa"
 
 
