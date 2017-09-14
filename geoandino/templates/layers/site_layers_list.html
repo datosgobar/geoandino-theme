@@ -21,9 +21,11 @@
         <h5>{{ site_conf.layer_description }}</h5>
       </div>
       {% with include_type_filter='true' %}
+      {% with include_extent_filter='true' %}
       {% with header='Type' %}
       {% with filter='type__in' %}
       {% include "layers/search/_search_content_layer.html" %}
+      {% endwith %}
       {% endwith %}
       {% endwith %}
       {% endwith %}

@@ -29,7 +29,7 @@
             {% if SEARCH_FILTERS.REGION_ENABLED %}
               {% include "search/_region_filter.html" %}
             {% endif %}
-            {% if SEARCH_FILTERS.EXTENT_ENABLED %}
+            {% if SEARCH_FILTERS.EXTENT_ENABLED and include_extent_filter == 'true' %}
               {% include "search/_extent_filter.html" %}
             {% endif %}
         </div>

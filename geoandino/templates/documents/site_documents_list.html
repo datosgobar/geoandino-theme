@@ -20,9 +20,11 @@
       <div>{{ site_conf.document_description }}</div>
     </div>
       {% with include_type_filter='false' %}
+      {% with include_extent_filter='false' %}
       {% with header='Document Type' %}
       {% with filter='doc_type__in' %}
       {% include "search/_search_content.html" %}
+      {% endwith %}
       {% endwith %}
       {% endwith %}
       {% endwith %}
