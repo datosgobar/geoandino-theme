@@ -139,3 +139,88 @@ nav.filter ul.nav {
 .d-inline {
     display: inline;
 } 
+
+
+#navigation-bar {
+    position: relative;
+    height: 60px;
+    padding-left: 60px;
+}
+#searchNavbar {
+    position: relative;
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin-left: -60px;
+}
+#labelNavbarSearch {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    z-index: 20;
+}
+#labelNavbarSearch label {
+    display: block;
+    width: 60px;
+    height: 60px;
+    background: url("../img/search.png") 0 0;
+    font-size: 0;
+    color: rgba(0, 0, 0, 0);
+    text-indent: -9999px;
+    cursor: pointer;
+}
+#labelNavbarSearch label:hover {
+    background: url("../img/search.png") -60px 0
+}
+#labelNavbarSearch.active label {
+    background: url("../img/search.png") -60px 0
+}
+#inputNavbarSearch {
+    position: absolute;
+    top: 0;
+    left: 60px;
+    width: 450px;
+    height: 60px;
+    z-index: 5;
+    overflow: hidden;
+}
+#inputNavbarSearch input {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -450px;
+    width: 450px;
+    height: 100%;
+    margin: 0;
+    padding: 0 10px;
+    border: none;
+    background-color: #23688b;
+    color: #fff;
+    font-size: 18px;
+    -webkit-backface-visibility: none;
+    -moz-backface-visibility: none;
+    -ms-backface-visibility: none;
+    backface-visibility: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-transition: left 0;
+    -moz-transition: left 0;
+    -ms-transition: left 0;
+    -o-transition: left 0;
+    transition: left 0;
+}
+#inputNavbarSearch input:focus {
+    outline: none
+}
+#inputNavbarSearch.focus {
+    z-index: 20
+}
+#inputNavbarSearch.focus input {
+    left: 0;
+    -webkit-transition: left 0.3s;
+    -moz-transition: left 0.3s;
+    -ms-transition: left 0.3s;
+    -o-transition: left 0.3s;
+    transition: left 0.3s;
+}

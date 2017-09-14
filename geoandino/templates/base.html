@@ -93,22 +93,18 @@
           {% endif %}
 
 	      {% block extra_tab %}
-            <div >
-                <form id="search" action="{% url "search" %}" >
-                 <div class="input-group stylish-input-group">
-                    {% if HAYSTACK_SEARCH %}
-                    <input id="search_input" type="text" placeholder='{% trans "What data are you looking for?" %}' name="q" class="form-control">
-                    {% else %}
-                    <input id="search_input" type="text" placeholder='{% trans "What data are you looking for?" %}' name="title__icontains" class="form-control">
-                    {% endif %}
-                    <span class="input-group-addon">
-                      <button type="submit">
-                        <span class="fa fa-search"></span>
-                      </button>
-                    </span>
-                 </div>
-                </form>
-            </div>
+              <div id="navigation-bar" class="clearfix">
+              <form id="searchNavbar" action="#" method="post">
+                  <div id="labelNavbarSearch"><label for="search-terms" id="search-label">search</label></div>
+                  <div id="inputNavbarSearch">
+                  {% if HAYSTACK_SEARCH %}
+                    <input name="q" id="search-terms" type="text" placeholder='{% trans "What data are you looking for?" %}' class="form-control">
+                  {% else %}
+                    <input name="title__icontains" id="search_input" type="text" placeholder='{% trans "What data are you looking for?" %}' name="title__icontains" class="form-control">
+                  {% endif %}
+                  </div>
+              </form>
+          </div>
           {% endblock %}
 
           {% endblock %}
@@ -285,6 +281,7 @@
         };
     </script>
     <script type="text/javascript" src="{% url "lang" %}"></script>
-
+    <script src="{{ STATIC_URL }}geonode/js/classie.js"></script>
+    <script src="{{ STATIC_URL }}geonode/js/search.js"></script>
   </body>
 </html>
