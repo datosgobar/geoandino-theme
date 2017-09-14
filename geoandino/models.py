@@ -6,6 +6,7 @@ from exclusivebooleanfield.fields import ExclusiveBooleanField
 from django.utils.translation import ugettext as _
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from geonode.base.models import TopicCategory
+from account.models import EmailAddress
 
 
 AGRI = "agri"
@@ -108,6 +109,7 @@ class GeoAndinoTopicCategory(TopicCategory):
 
 class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionModel):
     default = ExclusiveBooleanField(default=False)
+    publisher = models.ForeignKey(EmailAddress)
     about_visible = models.BooleanField(default=False, verbose_name=_('Visible'))
     about_title = models.CharField(_('title'), max_length=255, default=None, blank=True, null=True)
     about_description = models.TextField(_('description'), blank=True, null=True)
@@ -153,10 +155,13 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
     def twitter_image_url(self):
         return image_url_or_default(self, 'twitter_image', None)
 
+    def publisher_name(self):
+        return self.publisher.user.username
+
+    def publisher_email(self):
+        return self.publisher.email
+
+    def __str__(self):
+        return self.title
     class Meta:
         ordering = ['created', ]
-
-
-
-
-
