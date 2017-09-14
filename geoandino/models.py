@@ -6,6 +6,7 @@ from exclusivebooleanfield.fields import ExclusiveBooleanField
 from django.utils.translation import ugettext as _
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from geonode.base.models import TopicCategory
+from account.models import EmailAddress
 
 
 AGRI = "agri"
@@ -108,10 +109,11 @@ class GeoAndinoTopicCategory(TopicCategory):
 
 class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionModel):
     default = ExclusiveBooleanField(default=False)
+    publisher = models.ForeignKey(EmailAddress)
     about_visible = models.BooleanField(default=False, verbose_name=_('Visible'))
     about_title = models.CharField(_('title'), max_length=255, default=None, blank=True, null=True)
     about_description = models.TextField(_('description'), blank=True, null=True)
-    image_background = models.ImageField(upload_to="thumbs/", blank=True, null=True, default=None)
+    image_background = models.ImageField(_('Image background'), upload_to="thumbs/", blank=True, null=True, default=None)
     facebook_url = models.CharField(max_length=150, verbose_name=_('Facebook'), default="http://www.facebook.com/portal", null=True, blank=True)
     twitter_url = models.CharField(max_length=150, verbose_name=_('Twitter'), default="http://www.twitter.com/portal", null=True, blank=True)
     github_url = models.CharField(max_length=150, verbose_name=_('GitHub'), default="http://www.github.com/portal", null=True, blank=True)
@@ -123,8 +125,8 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
     group_visible = models.BooleanField(default=False, verbose_name=_('Visible'))
     icon_display = models.BooleanField(default=False, verbose_name=_('Icon display'))
     site_url = models.CharField(_('Site url'), max_length=255, default=None, blank=True, null=True)
-    logo_footer = models.ImageField(upload_to="thumbs/", blank=True, null=True)
-    logo_header = models.ImageField(upload_to="thumbs/", blank=True, null=True)
+    logo_footer = models.ImageField(_('Logo footer'), upload_to="thumbs/", blank=True, null=True)
+    logo_header = models.ImageField(_('Logo header'), upload_to="thumbs/", blank=True, null=True)
     facebook_google_image = models.ImageField(_('Facebook and Google image'), upload_to="thumbs/", blank=True, null=True)
     facebook_google_title = models.CharField(_('Facebook and Google title'), max_length=255, default=None, blank=True, null=True)
     facebook_google_description = models.TextField(_('Facebook and Google description'), blank=True, null=True)
@@ -153,10 +155,13 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
     def twitter_image_url(self):
         return image_url_or_default(self, 'twitter_image', None)
 
+    def publisher_name(self):
+        return self.publisher.user.username
+
+    def publisher_email(self):
+        return self.publisher.email
+
+    def __str__(self):
+        return self.title
     class Meta:
         ordering = ['created', ]
-
-
-
-
-

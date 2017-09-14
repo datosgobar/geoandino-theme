@@ -1,2 +1,4 @@
 -r base.txt
 factory-boy==2.8.1
+parameterized==0.6.1
+pydatajson==0.2.21
