@@ -22,8 +22,6 @@ msgstr ""
 #: geoandino/admin.py:12
 msgid "default"
 msgstr ""
-<<<<<<< HEAD
-=======
 
 #: geoandino/models.py:112 geoandino/overrides/forms.py:14
 msgid "title"
@@ -145,7 +143,6 @@ msgstr ""
 #: geoandino/templates/documents/document_upload.html:5
 msgid "Upload Document"
 msgstr ""
->>>>>>> layout_changes
 
 #: geoandino/admin.py:13
 msgid "Landing"
@@ -267,23 +264,6 @@ msgstr "No hay contenido creado todavía"
 #: geoandino/templates/documents/document_list.html:17
 msgid "Document Type"
 msgstr "Tipo de documento"
-<<<<<<< HEAD
-
-#: geoandino/templates/base.html:100 geoandino/templates/base.html.py:102
-#: geoandino/templates/site_index.html:26
-#: geoandino/templates/site_index.html:28
-msgid "What data are you looking for?"
-msgstr "¿Qué datos buscás?"
-
-#: geoandino/templates/base.html:190
-msgid "developed on"
-msgstr "desarrollado sobre"
-
-#: geoandino/templates/base.html:190
-msgid "GeoNode"
-msgstr ""
-=======
->>>>>>> layout_changes
 
 #: geoandino/templates/documents/document_upload.html:21
 msgid "Upload"
@@ -293,8 +273,6 @@ msgstr "Cargar archivos"
 msgid "Select layer, map or empty"
 msgstr "Seleccionar una capa, mapa o nada"
 
-<<<<<<< HEAD
-=======
 #: geoandino/templates/documents/site_documents_list.html:12
 msgid "Upload Documents"
 msgstr ""
@@ -311,7 +289,6 @@ msgstr ""
 msgid "User Guide"
 msgstr ""
 
->>>>>>> layout_changes
 #: geoandino/templates/documents/document_upload_base.html:13
 msgid "Allowed document types:"
 msgstr "Tipos de documentos permitidos:"
@@ -405,13 +382,6 @@ msgstr "Destacados"
 #: geoandino/templates/site_index.html:134
 msgid "Explore all datasets"
 msgstr "Explorá todos los conjuntos de datos"
-<<<<<<< HEAD
-
-#: geoandino/templates/snippets/super_theme_taxonomy_field.html:3
-msgid "Super theme taxonomy"
-msgstr ""
-=======
->>>>>>> layout_changes
 
 #: geoandino/templates/upload/layer_upload.html:81
 msgid "Choose Files"
@@ -424,14 +394,11 @@ msgstr ""
 "palabras de uso común o palabras o frases de uso formal usadas para "
 "describir el tema (separados por espacios o comas)"
 
-<<<<<<< HEAD
-=======
 #: geoandino/templates/overrides/geonode/search/_text_filter.html:3
 #: geoandino/templates/search/_text_filter.html:10
 msgid "Search by text"
 msgstr "Buscar por texto"
 
->>>>>>> layout_changes
 msgid "Return to Map"
 msgstr "Volver a mapa"
 
@@ -471,22 +438,13 @@ msgstr "Economía"
 msgid "Thumbnail url"
 msgstr "URL de miniatura"
 
-<<<<<<< HEAD
-msgid "Is mosaic"
-msgstr "Es mosaico"
-
-=======
->>>>>>> layout_changes
 #: geoandino/templates/people/profile_detail.html:103
 #: geoandino/templates/search/_h_keywords_filter.html:3
 msgid "Keywords"
 msgstr "Palabras claves"
-<<<<<<< HEAD
-=======
 
 msgid "Is mosaic"
 msgstr "Es mosaico"
->>>>>>> layout_changes
 
 msgid "Has time"
 msgstr "Tiene tiempo"
@@ -509,8 +467,6 @@ msgstr "Expresión regular de la elevación"
 msgid "type some text to search in this autocomplete"
 msgstr "Escribí una palabra clave y apretá la coma"
 
-<<<<<<< HEAD
-=======
 #: geoandino/templates/people/profile_detail.html:137
 msgid "Announcements"
 msgstr ""
@@ -528,7 +484,6 @@ msgstr ""
 msgid "GeoServer"
 msgstr ""
 
->>>>>>> layout_changes
 msgid "Published"
 msgstr "Publicado"
 
@@ -541,18 +496,6 @@ msgstr "Imagen de identificación"
 msgid "Spatial Resolution"
 msgstr "Resolución espacial"
 
-<<<<<<< HEAD
-msgid "Projetion System"
-msgstr "Sistema de proyección"
-
-#: geoandino/templates/search/_general_filters.html:35
-msgid "Date begins after:"
-msgstr "Inicio"
-
-#: geoandino/templates/search/_general_filters.html:39
-msgid "Date ends before:"
-msgstr "Fin"
-=======
 #: geoandino/templates/search/_general_filters.html:4
 msgid "Categories"
 msgstr ""
@@ -620,7 +563,6 @@ msgstr "Extensión x1"
 #: geoandino/templates/snippets/super_theme_taxonomy_field.html:3
 msgid "Super theme taxonomy"
 msgstr ""
->>>>>>> layout_changes
 
 msgid "Extension y0"
 msgstr "Extensión y0"
@@ -634,23 +576,17 @@ msgstr "Características"
 msgid "Contact Points"
 msgstr "Puntos de contacto"
 
-<<<<<<< HEAD
-=======
 
 #: geoandino/templates/upload/layer_upload.html:40
 msgid "Incomplete Uploads"
 msgstr ""
 
->>>>>>> layout_changes
 msgid "References"
 msgstr "Referencias"
 
 msgid "Link Online"
 msgstr "Enlace"
-<<<<<<< HEAD
-=======
 
->>>>>>> layout_changes
 
 msgid "Metadata Page"
 msgstr "Página de metadatos"
@@ -724,13 +660,6 @@ msgstr "Capas geográficas"
 msgid "Type"
 msgstr "Tipo de recurso"
 
-<<<<<<< HEAD
-msgid "Selected layers"
-msgstr "Capas seleccionadas"
-
-msgid "No layers selected"
-msgstr "No hay capas seleccionadas"
-=======
 msgid "Date begins after:"
 msgstr "Inicio"
 
@@ -762,4 +691,3 @@ msgstr "No hay capas seleccionadas"
 msgid "Upload files"
 msgstr ""
 
->>>>>>> layout_changes
