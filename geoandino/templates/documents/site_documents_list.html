@@ -19,7 +19,7 @@
       <h2>{% trans 'Documents' %}</h2>
       <div>{{ site_conf.document_description }}</div>
     </div>
-      {% with include_type_filter='true' %}
+      {% with include_type_filter='false' %}
       {% with header='Document Type' %}
       {% with filter='doc_type__in' %}
       {% include "search/_search_content.html" %}
