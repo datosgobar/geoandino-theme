@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import django
 import logging
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseRedirect
@@ -94,7 +94,10 @@ def layer_metadata(request, layername, template='layers/site_layers_metadata.htm
 
     else:
         internationalize_fields()
-        layer_form = LayerForm(instance=layer, prefix="resource")
+        if layer.abstract == 'No abstract provided':
+            layer_form = LayerForm(instance=layer, prefix="resource", initial={'abstract': ""})
+        else:
+            layer_form = LayerForm(instance=layer, prefix="resource")
         attribute_form = layer_attribute_set(
             instance=layer,
             prefix="layer_attribute_set",

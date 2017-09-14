@@ -84,7 +84,10 @@ def document_metadata(
         else:
             internationalize_fields()
             internationalize_document(document)
-            document_form = DocumentForm(instance=document, prefix="resource")
+            if document.abstract == 'No abstract provided':
+                document_form = DocumentForm(instance=document, prefix="resource", initial={'abstract': ""})
+            else:
+                document_form = DocumentForm(instance=document, prefix="resource")
             category_form = CategoryForm(
                 prefix="category_choice_field",
                 initial=topic_category.id if topic_category else None)
