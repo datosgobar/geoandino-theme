@@ -9,10 +9,10 @@
     <li><a href="{% url "home" %}">{{site_conf.title}}</a></li>
     <li class="active">{% trans "About" %}</li>
   </ol>
-  <div class="page-header">
-    <h2>{{ site_conf.about_title }}</h2>
-  </div>
-  <p>
-  {{ site_conf.about_description |safe }}
-  </p>
+<div class="page-header">
+  <h2>{{ site_conf.about_title }}</h2>
+</div>
+<p>
+{{ site_conf.about_description |safe }}
+</p>
 {% endblock %}

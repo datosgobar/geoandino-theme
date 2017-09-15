@@ -52,8 +52,10 @@
   			<div class="container text-center">
 				{% for taxonomy in taxonomies_with_data %}
                 <div class="col-xs-4 col-sm-2">
-  					<a href="{{taxonomy.search_url}}" data-toggle="tooltip" data-placement="auto"
-							title="{{taxonomy.get_description}}">
+
+
+ <!-- CATEGORIAS CON ICONOS
+  					<a href="{{taxonomy.search_url}}" >
                         <div class="panel-default panel-icon">
                           {% if site_conf.icon_display %}
                                   <div class="panel-heading">
@@ -73,6 +75,14 @@
                             </div>
                       </div>
   					</a>
+            FIN CATEGORIAS CON ICONOS --> 
+
+             <!-- CATEGORIAS SIN ICONOS --> 
+            <a class="btn btn-primary title-ellipsis" href="{{taxonomy.search_url}}" >           
+              {{taxonomy.identifier}}
+            </a>
+         <!--    FIN CATEGORIAS SIN ICONOS --> 
+
   				</div>
 				{% endfor %}
   			</div>
@@ -93,8 +103,8 @@
                 <div class="col-xs-12 col-sm-6 col-md-3">
                     <a class="panel panel-default" href="{{ item.detail_url }}">
                       <div style="background-image:url('{{ item.thumbnail_url }}');" class="panel-heading"></div>
-                      <div class="panel-body">
-                        <h3>{{ item.title }}</h3>
+                      <div class="panel-body text-left">
+                        <h3 class="title-ellipsis">{{ item.title }}</h3>
                         <p class="text-muted">{{ item.abstract }}</p>
                       </div>
                     </a>

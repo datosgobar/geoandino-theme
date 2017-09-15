@@ -55,6 +55,26 @@ body {
 .home .big-search a {
     color: #ffffff;
 }
+.home .jumbotron form#search {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.panel-body {
+    border-top: 1px solid #eee;
+}
+.title-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.home #datasets {
+  padding: 2em 0;
+}
+.home #datasets a {
+    color: #fff;
+    width: 100%;
+}
 
 /*Footer*/
 
@@ -98,9 +118,6 @@ footer a {
 }
 .profile-avatar li a:hover, .profile-avatar h4 a:hover {
     color: #2fbaf9;
-}
-.profile-avatar img {
-    border-right: 1px solid #eee;
 }
 .profile-avatar h4 a {
     color: #0695d6;
@@ -224,3 +241,53 @@ nav.filter ul.nav {
     -o-transition: left 0.3s;
     transition: left 0.3s;
 }
+
+.page-header {
+  border-bottom: none;
+  margin: 44px 0 10px;
+}
+.btn-wholewidth {
+  width: 100%;
+}
+.hr-sm {
+  margin: 15px 0;
+}
+.m-t-0 {
+  margin-top: 0;
+}
+nav.filter ul li a {
+    font-size: 0.8em;
+    color: #0695d6;
+}
+nav.filter .badge {
+    padding: 4px 7px;
+    font-size: 12px;
+    background-color: #acacac;
+}
+nav.filter .fa-stack.fa-1g {
+    margin-right: 5px;
+}
+nav.filter li a {
+    padding: 5px 0px;
+}
+nav.filter #date_start, nav.filter #date_start input, nav.filter #date_end, nav.filter #date_end input  {
+    font-size: 0.85em;
+}
+nav.filter #date_start {
+  padding-bottom: 6px;
+}
+nav.filter #date_end {
+    padding-top: 6px;
+}
+.panel-icon .panel-heading {
+    background-color: #eee;
+    text-align: center;
+}
+.panel h3 a, .panel time a {
+  text-decoration: none;
+}
+.panel time {
+  margin-top: 20px;
+  font-size: 12px;
+}
+

@@ -2,7 +2,8 @@
 {% load i18n %}
 
 {% block cart %}
-    <h4>{% trans "Selected layers" %}</h4>
+    <h4 class="m-t-0">{% trans "Selected layers" %}</h4>
+    <hr class="hr-sm">
     <div ng-hide="cart.getCart().items.length">
         {% trans "No layers selected" %}
     </div>
@@ -10,7 +11,8 @@
 {% endblock %}
 
 {% block bulk_perms_button %}
-    <button type="button" class="btn btn-primary" ng-disabled="!cart.getCart().items.length" ng-click="newMap()">{% trans "Create a Map" %}</button>
+	<hr class="hr-sm">
+    <button type="button" class="btn btn-primary btn-wholewidth" ng-disabled="!cart.getCart().items.length" ng-click="newMap()">{% trans "Create a Map" %}</button>
 {% endblock %}
 
 {% block card %}
