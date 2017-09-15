@@ -25,8 +25,8 @@
           <div class="row">
             <div class="col-xs-12 item-items">
               <ul class="list-inline">
-                <li><a href="{{ item.detail_url }}#info">
-                  {{ item.date|date:'d' }} de {{ item.date|date:'MMMM' }} de {{ item.date|date:'y' }}
+                <li><a id="dataset-info" href="{{ item.detail_url }}#info">
+                  {{ item.date |date:"y/M/d" }}
                 </a></li></li>
               </ul>
             </div>
@@ -37,4 +37,6 @@
   </article>
 </div>
 {% endverbatim %}
-
+<script type="text/javascript" src="{% url "lang" %}"></script>
+<script src="{{ STATIC_URL }}geonode/js/classie.js"></script>
+<script src="{{ STATIC_URL }}geonode/js/date.js"></script>
