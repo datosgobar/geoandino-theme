@@ -94,13 +94,13 @@
 
 	      {% block extra_tab %}
               <div id="navigation-bar" class="clearfix">
-              <form id="searchNavbar" action="#" method="post">
+              <form id="searchNavbar" action="{% url "search" %}">
                   <div id="labelNavbarSearch"><label for="search-terms" id="search-label">search</label></div>
                   <div id="inputNavbarSearch">
                   {% if HAYSTACK_SEARCH %}
                     <input name="q" id="search-terms" type="text" placeholder='{% trans "What data are you looking for?" %}' class="form-control">
                   {% else %}
-                    <input name="title__icontains" id="search_input" type="text" placeholder='{% trans "What data are you looking for?" %}' name="title__icontains" class="form-control">
+                    <input name="title__icontains" id="search_input" type="text" placeholder='{% trans "What data are you looking for?" %}' class="form-control">
                   {% endif %}
                   </div>
               </form>
