@@ -25,9 +25,13 @@ def internationalize_fields():
     DocumentForm.base_fields['thumbnail_url'].label = _('Thumbnail url')
 
 
-def has_no_abstract_message(document):
-    abstract = document.abstract
+def has_default_message(abstract):
     return abstract == 'No abstract provided' or abstract == _('No abstract provided')
+
+
+def change_abstract(document):
+    if has_default_message(document.abstract):
+        document.abstract = "  "
 
 
 def document_metadata(
@@ -69,8 +73,10 @@ def document_metadata(
         metadata_author = document.metadata_author
         topic_category = document.category
 
+        internationalize_fields()
+        change_abstract(document)
+
         if request.method == "POST":
-            internationalize_fields()
             document_form = DocumentForm(
                 request.POST,
                 instance=document,
@@ -81,11 +87,7 @@ def document_metadata(
                 initial=int(
                     request.POST["category_choice_field"]) if "category_choice_field" in request.POST else None)
         else:
-            internationalize_fields()
-            if has_no_abstract_message(document):
-                document_form = DocumentForm(instance=document, prefix="resource", initial={'abstract': ""})
-            else:
-                document_form = DocumentForm(instance=document, prefix="resource")
+            document_form = DocumentForm(instance=document, prefix="resource")
             category_form = CategoryForm(
                 prefix="category_choice_field",
                 initial=topic_category.id if topic_category else None)

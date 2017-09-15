@@ -46,6 +46,25 @@ _PERMISSION_MSG_VIEW = _("You are not permitted to view this layer")
 from geonode.layers.views import _resolve_layer
 
 
+def internationalize_fields():
+    LayerForm.base_fields['elevation_regex'].label = _('Elevation regex')
+    LayerForm.base_fields['time_regex'].label = _('Time regex')
+    LayerForm.base_fields['metadata_uploaded_preserve'].label = _('Metadata uploaded preserve')
+    LayerForm.base_fields['is_mosaic'].label = _('Is mosaic')
+    LayerForm.base_fields['has_time'].label = _('Has time')
+    LayerForm.base_fields['has_elevation'].label = _('Has elevation')
+    LayerForm.base_fields['thumbnail_url'].label = _('Thumbnail url')
+
+
+def has_default_message(abstract):
+    return abstract == 'No abstract provided' or abstract == _('No abstract provided')
+
+
+def change_abstract(layer):
+    if has_default_message(layer.abstract):
+        layer.abstract = "  "
+
+
 def layer_metadata(request, layername, template='layers/site_layers_metadata.html'):
     """
     Override original layer's metadata view for adding translations
@@ -67,6 +86,9 @@ def layer_metadata(request, layername, template='layers/site_layers_metadata.htm
     poc = layer.poc
     metadata_author = layer.metadata_author
 
+    internationalize_fields()
+    change_abstract(layer)
+
     if request.method == "POST":
         if layer.metadata_uploaded_preserve:  # layer metadata cannot be edited
             out = {
@@ -78,7 +100,6 @@ def layer_metadata(request, layername, template='layers/site_layers_metadata.htm
                 content_type='application/json',
                 status=400)
 
-        internationalize_fields()
         layer_form = LayerForm(request.POST, instance=layer, prefix="resource")
 
         attribute_form = layer_attribute_set(
@@ -93,11 +114,7 @@ def layer_metadata(request, layername, template='layers/site_layers_metadata.htm
                 request.POST["category_choice_field"]) if "category_choice_field" in request.POST else None)
 
     else:
-        internationalize_fields()
-        if has_no_abstract_message(layer):
-            layer_form = LayerForm(instance=layer, prefix="resource", initial={'abstract': ""})
-        else:
-            layer_form = LayerForm(instance=layer, prefix="resource")
+        layer_form = LayerForm(instance=layer, prefix="resource")
         attribute_form = layer_attribute_set(
             instance=layer,
             prefix="layer_attribute_set",
@@ -206,21 +223,6 @@ def layer_metadata(request, layername, template='layers/site_layers_metadata.htm
         "attribute_form": attribute_form,
         "category_form": category_form,
 }))
-
-
-def internationalize_fields():
-    LayerForm.base_fields['elevation_regex'].label = _('Elevation regex')
-    LayerForm.base_fields['time_regex'].label = _('Time regex')
-    LayerForm.base_fields['metadata_uploaded_preserve'].label = _('Metadata uploaded preserve')
-    LayerForm.base_fields['is_mosaic'].label = _('Is mosaic')
-    LayerForm.base_fields['has_time'].label = _('Has time')
-    LayerForm.base_fields['has_elevation'].label = _('Has elevation')
-    LayerForm.base_fields['thumbnail_url'].label = _('Thumbnail url')
-
-
-def has_no_abstract_message(layer):
-    abstract = layer.abstract
-    return abstract == 'No abstract provided' or abstract == _('No abstract provided')
 
 
 def layer_metadata_detail(request, layername, template='layers/site_metadata_detail.html'):
