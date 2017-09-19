@@ -5,6 +5,7 @@ from announcements import forms as announcements_forms
 from account import forms as account_forms
 from geonode.groups import forms as group_forms
 from geonode.groups.models import GroupProfile
+from slugify import slugify
 
 
 class AnnouncementI18nForm(announcements_forms.AnnouncementForm):
@@ -47,5 +48,20 @@ def add_dependency_field(form):
                                                              widget=forms.Select())
 
 
+def clean_update_form(self):
+    cleaned_data = self.cleaned_data
+
+    name = cleaned_data.get("title")
+    if name is None:
+        raise forms.ValidationError(
+            _("You should write a name for the group."))
+    slug = slugify(name)
+
+    cleaned_data["slug"] = slug
+
+    return cleaned_data
+
+
 add_dependency_field(group_forms.GroupForm)
 add_dependency_field(group_forms.GroupUpdateForm)
+group_forms.GroupForm.clean = clean_update_form

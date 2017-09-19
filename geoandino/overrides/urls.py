@@ -28,3 +28,12 @@ urlpatterns = patterns(
        TemplateView.as_view(template_name='groups/site_groups_list.html'),
        name='groups_browse'),
 )
+
+groups_urlpatterns = patterns(
+                        'geoandino.overrides.groups.views',
+                        url(r'^groups/create/$', 'group_create', name="group_create"),
+                        url(r'^groups/group/(?P<slug>[-\w]+)/update/$', 'group_update', name='group_update'),
+)
+
+
+urlpatterns = groups_urlpatterns + urlpatterns
