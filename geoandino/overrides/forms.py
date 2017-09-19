@@ -35,7 +35,7 @@ def group_slugs():
 
 
 def group_choices():
-    choices = []
+    choices = [('default', _("It doesn't depend on another group"))]
     for slug in group_slugs():
         choices.append((slug, slug))
     return choices
@@ -44,7 +44,6 @@ def group_choices():
 def add_dependency_field(form):
     form.base_fields['depends_on_group'] = forms.ChoiceField(label=_('Does it depend on another group?'),
                                                              choices=group_choices(),
-                                                             initial=_("It doesn't depend on another group"),
                                                              widget=forms.Select())
 
 
