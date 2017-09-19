@@ -615,3 +615,9 @@ msgstr ""
 #: geoandino/templates/upload/layer_upload.html:108
 msgid "Upload files"
 msgstr ""
+
+msgid "Does it depend on another group?"
+msgstr "¿Depende de otra organización?"
+
+msgid "It doesn't depend on another group"
+msgstr "No depende de otra organización"
