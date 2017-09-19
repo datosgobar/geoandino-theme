@@ -7,6 +7,7 @@ from django.utils.translation import ugettext as _
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from geonode.base.models import TopicCategory
 from account.models import EmailAddress
+from geonode.groups.models import GroupProfile
 
 
 AGRI = "agri"
@@ -38,6 +39,34 @@ SUPER_THEME_CHOICES = (
     (TECH, "Ciencia y tecnología"),
     (TRAN, "Transporte"),
 )
+
+# Monkey patching to filter datasets by group
+#############################################
+
+
+def add_member_url(username):
+    return "owner__username={}".format(username)
+
+
+def add_members_to_url(search_string, group):
+    usernames = list(map(lambda m: m.user.username, group.member_queryset()))
+    for username in usernames[:-1]:
+        search_string += add_member_url(username)
+        search_string += "&"
+    search_string += add_member_url(usernames[-1])
+    return search_string
+
+
+@property
+def filter_by_group(self):
+    search_string = "/search/?limit=100&offset=0&"
+    url = add_members_to_url(search_string, self)
+    return url
+
+
+GroupProfile.filter_by_group = filter_by_group
+
+#############################################
 
 
 def image_url_or_default(self, image_property, default_url):
@@ -163,5 +192,6 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
 
     def __str__(self):
         return self.title
+
     class Meta:
         ordering = ['created', ]
