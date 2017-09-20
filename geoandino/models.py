@@ -45,7 +45,7 @@ SUPER_THEME_CHOICES = (
 
 
 def add_member_url(username):
-    return "owner__username={}".format(username)
+    return "owner__username__in={}".format(username)
 
 
 def add_members_to_url(search_string, group):
