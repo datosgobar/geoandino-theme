@@ -38,6 +38,7 @@ def dataset_from(resource):
     record['description'] = resource.abstract
     record['issued'] = resource_extras.issued
     record['modified'] = resource_extras.iso_modified
+    record['identifier'] = resource.uuid
     record['superTheme'] = [resource_extras.super_theme]
     record['accrualPeriodicity'] = translate_accrual_periodicity(resource.maintenance_frequency)
     record['publisher'] = {

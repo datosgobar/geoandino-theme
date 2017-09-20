@@ -101,6 +101,7 @@ class DataJsonArDatasetMixin:
         expected = {
             "title": model.title,
             "description": model.abstract,
+            "identifier": model.uuid,
             "accrualPeriodicity": translate_accrual_periodicity(model.maintenance_frequency),
             "publisher": {
                 "name": model.poc.get_full_name(),
