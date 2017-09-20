@@ -106,12 +106,13 @@ class DataJsonArDatasetMixin:
                 "name": model.poc.get_full_name(),
                 "mbox": model.poc.email,
             },
+            "modified": model.extra_fields.iso_modified,
             "issued": model.extra_fields.issued,
             "superTheme": [get_default_super_theme()],
         }
         for key, value in expected.iteritems():
             assert_equals(value, dataset[key])
-    
+
     def test_has_attributes(self):
         model = self.get_models().first()
         dataset = dataset_from(model)
