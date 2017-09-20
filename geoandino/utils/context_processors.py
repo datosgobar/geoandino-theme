@@ -15,10 +15,6 @@ def super_theme_taxonomies(request):
     return {"super_theme_taxonomies": SUPER_THEME_CHOICES}
 
 
-def groups(request):
-    return {"groups": GroupProfile.objects.all}
-
-
 def serializable_nodes():
     serializable = []
     nodes = GroupTreeNode.objects.filter(parent=None)
