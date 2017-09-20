@@ -1,0 +1,18 @@
+<ul>
+{% for node in nodes %}
+    <article resource_id="{{ node.group.id }}" >
+        <div class="col-xs-12 item-container">
+            <div class="col-xs-8 item-details">
+                <h4><a href="{{ node.group.filter_url }}">{{ node.title }}</a></h4>
+                {% if node.children %}
+                   {% with nodes=node.children %}
+                        {% include "snippets/group_tree.html" %}
+                    {% endwith %}
+                {% endif %}
+            </div>
+        </div>
+    </article>
+{% endfor %}
+</ul>
+
+

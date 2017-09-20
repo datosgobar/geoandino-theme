@@ -204,13 +204,31 @@ class GroupTreeNode(models.Model):
                                        on_delete=models.CASCADE,
                                        null=True,
                                        related_name='children')
+    parent = models.OneToOneField('self', null=True, default=None)
+
+    @property
+    def title(self):
+        return self.group.title
+
+    @property
+    def filter_by_group(self):
+        return self.group.filter_by_group
+
+    def serialize_group(self):
+        group = self.group
+        return {'id': group.id, 'filter_url': group.filter_by_group}
+
+    def serializable_object(self):
+        obj = {'title': self.title, 'children': [], 'group': self.serialize_group()}
+        for child in self.children.all():
+            obj['children'].append(child.serializable_object())
+        return obj
 
     class Meta:
         ordering = ['group__title']
 
 
 def create_group_node(sender, instance, created, **kwargs):
-    Exception(sender, instance, created, kwargs)
     if created:
         GroupTreeNode.objects.create(group=instance)
 

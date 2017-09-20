@@ -39,6 +39,8 @@ def add_node_dependency(group, node_dependency):
         parent_node = GroupTreeNode.objects.get(group__title=node_dependency)
         child_node = GroupTreeNode.objects.get(group=group)
         parent_node.children.add(child_node)
+        child_node.parent = parent_node
+        child_node.save()
 
 
 @login_required

@@ -19,5 +19,13 @@ def groups(request):
     return {"groups": GroupProfile.objects.all}
 
 
+def serializable_nodes():
+    serializable = []
+    nodes = GroupTreeNode.objects.filter(parent=None)
+    for node in nodes:
+        serializable.append(node.serializable_object())
+    return serializable
+
+
 def group_nodes(request):
-    return {"group_nodes": GroupTreeNode.objects.all}
+    return {"group_nodes": serializable_nodes()}

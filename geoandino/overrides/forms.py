@@ -65,3 +65,4 @@ def clean_update_form(self):
 add_dependency_field(group_forms.GroupForm)
 add_dependency_field(group_forms.GroupUpdateForm)
 group_forms.GroupForm.clean = clean_update_form
+

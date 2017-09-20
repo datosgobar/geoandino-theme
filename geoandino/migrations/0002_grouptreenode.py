@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('children_nodes', models.ForeignKey(related_name='children', to='geoandino.GroupTreeNode', null=True)),
                 ('group', models.OneToOneField(to='groups.GroupProfile')),
+                ('parent', models.OneToOneField(null=True, default=None, to='geoandino.GroupTreeNode')),
             ],
             options={
                 'ordering': ['group__title'],

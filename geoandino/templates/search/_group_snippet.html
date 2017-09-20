@@ -1,14 +1,6 @@
 <div class="row">
-  {% for group in groups %}
-      <article resource_id="{{ group.id }}" >
-        <div class="col-xs-12 item-container">
-            <div class="col-xs-8 item-details">
-              <h4><a href="{{ group.filter_by_group }}">{{ group.title }}</a> </h4>
-              <p class="abstract">
-                  {{ group.description|truncatechars:300 }}
-              </p>
-            </div>
-          </div>
-      </article>
-  {% endfor %}
+    {% with nodes=group_nodes %}
+    {% include "snippets/group_tree.html" %}
+    {% endwith %}
 </div>
+
