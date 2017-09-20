@@ -43,6 +43,14 @@ def add_node_dependency(group, node_dependency):
         child_node.save()
 
 
+def remove_own_title(form, group):
+    choices = form.fields['depends_on_group'].choices
+    for choice in choices:
+        if choice[1] == group.title:
+            choices.remove(choice)
+    form.fields['depends_on_group'].choices = choices
+
+
 @login_required
 def group_update(request, slug):
     group = GroupProfile.objects.get(slug=slug)
@@ -62,6 +70,7 @@ def group_update(request, slug):
                         group.slug]))
     else:
         form = GroupForm(instance=group)
+        remove_own_title(form, group)
 
     return render_to_response("groups/group_update.html", {
         "form": form,
