@@ -45,7 +45,13 @@ def dataset_from(resource):
         "name": resource.poc.get_full_name(),
         "mbox": resource.poc.email,
     }
-    record['distribution'] = get_distributions(resource)
+    distributions = get_distributions(resource)
+    record['distribution'] = distributions
+    if distributions:
+        landingPage = distributions[0]["accessURL"]
+    else:
+        landingPage = "" # Can this happen?
+    record["landingPage"] = landingPage
     return record
 
 def get_datasets():

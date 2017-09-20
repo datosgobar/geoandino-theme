@@ -107,6 +107,7 @@ class DataJsonArDatasetMixin:
                 "name": model.poc.get_full_name(),
                 "mbox": model.poc.email,
             },
+            "landingPage": get_access_url(model, None), # <-- I'm assumming at least one Link here
             "modified": model.csw_insert_date.isoformat(),
             "issued": model.extra_fields.issued,
             "superTheme": [get_default_super_theme()],
