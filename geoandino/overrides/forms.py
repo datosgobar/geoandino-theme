@@ -30,15 +30,15 @@ class SignupCodeI18nForm(account_forms.SignupCodeForm):
     username = forms.CharField(max_length=30, required=False, label=_("Username"))
 
 
-def group_slugs():
+def group_titles():
     groups = GroupProfile.objects.all()
-    return list(map(lambda g: g.slug, groups))
+    return list(map(lambda g: g.title, groups))
 
 
 def group_choices():
     choices = [('default', _("It doesn't depend on another group"))]
-    for slug in group_slugs():
-        choices.append((slug, slug))
+    for title in group_titles():
+        choices.append((title, title))
     return choices
 
 

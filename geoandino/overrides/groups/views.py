@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from geonode.groups.forms import GroupInviteForm, GroupForm, GroupUpdateForm, GroupMemberForm
 from geonode.groups.models import GroupProfile, GroupInvitation, GroupMember
 
+from geoandino.models import GroupTreeNode
+
 
 @login_required
 def group_create(request):
@@ -17,6 +19,8 @@ def group_create(request):
             group.save()
             form.save_m2m()
             group.join(request.user, role="manager")
+            node_dependency = form.cleaned_data['depends_on_group']
+            add_node_dependency(group, node_dependency)
             return HttpResponseRedirect(
                 reverse(
                     "group_detail",
@@ -28,6 +32,13 @@ def group_create(request):
     return render_to_response("groups/group_create.html", {
         "form": form,
     }, context_instance=RequestContext(request))
+
+
+def add_node_dependency(group, node_dependency):
+    if node_dependency != 'default':
+        parent_node = GroupTreeNode.objects.get(group__title=node_dependency)
+        child_node = GroupTreeNode.objects.get(group=group)
+        parent_node.children.add(child_node)
 
 
 @login_required

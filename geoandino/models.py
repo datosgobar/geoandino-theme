@@ -199,20 +199,18 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
 
 
 class GroupTreeNode(models.Model):
-    def __init__(self, *args, **kwargs):
-        self.children = []
-        super(GroupTreeNode, self).__init__(*args, **kwargs)
-
     group = models.OneToOneField(GroupProfile, on_delete=models.CASCADE)
-
-    def add_child_node(self, child_node):
-        self.children.append(child_node)
+    children_nodes = models.ForeignKey('self',
+                                       on_delete=models.CASCADE,
+                                       null=True,
+                                       related_name='children')
 
     class Meta:
         ordering = ['group__title']
 
 
 def create_group_node(sender, instance, created, **kwargs):
+    Exception(sender, instance, created, kwargs)
     if created:
         GroupTreeNode.objects.create(group=instance)
 
