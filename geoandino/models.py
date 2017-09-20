@@ -8,7 +8,7 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
 from geonode.base.models import TopicCategory
 from account.models import EmailAddress
 from geonode.groups.models import GroupProfile
-from django.db.models.signals import post_save
+from django.db.models.signals import post_save, post_delete
 
 
 AGRI = "agri"
@@ -204,7 +204,7 @@ class GroupTreeNode(models.Model):
                                        on_delete=models.CASCADE,
                                        null=True,
                                        related_name='children')
-    parent = models.OneToOneField('self', null=True, default=None)
+    parent = models.OneToOneField('self', null=True, default=None, on_delete=models.CASCADE)
 
     @property
     def title(self):
@@ -232,4 +232,10 @@ def create_group_node(sender, instance, created, **kwargs):
     if created:
         GroupTreeNode.objects.create(group=instance)
 
+
+def delete_group(sender, instance, **kwargs):
+        GroupProfile.objects.filter(title=instance.title).first().delete()
+
+
 post_save.connect(create_group_node, sender=GroupProfile)
+post_delete.connect(delete_group, sender=GroupTreeNode)
