@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from geoandino.utils.conf import get_site_conf
-from geoandino.models import TopicTaxonomy, SUPER_THEME_CHOICES, GroupProfile
+from geoandino.models import TopicTaxonomy, SUPER_THEME_CHOICES, GroupProfile, GroupTreeNode
 
 
 def site_conf(request):
@@ -17,3 +17,7 @@ def super_theme_taxonomies(request):
 
 def groups(request):
     return {"groups": GroupProfile.objects.all}
+
+
+def group_nodes(request):
+    return {"group_nodes": GroupTreeNode.objects.all}

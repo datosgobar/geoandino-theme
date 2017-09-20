@@ -8,6 +8,7 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
 from geonode.base.models import TopicCategory
 from account.models import EmailAddress
 from geonode.groups.models import GroupProfile
+from django.db.models.signals import post_save
 
 
 AGRI = "agri"
@@ -195,3 +196,24 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
 
     class Meta:
         ordering = ['created', ]
+
+
+class GroupTreeNode(models.Model):
+    def __init__(self, *args, **kwargs):
+        self.children = []
+        super(GroupTreeNode, self).__init__(*args, **kwargs)
+
+    group = models.OneToOneField(GroupProfile, on_delete=models.CASCADE)
+
+    def add_child_node(self, child_node):
+        self.children.append(child_node)
+
+    class Meta:
+        ordering = ['group__title']
+
+
+def create_group_node(sender, instance, created, **kwargs):
+    if created:
+        GroupTreeNode.objects.create(group=instance)
+
+post_save.connect(create_group_node, sender=GroupProfile)
