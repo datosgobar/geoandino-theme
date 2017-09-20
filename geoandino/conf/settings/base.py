@@ -232,7 +232,6 @@ TEMPLATES[0]['DIRS'].insert(0, LOCAL_ROOT("templates"))
 
 TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.site_conf')
 TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.taxonomies')
-TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.super_theme_taxonomies')
 TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.group_nodes')
 
 MIDDLEWARE_CLASSES += (

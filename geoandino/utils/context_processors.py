@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from geoandino.utils.conf import get_site_conf
-from geoandino.models import TopicTaxonomy, SUPER_THEME_CHOICES, GroupProfile, GroupTreeNode
+from geoandino.models import TopicTaxonomy, GroupTreeNode
 
 
 def site_conf(request):
@@ -9,10 +9,6 @@ def site_conf(request):
 
 def taxonomies(request):
     return {"taxonomies": TopicTaxonomy.objects.all}
-
-
-def super_theme_taxonomies(request):
-    return {"super_theme_taxonomies": SUPER_THEME_CHOICES}
 
 
 def serializable_nodes():

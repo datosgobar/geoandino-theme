@@ -10,37 +10,6 @@ from account.models import EmailAddress
 from geonode.groups.models import GroupProfile
 from django.db.models.signals import post_save, post_delete
 
-
-AGRI = "agri"
-ECON = "econ"
-EDUC = "educ"
-ENER = "ener"
-ENVI = "envi"
-GOVE = "gove"
-HEAL = "heal"
-INTR = "intr"
-JUST = "just"
-REGI = "regi"
-SOCI = "soci"
-TECH = "tech"
-TRAN = "tran"
-
-# TODO: Use english texts and translated theme
-SUPER_THEME_CHOICES = (
-    (AGRI, "Agroganadería, pesca y forestación"),
-    (ECON, "Economía y finanzas"),
-    (EDUC, "Educación, cultura y deportes", ),
-    (ENER, "Energía"),    (ENVI, "Medio ambiente"),
-    (GOVE, "Gobierno y sector público"),
-    (HEAL, "Salud"),
-    (INTR, "Asuntos internacionales"),
-    (JUST, "Justicia, seguridad y legales"),
-    (REGI, "Regiones y ciudades"),
-    (SOCI, "Población y sociedad"),
-    (TECH, "Ciencia y tecnología"),
-    (TRAN, "Transporte"),
-)
-
 # Monkey patching to filter datasets by group
 #############################################
 
