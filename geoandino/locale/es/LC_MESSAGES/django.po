@@ -621,3 +621,6 @@ msgstr "¿Depende de otra organización?"
 
 msgid "It doesn't depend on another group"
 msgstr "No depende de otra organización"
+
+msgid "You should write a name for the group."
+msgstr "Escribí un título para la organización."
