@@ -37,7 +37,7 @@ def dataset_from(resource):
     record['title'] = resource.title
     record['description'] = resource.abstract
     record['issued'] = resource_extras.issued
-    record['modified'] = resource_extras.iso_modified
+    record['modified'] = resource.csw_insert_date.isoformat()
     record['identifier'] = resource.uuid
     record['superTheme'] = [resource_extras.super_theme]
     record['accrualPeriodicity'] = translate_accrual_periodicity(resource.maintenance_frequency)
