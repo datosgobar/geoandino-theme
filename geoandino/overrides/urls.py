@@ -6,6 +6,9 @@ from django.views.generic import TemplateView
 from geonode.urls import *
 
 from .views import CreateAnnouncementI18nView, InviteUserI18nView
+from django.contrib.auth.decorators import login_required
+
+from geoandino.overrides.documents.views import GeoAndinoDocumentUploadView
 
 # Override geonode's urls with custom views
 urlpatterns = patterns(
@@ -43,6 +46,8 @@ layers_urlpatterns = patterns(
                         url(r'^layers/upload$',
                             'layer_upload',
                             name='layer_upload'),
+                        url(r'^upload/?$', login_required(GeoAndinoDocumentUploadView.as_view()),
+                            name='document_upload'),
                     )
 
 maps_urlpatterns = patterns(

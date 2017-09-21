@@ -19,6 +19,8 @@ from geonode.people.forms import ProfileForm
 from geonode.base.models import TopicCategory, ResourceBase
 from django.core.urlresolvers import reverse
 
+from geonode.documents.views import DocumentUploadView
+
 
 def internationalize_fields():
     DocumentForm.base_fields['resource'].label = _('Link to')
@@ -255,3 +257,91 @@ def document_metadata_detail(request, docid, template='documents/site_metadata_d
         "resource": document,
         'SITEURL': settings.SITEURL[:-1]
 }))
+
+
+class GeoAndinoDocumentUploadView(DocumentUploadView):
+
+    def form_valid(self, form):
+        """
+        If the form is valid, save the associated model.
+        """
+        self.object = form.save(commit=False)
+        self.object.owner = self.request.user
+        resource_id = self.request.POST.get('resource', None)
+        if resource_id:
+            self.object.content_type = ResourceBase.objects.get(id=resource_id).polymorphic_ctype
+            self.object.object_id = resource_id
+        # by default, if RESOURCE_PUBLISHING=True then document.is_published
+        # must be set to False
+        is_published = True
+        if settings.RESOURCE_PUBLISHING:
+            is_published = False
+        self.object.is_published = is_published
+
+        self.object.save()
+        self.object.set_permissions(form.cleaned_data['permissions'])
+
+        abstract = None
+        date = None
+        regions = []
+        keywords = []
+        bbox = None
+
+        if getattr(settings, 'EXIF_ENABLED', False):
+            try:
+                from geonode.contrib.exif.utils import exif_extract_metadata_doc
+                exif_metadata = exif_extract_metadata_doc(self.object)
+                if exif_metadata:
+                    date = exif_metadata.get('date', None)
+                    keywords.extend(exif_metadata.get('keywords', []))
+                    bbox = exif_metadata.get('bbox', None)
+                    abstract = exif_metadata.get('abstract', None)
+            except:
+                print "Exif extraction failed."
+
+        if getattr(settings, 'NLP_ENABLED', False):
+            try:
+                from geonode.contrib.nlp.utils import nlp_extract_metadata_doc
+                nlp_metadata = nlp_extract_metadata_doc(self.object)
+                if nlp_metadata:
+                    regions.extend(nlp_metadata.get('regions', []))
+                    keywords.extend(nlp_metadata.get('keywords', []))
+            except:
+                print "NLP extraction failed."
+
+        if abstract:
+            self.object.abstract = abstract
+            self.object.save()
+
+        if date:
+            self.object.date = date
+            self.object.date_type = "Creation"
+            self.object.save()
+
+        if len(regions) > 0:
+            self.object.regions.add(*regions)
+
+        if len(keywords) > 0:
+            self.object.keywords.add(*keywords)
+
+        if bbox:
+            bbox_x0, bbox_x1, bbox_y0, bbox_y1 = bbox
+            Document.objects.filter(id=self.object.pk).update(
+                bbox_x0=bbox_x0,
+                bbox_x1=bbox_x1,
+                bbox_y0=bbox_y0,
+                bbox_y1=bbox_y1)
+
+        if getattr(settings, 'SLACK_ENABLED', False):
+            try:
+                from geonode.contrib.slack.utils import build_slack_message_document, send_slack_message
+                send_slack_message(build_slack_message_document("document_new", self.object))
+            except:
+                print "Could not send slack message for new document."
+
+        return HttpResponseRedirect(
+            reverse(
+                'document_metadata',
+                args=(
+                    self.object.id,
+)))
