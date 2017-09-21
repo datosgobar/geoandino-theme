@@ -248,3 +248,14 @@ def check_default_super_theme(code):
         raise Exception("Invalid Super Theme code")
 
 check_default_super_theme(DEFAULT_SUPER_THEME)
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Font', 'FontSize'],
+            ['Bold', 'Italic'],
+            ['Link', 'Unlink']
+        ]
+    }
+}
