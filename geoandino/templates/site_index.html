@@ -4,86 +4,58 @@
   {{ site_conf.title }}
 {% endblock title %}
 
+{% block extra_tab %} {% endblock %}
+
 {% load i18n %}
   {% block hero %}
   {% with background=site_conf.image_background_url %}
   <div class="jumbotron" style="background-image:url({{background}})">
   {% endwith %}
-    <div class="jumbotron_bar">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <ol class="breadcrumb pull-left">
-              <li><a href="">Argentina</a></li>
-              <li class="active"><span>Ministerio de Modernización</span></li>
-            </ol>
-            <ul class="list-inline pull-right">
-              <li>
-                <div class="search imaginary_container">
-                 
-                  <form id="search" action="{% url "search" %}" >
-                     <div class="input-group stylish-input-group">
-                        {% if HAYSTACK_SEARCH %}
-                        <input id="search_input" type="text" placeholder="Buscar" name="q" class="form-control">
-                        {% else %}
-                        <input id="search_input" type="text" placeholder="Buscar" name="title__icontains" class="form-control">
-                        {% endif %}
-                        <span class="input-group-addon">
-                          <button type="submit">
-                            <span class="fa fa-search"></span>
-                          </button>  
-                        </span>
-                     </div>
-                  </form>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="jumbotron_body">
       <div class="container">
         <div class="row">
           <div class="col-xs-12 col-md-8 col-md-offset-2 text-center">
             <h1>{{ site_conf.title }}</h1>
-            <p>{{ site_conf.description }}</p>
+            <p>{{ site_conf.description |safe }}</p>
           </div>
         </div>
+          <div >
+                <form id="search" action="{% url "search" %}" >
+                 <div class="input-group stylish-input-group">
+                    {% if HAYSTACK_SEARCH %}
+                    <input id="search_input" type="text" placeholder='{% trans "What data are you looking for?" %}' name="q" class="form-control">
+                    {% else %}
+                    <input id="search_input" type="text" placeholder='{% trans "What data are you looking for?" %}' name="title__icontains" class="form-control">
+                    {% endif %}
+                    <span class="input-group-addon">
+                      <button type="submit">
+                        <span class="fa fa-search"></span>
+                      </button>
+                    </span>
+                 </div>
+                </form>
+            </div>
       </div>
     </div>
+
     <div class="overlay"></div>
   </div>
   {% endblock %}
 
 {% block mainbody %}
-  <div class="big-search">
-  	<div class="container">
-  		<h1>{% trans "Search for Data" %}</h1>
-  		<div class="search">
-  			<form id="search" action="{% url "search" %}" >
-  				<span class="fa fa-search fa-2x"></span>
-  				{% if HAYSTACK_SEARCH %}
-  				<input id="search_input" type="text" placeholder="{% trans "Search" %}" class="form-control" name="q">
-  				{% else %}
-  				<input id="search_input" type="text" placeholder="{% trans "Search" %}" class="form-control" name="title__icontains">
-  				{% endif %}
-  			</form>
-  		</div>
-  		<p><a class="btn btn-primary" href="/search/">{% trans "Advanced Search" %}</a></p>
-  	</div>
-  </div>
 
 {% block datasets %}
+{% if taxonomies_with_data %}
   <section id="datasets">
   	<div class="container">
   		<div class="row">
   			<div class="container text-center">
-  				<h1>{% trans "Discover the available datasets" %}</h1>
-				{% for taxonomy in taxonomies %}
+				{% for taxonomy in taxonomies_with_data %}
                 <div class="col-xs-4 col-sm-2">
-  					<a href="{{taxonomy.search_url}}" data-toggle="tooltip" data-placement="auto"
-							title="{{taxonomy.description}}">
+
+
+ <!-- CATEGORIAS CON ICONOS
+  					<a href="{{taxonomy.search_url}}" >
                         <div class="panel-default panel-icon">
                           {% if site_conf.icon_display %}
                                   <div class="panel-heading">
@@ -103,37 +75,46 @@
                             </div>
                       </div>
   					</a>
+            FIN CATEGORIAS CON ICONOS --> 
+
+             <!-- CATEGORIAS SIN ICONOS --> 
+            <a class="btn btn-primary title-ellipsis" href="{{taxonomy.search_url}}" >           
+              {{taxonomy.identifier}}
+            </a>
+         <!--    FIN CATEGORIAS SIN ICONOS --> 
+
   				</div>
 				{% endfor %}
   			</div>
   		</div>
   	</div>
   </section>
-  {% endblock %}
+{% endif %}
+{% endblock %}
 
   {% block showcase %}
-  <section id="showcase">
+    {% if featured %}
+    <section id="showcase">
     <div class="container">
-      <div class="row">
-        <h2>{% trans "Featured Datasets" %}</h2>
-        {% verbatim %}
-        <div ng-app="featured">
-          <div ng-repeat="item in featured | limitTo:4">
-            <div class="col-md-3">
-              <a class="panel panel-default" href="#">
-                  <div style="background-image:url('{{ item.thumbnail_url }}');" class="panel-heading"></div>
-                  <div class="panel-body">
-                    <h3 class="ng-binding">{{ item.title | limitTo: 20 }}{{item.title.length > 20 ? '...' : ''}}</h3>
+        <div class="row">
+            <h2>{% trans "Featured Datasets" %}</h2>
+            <div class="row panels-row">
+            {% for item in featured %}
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <a class="panel panel-default" href="{{ item.detail_url }}">
+                      <div style="background-image:url('{{ item.thumbnail_url }}');" class="panel-heading"></div>
+                      <div class="panel-body text-left">
+                        <h3 class="title-ellipsis">{{ item.title }}</h3>
+                        <p class="text-muted">{{ item.abstract }}</p>
+                      </div>
+                    </a>
                 </div>
-              </a>
+            {% endfor %}
             </div>
-          </div>
         </div>
-  		{% endverbatim %}
-      </div>
-      <p><a class="btn btn-primary" href="/search/">{% trans "Explore all datasets" %}</a></p>
     </div>
-  </section>
+    </section>
+    {% endif %}
   {% endblock %}
 {% endblock %}
 

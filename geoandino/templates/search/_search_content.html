@@ -1,26 +1,15 @@
 {% load i18n %}
 <div class="row" ng-controller="CartList">
   <div class="col-md-3">
-    <resource-cart></resource-cart>
+    {% block cart %}
+    {% endblock %}
     <div class="row">
       <div class="col-xs-12">
         {% block bulk_perms_button %}
-        <div class="btn-group btn-group-justified" role="group" aria-label="tools">
-          {% if request.user.is_authenticated %}
-          <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" ng-disabled="!cart.getCart().items.length" data-toggle="modal" data-target="#_bulk_permissions">{% trans "Set permissions" %}</button>
-          </div>
-          {% endif %}
-          {% if facet_type == 'layers' %}
-          <div class="btn-group" role="group">
-            <button type="button" class="btn btn-default" ng-disabled="!cart.getCart().items.length" ng-click="newMap()">{% trans "Create a Map" %}</button>
-          </div>
-          {% endif %}
-        </div>
         {% endblock %}
-    
+
         <div class="selections">
-            {% trans "Filters" %}
+            <h4 class="d-inline-block">{% trans "Filters" %}</h4>
             <a href="." id="clear-search" class="pull-right">{% trans "Clear" %}</a>
         </div>
             {% if SEARCH_FILTERS.TEXT_ENABLED %}
@@ -40,7 +29,7 @@
             {% if SEARCH_FILTERS.REGION_ENABLED %}
               {% include "search/_region_filter.html" %}
             {% endif %}
-            {% if SEARCH_FILTERS.EXTENT_ENABLED %}
+            {% if SEARCH_FILTERS.EXTENT_ENABLED and include_extent_filter == 'true' %}
               {% include "search/_extent_filter.html" %}
             {% endif %}
         </div>
@@ -49,12 +38,17 @@
   </div>
   <div class="col-md-9">
     <div class="col-md-2">
-      <span>Total: </span>
-      <span ng-bind="total_counts"></span>
+      <ng-pluralize count="total_counts"
+                    when="{'0': 'No hay resultados',
+                           '1': '1 resultado',
+                           'other': '{} resultados'}">
+      </ng-pluralize>
     </div>
     {% include "search/_sort_filters.html" %}
     <div class="col-md-12 grid-spacer">
-    {% include 'base/_resourcebase_snippet.html' %}
+    {% block card %}
+        {% include 'base/_resourcebase_snippet.html' %}
+    {% endblock %}
     {% include 'search/_pagination.html' %}
     </div>
   </div>

@@ -8,7 +8,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('groups', '24_initial'),
-        ('geoandino', '0001_initial'),
+        ('geoandino', '0002_auto_20170907_1547'),
     ]
 
     operations = [

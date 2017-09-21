@@ -6,10 +6,13 @@ from exclusivebooleanfield.fields import ExclusiveBooleanField
 from django.utils.translation import ugettext as _
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from geonode.base.models import TopicCategory
+from geonode.layers.models import Layer
+from geonode.documents.models import Document
 from account.models import EmailAddress
 from geonode.groups.models import GroupProfile
 from django.db.models.signals import post_save, post_delete
 import itertools
+from ckeditor.fields import RichTextField
 
 # Monkey patching to filter datasets by group
 #############################################
@@ -98,13 +101,30 @@ class TopicTaxonomy(models.Model):
         return True if self.image else False
     has_image.boolean = True
 
+    @property
+    def referenced_by_data(self):
+        return any(category.referenced_by_data() for category in self.categories)
+
+    @property
+    def get_description(self):
+        return self.description or self.categories[0].description
+
 
 class GeoAndinoTopicCategory(TopicCategory):
     def __init__(self, *args, **kwargs):
         self._meta.get_field('identifier').default = None
         super(GeoAndinoTopicCategory, self).__init__(*args, **kwargs)
 
-    topic_taxonomy = models.ForeignKey(TopicTaxonomy, on_delete=models.CASCADE, related_name='topic_categories_set', null=True, blank=True, default=None)
+    topic_taxonomy = models.ForeignKey(TopicTaxonomy, on_delete=models.SET_NULL, related_name='topic_categories_set', null=True, blank=True, default=None)
+
+    def referenced_by_layer(self):
+        return Layer.objects.filter(category=self).exists()
+
+    def referenced_by_document(self):
+        return Document.objects.filter(category=self).exists()
+
+    def referenced_by_data(self):
+        return self.referenced_by_document() or self.referenced_by_layer()
 
 
 class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionModel):
@@ -112,8 +132,8 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
     publisher = models.ForeignKey(EmailAddress)
     about_visible = models.BooleanField(default=False, verbose_name=_('Visible'))
     about_title = models.CharField(_('title'), max_length=255, default=None, blank=True, null=True)
-    about_description = models.TextField(_('description'), blank=True, null=True)
-    image_background = models.ImageField(upload_to="thumbs/", blank=True, null=True, default=None)
+    about_description = RichTextField(verbose_name=_('description'), null=True, default=None)
+    image_background = models.ImageField(_('Image background'), upload_to="thumbs/", blank=True, null=True, default=None)
     facebook_url = models.CharField(max_length=150, verbose_name=_('Facebook'), default="http://www.facebook.com/portal", null=True, blank=True)
     twitter_url = models.CharField(max_length=150, verbose_name=_('Twitter'), default="http://www.twitter.com/portal", null=True, blank=True)
     github_url = models.CharField(max_length=150, verbose_name=_('GitHub'), default="http://www.github.com/portal", null=True, blank=True)
@@ -125,8 +145,8 @@ class SiteConfiguration(models_db.TimeStampedModel, models_db.TitleDescriptionMo
     group_visible = models.BooleanField(default=False, verbose_name=_('Visible'))
     icon_display = models.BooleanField(default=False, verbose_name=_('Icon display'))
     site_url = models.CharField(_('Site url'), max_length=255, default=None, blank=True, null=True)
-    logo_footer = models.ImageField(upload_to="thumbs/", blank=True, null=True)
-    logo_header = models.ImageField(upload_to="thumbs/", blank=True, null=True)
+    logo_footer = models.ImageField(_('Logo footer'), upload_to="thumbs/", blank=True, null=True)
+    logo_header = models.ImageField(_('Logo header'), upload_to="thumbs/", blank=True, null=True)
     facebook_google_image = models.ImageField(_('Facebook and Google image'), upload_to="thumbs/", blank=True, null=True)
     facebook_google_title = models.CharField(_('Facebook and Google title'), max_length=255, default=None, blank=True, null=True)
     facebook_google_description = models.TextField(_('Facebook and Google description'), blank=True, null=True)

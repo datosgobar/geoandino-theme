@@ -9,6 +9,9 @@
 body {
 	padding-top: 0;
 }
+#wrap {
+    background: #F9F9F9;
+}
 
 
 /*HOME*/
@@ -46,11 +49,31 @@ body {
     margin-bottom: 20px;
 }
 .home .big-search {
-    background-color: #e9e9e9;
+    background-color: transparent;
     color: #111;
 }
 .home .big-search a {
     color: #ffffff;
+}
+.home .jumbotron form#search {
+    max-width: 500px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.panel-body {
+    border-top: 1px solid #eee;
+}
+.title-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.home #datasets {
+  padding: 2em 0;
+}
+.home #datasets a {
+    color: #fff;
+    width: 100%;
 }
 
 /*Footer*/
@@ -68,7 +91,6 @@ footer a {
 .main-footer li a {
     padding: 3px 0;
 }
-
 .main-footer a.social-link i {
   display: inline-block;
   font-size: 28px;
@@ -89,9 +111,6 @@ footer a {
   width: 46px;
   height: 46px;
 }
-
-/*Capas*/
-
 .profile-avatar li a {
     color: #0695d6;
     font-size: 0.8em;
@@ -99,9 +118,6 @@ footer a {
 }
 .profile-avatar li a:hover, .profile-avatar h4 a:hover {
     color: #2fbaf9;
-}
-.profile-avatar img {
-    border-right: 1px solid #eee;
 }
 .profile-avatar h4 a {
     color: #0695d6;
@@ -127,3 +143,151 @@ nav.filter ul.nav {
 .item-details .btn-sm {
     margin-right: 0;
 }
+.form-control {
+    color: #111;
+    font-size: 14px;
+}
+.d-inline-block {
+    display: inline-block;
+}
+.d-block {
+    display: block;
+}
+.d-inline {
+    display: inline;
+} 
+
+
+#navigation-bar {
+    position: relative;
+    height: 60px;
+    padding-left: 60px;
+}
+#searchNavbar {
+    position: relative;
+    float: left;
+    width: 60px;
+    height: 60px;
+    margin-left: -60px;
+}
+#labelNavbarSearch {
+    width: 60px;
+    height: 60px;
+    position: relative;
+    z-index: 20;
+}
+#labelNavbarSearch label {
+    display: block;
+    width: 60px;
+    height: 60px;
+    background: url("../img/search.png") 0 0;
+    font-size: 0;
+    color: rgba(0, 0, 0, 0);
+    text-indent: -9999px;
+    cursor: pointer;
+}
+#labelNavbarSearch label:hover {
+    background: url("../img/search.png") -60px 0
+}
+#labelNavbarSearch.active label {
+    background: url("../img/search.png") -60px 0
+}
+#inputNavbarSearch {
+    position: absolute;
+    top: 0;
+    left: 60px;
+    width: 450px;
+    height: 60px;
+    z-index: 5;
+    overflow: hidden;
+}
+#inputNavbarSearch input {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: -450px;
+    width: 450px;
+    height: 100%;
+    margin: 0;
+    padding: 0 10px;
+    border: none;
+    background-color: #23688b;
+    color: #fff;
+    font-size: 18px;
+    -webkit-backface-visibility: none;
+    -moz-backface-visibility: none;
+    -ms-backface-visibility: none;
+    backface-visibility: none;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-transition: left 0;
+    -moz-transition: left 0;
+    -ms-transition: left 0;
+    -o-transition: left 0;
+    transition: left 0;
+}
+#inputNavbarSearch input:focus {
+    outline: none
+}
+#inputNavbarSearch.focus {
+    z-index: 20
+}
+#inputNavbarSearch.focus input {
+    left: 0;
+    -webkit-transition: left 0.3s;
+    -moz-transition: left 0.3s;
+    -ms-transition: left 0.3s;
+    -o-transition: left 0.3s;
+    transition: left 0.3s;
+}
+
+.page-header {
+  border-bottom: none;
+  margin: 44px 0 10px;
+}
+.btn-wholewidth {
+  width: 100%;
+}
+.hr-sm {
+  margin: 15px 0;
+}
+.m-t-0 {
+  margin-top: 0;
+}
+nav.filter ul li a {
+    font-size: 0.8em;
+    color: #0695d6;
+}
+nav.filter .badge {
+    padding: 4px 7px;
+    font-size: 12px;
+    background-color: #acacac;
+}
+nav.filter .fa-stack.fa-1g {
+    margin-right: 5px;
+}
+nav.filter li a {
+    padding: 5px 0px;
+}
+nav.filter #date_start, nav.filter #date_start input, nav.filter #date_end, nav.filter #date_end input  {
+    font-size: 0.85em;
+}
+nav.filter #date_start {
+  padding-bottom: 6px;
+}
+nav.filter #date_end {
+    padding-top: 6px;
+}
+.panel-icon .panel-heading {
+    background-color: #eee;
+    text-align: center;
+}
+.panel h3 a, .panel time a {
+  text-decoration: none;
+}
+.panel time {
+  margin-top: 20px;
+  font-size: 12px;
+}
+

@@ -224,6 +224,7 @@ LOCALE_PATHS = (
 GEOANDINO_APPS = (
     'geoandino',
     'geoandino.apps.datajsonar',
+    'ckeditor'
 )
 
 INSTALLED_APPS = GEOANDINO_APPS + INSTALLED_APPS
@@ -233,6 +234,8 @@ TEMPLATES[0]['DIRS'].insert(0, LOCAL_ROOT("templates"))
 TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.site_conf')
 TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.taxonomies')
 TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.group_nodes')
+TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.taxonomies_with_data')
+TEMPLATES[0]['OPTIONS']['context_processors'].append('geoandino.utils.context_processors.featured')
 
 MIDDLEWARE_CLASSES += (
     'geoandino.utils.middlewares.ForceDefaultLanguageMiddleware',
@@ -247,3 +250,14 @@ def check_default_super_theme(code):
         raise Exception("Invalid Super Theme code")
 
 check_default_super_theme(DEFAULT_SUPER_THEME)
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Font', 'FontSize'],
+            ['Bold', 'Italic'],
+            ['Link', 'Unlink']
+        ]
+    }
+}

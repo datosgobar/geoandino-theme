@@ -1,6 +1,10 @@
 {% extends 'groups/group_list.html' %}
 {% load i18n %}
 {% block body %}
+  <ol class="breadcrumb">
+    <li><a href="{% url "home" %}">{{site_conf.title}}</a></li>
+    <li class="active">{% trans "Groups" %}</li>
+  </ol>
   <div class="page-header">
     {% if user.is_authenticated %}
     <a href="{% url "group_create" %}" class="btn btn-primary pull-right">{% trans 'Create a New Group' %}</a>

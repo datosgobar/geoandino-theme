@@ -16,3 +16,5 @@ class InviteUserI18nView(account_views.InviteUserView):
     Override original account's invite user form for adding translations
     """
     form_class = SignupCodeI18nForm
+
+
