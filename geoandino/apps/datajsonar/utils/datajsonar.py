@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.conf import settings
 from geonode.base.models import ResourceBase
-from geonode.maps.models import Map
-from geonode.layers.models import Layer
 from geonode.documents.models import Document
+from geonode.layers.models import Layer
+
 from geoandino.utils.conf import get_site_conf
 from .enumerators import ACCRUAL_PERIODICITY_DICT
 
@@ -14,8 +14,10 @@ def get_access_url(resource, link):
         return links[0].url
     return link.url
 
+
 def translate_accrual_periodicity(string):
     return ACCRUAL_PERIODICITY_DICT.get(string, "")
+
 
 def distribution_from(resource, link):
     return {
@@ -25,11 +27,20 @@ def distribution_from(resource, link):
         "issued": link.extra_fields.issued
     }
 
+
+def is_valid_for_datajson(link):
+    if link.extension == "tiles":
+        return False
+    return True
+
+
 def get_distributions(resource):
     distributions = []
     for link in resource.link_set.all():
-        distributions.append(distribution_from(resource, link))
+        if is_valid_for_datajson(link):
+            distributions.append(distribution_from(resource, link))
     return distributions
+
 
 def dataset_from(resource):
     record = {}
@@ -37,23 +48,33 @@ def dataset_from(resource):
     record['title'] = resource.title
     record['description'] = resource.abstract
     record['issued'] = resource_extras.issued
+    record['modified'] = resource.csw_insert_date.isoformat()
+    record['identifier'] = resource.uuid
     record['superTheme'] = [resource_extras.super_theme]
     record['accrualPeriodicity'] = translate_accrual_periodicity(resource.maintenance_frequency)
     record['publisher'] = {
         "name": resource.poc.get_full_name(),
         "mbox": resource.poc.email,
     }
-    record['distribution'] = get_distributions(resource)
+    distributions = get_distributions(resource)
+    record['distribution'] = distributions
+    if distributions:
+        landingPage = distributions[0]["accessURL"]
+    else:
+        landingPage = "" # Can this happen?
+    record["landingPage"] = landingPage
     return record
+
 
 def get_datasets():
     json_data = []
     base_query = ResourceBase.objects.select_related("owner"). \
-                        prefetch_related("link_set").select_related("extra_fields").all()
+        prefetch_related("link_set").select_related("extra_fields").all()
     query = base_query.instance_of(Layer) | base_query.instance_of(Document)
     for resource in query:
         json_data.append(dataset_from(resource))
     return json_data
+
 
 def data_jsonar():
     site_conf = get_site_conf()

@@ -22,14 +22,18 @@ class ResourceExtra(extension_models.TimeStampedModel):
                         on_delete=models.CASCADE,
                         primary_key=True,
                         related_name="extra_fields",)
-    
+
     super_theme  = models.CharField(max_length=10, choices=SUPER_THEME_CHOICES, default=get_default_super_theme)
-    
+
     objects = ResourceExtraManager()
 
     @property
     def issued(self):
         return self.created.isoformat()
+
+    @property
+    def iso_modified(self):
+        return self.modified.isoformat()
 
     def __str__(self):
         if self.resource is not None:
@@ -54,6 +58,10 @@ def touch_updated_field(instance, created):
     else:
         LinkExtra.objects.get(link=instance).save() # Touch "updated" field
 
+
+def touch_modified_for_resource(resource):
+    ResourceExtra.objects.touch(resource=resource) # Touch "modified" field
+
 def create_resource_extras(instance):
     ResourceExtra.objects.create_for(instance)
 
@@ -66,14 +74,18 @@ def set_default_maintenance_frequency(instance):
 @receiver(post_save, sender=Layer)
 def layer_post_save(sender, instance, created, **kwargs):
     if created:
-        set_default_maintenance_frequency(instance)
         create_resource_extras(instance)
+        set_default_maintenance_frequency(instance)
+    else:
+        touch_modified_for_resource(instance)
 
 @receiver(post_save, sender=Document)
 def docuemnt_post_save(sender, instance, created, **kwargs):
     if created:
-        set_default_maintenance_frequency(instance)
         create_resource_extras(instance)
+        set_default_maintenance_frequency(instance)
+    else:
+        touch_modified_for_resource(instance)
 
 @receiver(post_save, sender=Link)
 def create_link_extras(sender, instance, created, **kwargs):
