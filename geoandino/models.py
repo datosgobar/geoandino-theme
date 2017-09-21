@@ -9,6 +9,7 @@ from geonode.base.models import TopicCategory
 from account.models import EmailAddress
 from geonode.groups.models import GroupProfile
 from django.db.models.signals import post_save, post_delete
+import itertools
 
 # Monkey patching to filter datasets by group
 #############################################
@@ -179,13 +180,33 @@ class GroupTreeNode(models.Model):
     def title(self):
         return self.group.title
 
+    def all_children(self):
+        descendants = []
+        for child in self.children.all():
+            descendants.append(child)
+            if child.children.all():
+                descendants += child.all_children()
+        descendants = list(itertools.chain(descendants))
+        return descendants
+
+    def filter_by_group(self, search_string):
+        search_string = add_members_to_url(search_string, self.group)
+        return search_string
+
     @property
-    def filter_by_group(self):
-        return self.group.filter_by_group
+    def filter_by_group_tree(self):
+        search_string = "/search/?limit=100&offset=0&"
+        search_string = self.filter_by_group(search_string)
+        children = self.all_children()
+        if children:
+            for child in children[:-1]:
+                search_string = child.filter_by_group(search_string)
+                search_string += "&"
+            search_string = children[-1].filter_by_group(search_string)
+        return search_string
 
     def serialize_group(self):
-        group = self.group
-        return {'id': group.id, 'filter_url': group.filter_by_group}
+        return {'id': self.group.id, 'filter_url': self.filter_by_group_tree}
 
     def serializable_object(self):
         obj = {'title': self.title, 'children': [], 'group': self.serialize_group()}
