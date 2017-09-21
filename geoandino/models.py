@@ -10,7 +10,7 @@ from geonode.layers.models import Layer
 from geonode.documents.models import Document
 from account.models import EmailAddress
 from geonode.groups.models import GroupProfile
-from django.db.models.signals import post_save, post_delete
+from django.db.models.signals import pre_save, post_save, post_delete
 import itertools
 from ckeditor.fields import RichTextField
 
@@ -238,6 +238,12 @@ class GroupTreeNode(models.Model):
         ordering = ['group__title']
 
 
+def add_http(sender, instance, **kwargs):
+    site_url = instance.site_url
+    if not site_url.startswith("http"):
+        instance.site_url = "http://{}".format(site_url)
+
+
 def create_group_node(sender, instance, created, **kwargs):
     if created:
         GroupTreeNode.objects.create(group=instance)
@@ -247,5 +253,6 @@ def delete_group(sender, instance, **kwargs):
         GroupProfile.objects.filter(title=instance.title).first().delete()
 
 
+pre_save.connect(add_http, sender=SiteConfiguration)
 post_save.connect(create_group_node, sender=GroupProfile)
 post_delete.connect(delete_group, sender=GroupTreeNode)
