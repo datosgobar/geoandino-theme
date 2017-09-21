@@ -93,18 +93,18 @@
           {% endif %}
 
 	      {% block extra_tab %}
-              <div id="navigation-bar" class="clearfix">
-              <form id="searchNavbar" action="{% url "search" %}">
-                  <div id="labelNavbarSearch"><label for="search-terms" id="search-label">search</label></div>
-                  <div id="inputNavbarSearch">
-                  {% if HAYSTACK_SEARCH %}
+            <li data-navsearch>
+              <a href="javascript:void(0);">
+                <i class="fa fa-search"></i>
+              </a>
+              <form id="searchNavbar" action="{% url 'search' %}">
+                {% if HAYSTACK_SEARCH %}
                     <input name="q" id="search-terms" type="text" placeholder='{% trans "What data are you looking for?" %}' class="form-control">
                   {% else %}
                     <input name="title__icontains" id="search_input" type="text" placeholder='{% trans "What data are you looking for?" %}' class="form-control">
                   {% endif %}
-                  </div>
               </form>
-          </div>
+            </li>
           {% endblock %}
 
           {% endblock %}
@@ -282,6 +282,6 @@
     </script>
     <script type="text/javascript" src="{% url "lang" %}"></script>
     <script src="{{ STATIC_URL }}geonode/js/classie.js"></script>
-    <script src="{{ STATIC_URL }}geonode/js/search.js"></script>
+    <script src="{{ STATIC_URL }}geonode/js/navsearch.js"></script>
   </body>
 </html>

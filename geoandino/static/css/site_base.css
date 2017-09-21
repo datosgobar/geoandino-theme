@@ -1,5 +1,5 @@
 
-/*Customización para Geonode*/
+/*CustomizaciÃ³n para Geonode*/
 
 .navbar-brand {
     width: 373px;
@@ -7,7 +7,7 @@
 }
 
 body {
-	padding-top: 0;
+    padding-top: 0;
 }
 #wrap {
     background: #F9F9F9;
@@ -28,19 +28,19 @@ body {
     color: #fff;
 }
 .stylish-input-group .form-control{
-	border-right:0;
-	box-shadow:0 0 0;
-	border-color:#ccc;
+    border-right:0;
+    box-shadow:0 0 0;
+    border-color:#ccc;
 }
 .stylish-input-group button{
     border:0;
     background:transparent;
 }
 .jumbotron_bar .form-control {
-	height: auto !important;
-	font-size: 16px !important;
-	background-color: transparent !important;
-	color: #FFF;
+    height: auto !important;
+    font-size: 16px !important;
+    background-color: transparent !important;
+    color: #FFF;
 }
 #datasets .panel-heading {
     min-height: auto;
@@ -155,92 +155,8 @@ nav.filter ul.nav {
 }
 .d-inline {
     display: inline;
-} 
+}
 
-
-#navigation-bar {
-    position: relative;
-    height: 60px;
-    padding-left: 60px;
-}
-#searchNavbar {
-    position: relative;
-    float: left;
-    width: 60px;
-    height: 60px;
-    margin-left: -60px;
-}
-#labelNavbarSearch {
-    width: 60px;
-    height: 60px;
-    position: relative;
-    z-index: 20;
-}
-#labelNavbarSearch label {
-    display: block;
-    width: 60px;
-    height: 60px;
-    background: url("../img/search.png") 0 0;
-    font-size: 0;
-    color: rgba(0, 0, 0, 0);
-    text-indent: -9999px;
-    cursor: pointer;
-}
-#labelNavbarSearch label:hover {
-    background: url("../img/search.png") -60px 0
-}
-#labelNavbarSearch.active label {
-    background: url("../img/search.png") -60px 0
-}
-#inputNavbarSearch {
-    position: absolute;
-    top: 0;
-    left: 60px;
-    width: 450px;
-    height: 60px;
-    z-index: 5;
-    overflow: hidden;
-}
-#inputNavbarSearch input {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: -450px;
-    width: 450px;
-    height: 100%;
-    margin: 0;
-    padding: 0 10px;
-    border: none;
-    background-color: #23688b;
-    color: #fff;
-    font-size: 18px;
-    -webkit-backface-visibility: none;
-    -moz-backface-visibility: none;
-    -ms-backface-visibility: none;
-    backface-visibility: none;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-    -webkit-transition: left 0;
-    -moz-transition: left 0;
-    -ms-transition: left 0;
-    -o-transition: left 0;
-    transition: left 0;
-}
-#inputNavbarSearch input:focus {
-    outline: none
-}
-#inputNavbarSearch.focus {
-    z-index: 20
-}
-#inputNavbarSearch.focus input {
-    left: 0;
-    -webkit-transition: left 0.3s;
-    -moz-transition: left 0.3s;
-    -ms-transition: left 0.3s;
-    -o-transition: left 0.3s;
-    transition: left 0.3s;
-}
 
 .page-header {
   border-bottom: none;
@@ -291,3 +207,107 @@ nav.filter #date_end {
   font-size: 12px;
 }
 
+
+
+/* PANEL LANDSCAPE */
+
+.panel-landscape:after{
+    display: block;
+    content: "";
+    clear:both;
+}
+
+.panel-landscape{
+    margin: 0 0 1em 0;
+    position: relative;
+}
+
+.panel-landscape a.panel-heading{
+    display: block;
+}
+
+.panel-landscape .panel-heading{
+    position: absolute;
+    width: 30%;
+    height: 100%;
+    border-right: 1px solid rgb(238, 238, 238);
+    border-top: 1px solid rgb(238, 238, 238);
+}
+
+.panel-landscape .panel-body{
+    position: relative;
+    width: 70%;
+    margin-left: 30%;
+}
+
+.panel-landscape .btn-corner{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    margin: 0;
+}
+
+.panel-landscape .btn-corner + .item-meta{
+    padding-right: 50px;
+}
+
+.panel-landscape .item-meta{
+    margin: 0 0 5px 0;
+}
+
+
+
+/* NAVSEARCH */
+
+[data-navsearch]{
+    position: relative;
+}
+
+.navbar-default .nav > [data-navsearch] > a{
+    background: #0072bc;
+    color: #fff;
+    margin-left: 15px;
+}
+
+[data-navsearch] form{
+    position: absolute;
+    left:-500px;
+    top: 0;
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+[data-navsearch] input{
+    margin-left: 500px;
+    width: 500px;
+    height: 73px;
+    line-height: 73px;
+    padding: 0 15px;
+    background: #fff;
+    border: 0;
+    border-left: 3px solid #0072bc;
+    transition: margin 0.3s ease-out;
+}
+
+[data-navsearch] input:focus{
+    outline: none;
+}
+
+[data-navsearch].open form{
+    width: 500px;
+}
+
+[data-navsearch].open a:after{
+    display: block;
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+[data-navsearch].open input{
+    margin-left: 0;
+}
