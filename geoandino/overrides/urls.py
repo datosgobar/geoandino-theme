@@ -40,6 +40,9 @@ layers_urlpatterns = patterns(
                         url(r'^layers/(?P<layername>[^/]*)/metadata_detail$',
                             'layer_metadata_detail',
                             name="layer_metadata_detail"),
+                        url(r'^layers/upload$',
+                            'layer_upload',
+                            name='layer_upload'),
                     )
 
 maps_urlpatterns = patterns(
