@@ -63,11 +63,10 @@
 	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 	        <i class="fa fa-navicon fa-lg"></i>
 	      </button>
-          {% with logo_header=site_conf.logo_header_url %}
-            <a class="navbar-brand" style="background-image:url({{logo_header}})" href="{% url "home" %}">
+            <a class="navbar-brand" href="{% url "home" %}">
+              <img src="{{ site_conf.logo_header_url }}">
               GeoNode
             </a>
-          {% endwith %}
 	    </div>
 	    <div id="navbar" class="navbar-collapse collapse">
 	      <ul class="nav navbar-nav toolbar navbar-right">

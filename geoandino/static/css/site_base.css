@@ -3,7 +3,6 @@
 
 .navbar-brand {
     width: 373px;
-    background: transparent url("../img/logo_ministerio.svg") no-repeat scroll 15px 0px;
 }
 
 body {
@@ -17,7 +16,6 @@ body {
 /*HOME*/
 
 .home .jumbotron {
-    background-image: url("../img/bg-jumbotron.jpg");
     text-shadow: none;
     padding: 3.75em 0;
 }
