@@ -50,6 +50,7 @@ maps_urlpatterns = patterns(
                         url(r'^maps/(?P<mapid>[^/]*)/metadata_detail$',
                             'map_metadata_detail',
                             name="map_metadata_detail"),
+                        url(r'^maps/new$', 'new_map', name="new_map"),
                     )
 
 documents_urlpatterns = patterns(
