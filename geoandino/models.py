@@ -13,28 +13,44 @@ from geonode.groups.models import GroupProfile
 from django.db.models.signals import pre_save, post_save, post_delete
 import itertools
 from ckeditor.fields import RichTextField
+import re
 
 # Monkey patching to filter datasets by group
 #############################################
+
+
+def usernames(group):
+    return list(map(lambda m: m.user.username, group.member_queryset()))
+
+
+def remove_repeted(usernames, search_string):
+    new_usernames = []
+    used_usernames = re.findall("owner__username__in=([\w]*)&?", search_string)
+    for username in usernames:
+        if username not in used_usernames:
+            new_usernames.append(username)
+    return new_usernames
 
 
 def add_member_url(username):
     return "owner__username__in={}".format(username)
 
 
-def add_members_to_url(search_string, group):
-    usernames = list(map(lambda m: m.user.username, group.member_queryset()))
-    for username in usernames[:-1]:
-        search_string += add_member_url(username)
+def add_members_to_url(search_string, usernames):
+    new_usernames = remove_repeted(usernames, search_string)
+    if new_usernames:
         search_string += "&"
-    search_string += add_member_url(usernames[-1])
+        for username in new_usernames[:-1]:
+            search_string += add_member_url(username)
+            search_string += "&"
+        search_string += add_member_url(new_usernames[-1])
     return search_string
 
 
 @property
 def filter_by_group(self):
     search_string = "/search/?limit=100&offset=0&"
-    url = add_members_to_url(search_string, self)
+    url = add_members_to_url(search_string, usernames(self))
     return url
 
 
@@ -210,19 +226,16 @@ class GroupTreeNode(models.Model):
         return descendants
 
     def filter_by_group(self, search_string):
-        search_string = add_members_to_url(search_string, self.group)
-        return search_string
+        return add_members_to_url(search_string, usernames(self.group))
 
     @property
     def filter_by_group_tree(self):
-        search_string = "/search/?limit=100&offset=0&"
+        search_string = "/search/?limit=100&offset=0"
         search_string = self.filter_by_group(search_string)
         children = self.all_children()
         if children:
-            search_string += "&"
             for child in children[:-1]:
                 search_string = child.filter_by_group(search_string)
-                search_string += "&"
             search_string = children[-1].filter_by_group(search_string)
         return search_string
 
