@@ -5,7 +5,7 @@ from django_extensions.db import models as models_db
 from exclusivebooleanfield.fields import ExclusiveBooleanField
 from django.utils.translation import ugettext as _
 from django.contrib.staticfiles.templatetags.staticfiles import static
-from geonode.base.models import TopicCategory
+from geonode.base.models import TopicCategory, ResourceBase
 from geonode.layers.models import Layer
 from geonode.documents.models import Document
 from account.models import EmailAddress
@@ -253,6 +253,16 @@ def delete_group(sender, instance, **kwargs):
         GroupProfile.objects.filter(title=instance.title).first().delete()
 
 
+def default_message(abstract):
+    return abstract == 'No abstract provided' or abstract == _('No abstract provided')
+
+
+def update_abstract(sender, instance, created, **kwargs):
+    if created and default_message(instance.abstract):
+        instance.abstract = ' '
+
+
 pre_save.connect(add_http, sender=SiteConfiguration)
 post_save.connect(create_group_node, sender=GroupProfile)
 post_delete.connect(delete_group, sender=GroupTreeNode)
+post_save.connect(update_abstract, sender=Document)
