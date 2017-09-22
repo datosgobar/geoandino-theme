@@ -15,49 +15,6 @@ import itertools
 from ckeditor.fields import RichTextField
 import re
 
-# Monkey patching to filter datasets by group
-#############################################
-
-
-def usernames(group):
-    return list(map(lambda m: m.user.username, group.member_queryset()))
-
-
-def remove_repeted(usernames, search_string):
-    new_usernames = []
-    used_usernames = re.findall("owner__username__in=([\w]*)&?", search_string)
-    for username in usernames:
-        if username not in used_usernames:
-            new_usernames.append(username)
-    return new_usernames
-
-
-def add_member_url(username):
-    return "owner__username__in={}".format(username)
-
-
-def add_members_to_url(search_string, usernames):
-    new_usernames = remove_repeted(usernames, search_string)
-    if new_usernames:
-        search_string += "&"
-        for username in new_usernames[:-1]:
-            search_string += add_member_url(username)
-            search_string += "&"
-        search_string += add_member_url(new_usernames[-1])
-    return search_string
-
-
-@property
-def filter_by_group(self):
-    search_string = "/search/?limit=100&offset=0&"
-    url = add_members_to_url(search_string, usernames(self))
-    return url
-
-
-GroupProfile.filter_by_group = filter_by_group
-
-#############################################
-
 
 def image_url_or_default(self, image_property, default_url):
     image = getattr(self, image_property)
@@ -216,6 +173,30 @@ class GroupTreeNode(models.Model):
     def title(self):
         return self.group.title
 
+    def usernames(self):
+        return list(map(lambda m: m.user.username, self.group.member_queryset()))
+
+    def remove_repeted(self, usernames, search_string):
+        new_usernames = []
+        used_usernames = re.findall("owner__username__in=([\w]*)&?", search_string)
+        for username in usernames:
+            if username not in used_usernames:
+                new_usernames.append(username)
+        return new_usernames
+
+    def add_member_url(self, username):
+        return "owner__username__in={}".format(username)
+
+    def add_members_to_url(self, search_string, usernames):
+        new_usernames = self.remove_repeted(usernames, search_string)
+        if new_usernames:
+            search_string += "&"
+            for username in new_usernames[:-1]:
+                search_string += self.add_member_url(username)
+                search_string += "&"
+            search_string += self.add_member_url(new_usernames[-1])
+        return search_string
+
     def all_children(self):
         descendants = []
         for child in self.children.all():
@@ -226,7 +207,7 @@ class GroupTreeNode(models.Model):
         return descendants
 
     def filter_by_group(self, search_string):
-        return add_members_to_url(search_string, usernames(self.group))
+        return self.add_members_to_url(search_string, self.usernames())
 
     @property
     def filter_by_group_tree(self):
