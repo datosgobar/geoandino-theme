@@ -11,7 +11,6 @@ from geonode.documents.models import Document
 from account.models import EmailAddress
 from geonode.groups.models import GroupProfile
 from django.db.models.signals import pre_save, post_save, post_delete
-import itertools
 from ckeditor.fields import RichTextField
 import re
 
@@ -203,7 +202,6 @@ class GroupTreeNode(models.Model):
             descendants.append(child)
             if child.children.all():
                 descendants += child.all_children()
-        descendants = list(itertools.chain(descendants))
         return descendants
 
     def filter_by_group(self, search_string):
