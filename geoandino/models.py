@@ -219,6 +219,7 @@ class GroupTreeNode(models.Model):
         search_string = self.filter_by_group(search_string)
         children = self.all_children()
         if children:
+            search_string += "&"
             for child in children[:-1]:
                 search_string = child.filter_by_group(search_string)
                 search_string += "&"
