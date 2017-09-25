@@ -18,23 +18,31 @@
         <a href="{% url "layer_upload" %}" class="btn btn-primary pull-right">{% trans 'Upload Layers' %}</a>
         {% endif %}
         <h2 class="page-title">{% trans 'Explore Layers' %}</h2>
+        </div>
+
+        <div ng-if="results.length == 0">
+        <h5>{% trans "No spacial or vectorial datasets available" %}</h5>
+        </div>
+
+        <div ng-if="results.length != 0">
         <h5>{{ site_conf.layer_description }}</h5>
         <hr>
-      </div>
-      {% with include_type_filter='true' %}
-      {% with include_extent_filter='true' %}
-      {% with header='Type' %}
-      {% with filter='type__in' %}
-      {% include "layers/search/_search_content_layer.html" %}
-      {% endwith %}
-      {% endwith %}
-      {% endwith %}
-      {% endwith %}
-      {% include "_bulk_permissions_form.html" %}
-    {% endblock body %}
+            {% with include_type_filter='true' %}
+            {% with include_extent_filter='true' %}
+            {% with header='Type' %}
+            {% with filter='type__in' %}
+            {% include "layers/search/_search_content_layer.html" %}
+            {% endwith %}
+            {% endwith %}
+            {% endwith %}
+            {% endwith %}
+            {% include "_bulk_permissions_form.html" %}
+          {% endblock body %}
 
-    {% block sidebar %}{% endblock sidebar %}
-{% endblock body_outer %}
+          {% block sidebar %}{% endblock sidebar %}
+      {% endblock body_outer %}
+
+      </div>
 
 {% block extra_script %}
 {{ block.super }}
@@ -53,5 +61,6 @@
   {% include 'search/search_scripts.html' %}
   {% endwith %}
 {% endblock extra_script %}
+
 
 
