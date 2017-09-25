@@ -28,7 +28,7 @@ def image_url_or_default(self, image_property, default_url):
 
 class TopicTaxonomy(models.Model):
     identifier = models.CharField(max_length=255)
-    description = models.CharField(max_length=255, default=None, null=True, blank=True)
+    description = models.TextField(default=None, null=True, blank=True)
     limit = models.PositiveIntegerField(default=100)
     offset = models.IntegerField(default=0)
     image = models.ImageField(upload_to="thumbs/", blank=True, null=True)
