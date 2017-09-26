@@ -23,7 +23,7 @@ def distribution_from(resource, link):
     return {
         "accessURL": get_access_url(resource, link),
         "downloadURL": link.url,
-        "title": link.name,
+        "title": "%s (%s)" % (resource.title, link.name),
         "issued": link.extra_fields.issued
     }
 
