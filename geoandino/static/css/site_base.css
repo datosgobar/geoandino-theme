@@ -1,3 +1,4 @@
+
 /*CustomizaciÃ³n para Geonode*/
 
 .navbar-brand {
@@ -153,7 +154,7 @@ nav.filter ul.nav {
 }
 .d-inline {
     display: inline;
-} 
+}
 
 
 .page-header {
@@ -327,7 +328,7 @@ nav.filter #date_end {
 
 /* HEADER MAPS-NEW */
 
-#ext-gen32 > .navbar{
+.map-page-body > .navbar{
     position: fixed;
     top: 0;
     left: 0;
@@ -350,4 +351,15 @@ nav.filter #date_end {
         bottom: 0;
     }
 
+}
+
+
+/* FILTERS / LIST-GROUP */
+
+.node-treeview{
+    color: #000;
+}
+
+.treeview-second-level{
+    color: #767676;
 }
