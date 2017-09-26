@@ -702,3 +702,12 @@ msgstr "Escribí un título para la organización."
 
 msgid "New Map"
 msgstr "Nuevo mapa"
+
+msgid "No spacial or vectorial datasets available yet."
+msgstr "Aún no hay conjuntos de datos espaciales y vectoriales disponibles."
+
+msgid "No documents available yet."
+msgstr "Aún no hay documentos disponibles."
+
+msgid "No maps available yet."
+msgstr "Aún no hay mapas disponibles."
