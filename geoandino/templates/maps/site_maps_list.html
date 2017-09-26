@@ -18,13 +18,21 @@
       <a href="{% url "new_map" %}" class="btn btn-primary pull-right">{% trans 'Create a New Map' %}</a>
       {% endif %}
       <h2>{% trans 'Maps' %}</h2>
-      <div>{{ site_conf.map_description }}</div>
     </div>
+
+    <div ng-if="results.length == 0">
+      <h5>{% trans "No maps available yet." %}</h5>
+      </div>
+
+      <div ng-if="results.length != 0">
+      <h5>{{ site_conf.map_description }}</h5>
+      <hr>
       {% include "search/_search_content.html" %}
       {% include "_bulk_permissions_form.html" %}
-  {% endblock %}
-  {% block sidebar %}{% endblock sidebar %}
-{% endblock body_outer %}
+      {% endblock %}
+      {% block sidebar %}{% endblock sidebar %}
+      {% endblock body_outer %}
+    </div>
 
 {% block extra_script %}
 {{ block.super }}
