@@ -142,7 +142,7 @@ class DataJsonArDistributionMixin:
         expected = {
             "accessURL": get_access_url(resource, link),
             "downloadURL": link.url,
-            "title": link.name,
+            "title": "%s (%s)" % (resource.title, link.name),
             "issued": link.extra_fields.issued,
         }
         for key, value in expected.iteritems():
