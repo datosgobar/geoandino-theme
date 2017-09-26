@@ -17,22 +17,29 @@
         <a href="{% url "document_upload" %}" class="btn btn-primary pull-right">{% trans 'Upload Documents' %}</a>
       {% endif %}
       <h2>{% trans 'Documents' %}</h2>
-      <div>{{ site_conf.document_description }}</div>
     </div>
-      {% with include_type_filter='false' %}
-      {% with include_extent_filter='false' %}
-      {% with header='Document Type' %}
-      {% with filter='doc_type__in' %}
-      {% include "search/_search_content.html" %}
-      {% endwith %}
-      {% endwith %}
-      {% endwith %}
-      {% endwith %}
-      {% include "_bulk_permissions_form.html" %}
-  {% endblock %}
+      <div ng-if="results.length == 0">
+        <h5>{% trans "No documents available yet." %}</h5>
+      </div>
 
-  {% block sidebar %}{% endblock sidebar %}
-{% endblock body_outer %}
+      <div ng-if="results.length != 0">
+        <h5>{{ site_conf.document_description }}</h5>
+        <hr>
+        {% with include_type_filter='false' %}
+              {% with include_extent_filter='false' %}
+              {% with header='Document Type' %}
+              {% with filter='doc_type__in' %}
+              {% include "search/_search_content.html" %}
+              {% endwith %}
+              {% endwith %}
+              {% endwith %}
+              {% endwith %}
+              {% include "_bulk_permissions_form.html" %}
+              {% endblock %}
+
+          {% block sidebar %}{% endblock sidebar %}
+        {% endblock body_outer %}
+      </div>
 
 {% block extra_script %}
 {{ block.super }}
