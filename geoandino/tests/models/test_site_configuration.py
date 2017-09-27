@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 from django.test import TestCase
-from nose.tools import istest, assert_false
-from geoandino.models import SiteConfiguration
+from nose.tools import istest, assert_false, assert_not_equals
+from geoandino.tests.test_utils.factories import SiteConfigurationFactory
 
 class TestSiteConfiguration(TestCase):
 
     def setUp(self):
-        self.title = "a title"
-        self.description = "a description"
-        self.site_configuration = SiteConfiguration.objects.create(title=self.title, description=self.description)
+        self.site_configuration = SiteConfigurationFactory.create()
 
     @istest
     def site_created_at(self):
@@ -29,3 +27,7 @@ class TestSiteConfiguration(TestCase):
     @istest
     def site_is_default(self):
         assert_false(self.site_configuration.default)
+
+    @istest
+    def site_publisher(self):
+        assert_not_equals(None, self.site_configuration.publisher)

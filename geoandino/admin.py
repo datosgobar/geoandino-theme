@@ -7,7 +7,7 @@ from django.forms import ModelMultipleChoiceField, ModelForm
 
 
 class SiteConfigurationAdmin(admin.ModelAdmin):
-    list_display = ('title', 'default')
+    list_display = ('title', 'default', 'publisher',)
     fieldsets = [
         (None, {'fields': [_('default')]}),
         (_('Landing'), {'fields': ['title',
@@ -36,6 +36,11 @@ class SiteConfigurationAdmin(admin.ModelAdmin):
                                                  'twitter_description',
                                                  'twitter_image',
                                                  'twitter_user']}),
+        (_('Data Jsonar'), {
+            'classes': ('collapse',),
+            'fields': ('publisher', ),
+        }),
+
     ]
 
 
