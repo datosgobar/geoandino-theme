@@ -236,7 +236,7 @@ class GroupTreeNode(models.Model):
 
 def add_http(sender, instance, **kwargs):
     site_url = instance.site_url
-    if not site_url.startswith("http"):
+    if site_url and not site_url.startswith("http"):
         instance.site_url = "http://{}".format(site_url)
 
 
