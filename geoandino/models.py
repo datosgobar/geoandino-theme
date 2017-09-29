@@ -222,7 +222,10 @@ class GroupTreeNode(models.Model):
         return {'id': self.group.id, 'filter_url': self.filter_by_group_tree}
 
     def serializable_object(self):
-        obj = {'title': self.title, 'children': [], 'group': self.serialize_group()}
+        obj = {'title': self.title,
+               'children': [],
+               'has_parent': self.parent is not None,
+               'group': self.serialize_group()}
         for child in self.children.all():
             obj['children'].append(child.serializable_object())
         return obj
