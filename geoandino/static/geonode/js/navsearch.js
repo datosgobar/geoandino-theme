@@ -5,8 +5,8 @@ $('[data-navsearch]').on('click', 'a', function() {
 	$(container).toggleClass('open');
 	$(container).find('form').toggle("slide", {direction:"right"}, 300);
 
-	if($(container).hasClass('open')){
+	/*if($(container).hasClass('open')){
 		$(container).find('input').val("");
-	}
+	}*/ // limpia el texto del campo al cerrar
 
 });
