@@ -37,14 +37,20 @@
     </div>
   </div>
   <div class="col-md-9">
-    <div class="col-md-2">
-      <ng-pluralize count="total_counts"
-                    when="{'0': 'No hay resultados',
-                           '1': '1 resultado',
-                           'other': '{} resultados'}">
-      </ng-pluralize>
-    </div>
+    <div class="row results-topbar">
+    <!--<div class="col-md-2">-->
+      <div class="col-md-6">
+          <p>
+              <ng-pluralize count="total_counts"
+                        when="{'0': 'No hay resultados',
+                               '1': '1 resultado',
+                               'other': '{} resultados'}">
+              </ng-pluralize>
+          </p>
+      </div>
+
     {% include "search/_sort_filters.html" %}
+    </div>
     <div class="col-md-12 grid-spacer">
     {% block card %}
         {% include 'base/_resourcebase_snippet.html' %}
