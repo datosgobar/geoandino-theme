@@ -8,26 +8,34 @@
   </div>
 
   <article ng-repeat="item in results" resource_id="{{ item.id }}" ng-cloak class="ng-cloak">
-    <div class="col-sm-6 col-md-4 col-xs-12 item-container">
-      <div class="panel panel-default panel-icon profile-avatar">
+    <div class="panel panel-default panel-icon profile-avatar panel-landscape">
+      <a href="{{ item.detail_url }}" class="panel-heading"
+         style="background-image:url('{{ item.thumbnail_url }}');"></a>
+      <div class="panel-body item-details">
+        {% endverbatim %}
 
-        <a href="{{ item.detail_url }}"><div style="background-image:url('{{ item.thumbnail_url }}');" class="panel-heading"></div></a>
+        {% block icon %}
+        {% endblock %}
 
-        <div class="panel-body item-details">
-          {% endverbatim %}
-
-          {% block icon %}
-          {% endblock %}
-
-          {% verbatim %}
-          <p class="item-meta"><span class="item-category">{{ item.category__gn_description }}</span></p>
-          <h3 class="title-ellipsis"><a href="{{ item.detail_url }}">{{ item.title }}</a></h3>
-          <p class="text-muted abstract">{{ item.abstract | limitTo: 300 }}{{ item.abstract.length  > 300 ? '...' : ''}}</p>
-          <time>
-            <a id="dataset-info" href="{{ item.detail_url }}#info">
-            {{ item.date|date:"y/M/d" }}</a>
-          </time>
-        </div>
+        {% verbatim %}
+        <p class="item-meta">
+        <span class="item-category">
+          {{ item.category__gn_description }}
+        </span>
+        </p>
+        <h3 class="title-ellipsis">
+          <a href="{{ item.detail_url }}">
+            {{ item.title }}
+          </a>
+        </h3>
+        <p class="text-muted abstract">
+          {{ item.abstract | limitTo: 300 }}{{ item.abstract.length > 300 ? '...' : ''}}
+        </p>
+        <time>
+          <a id="dataset-info" href="{{ item.detail_url }}#info">
+            {{ item.date|date:"y/M/d" }}
+          </a>
+        </time>
       </div>
     </div>
   </article>

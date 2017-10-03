@@ -197,6 +197,9 @@ nav.filter #date_end {
     background-color: #eee;
     text-align: center;
 }
+.panel.panel-icon .panel-heading {
+    min-height: 105px;
+}
 .panel h3 a, .panel time a {
   text-decoration: none;
 }
