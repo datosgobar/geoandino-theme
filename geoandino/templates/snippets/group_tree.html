@@ -4,14 +4,17 @@
     {% else %}
         <li class="list-group-item">
     {% endif %}
-    <button class="fa fa-chevron-right"></button>
-    <a href="{{ node.group.filter_url }}">{{ node.title }}</a>
     {% if node.children %}
+        <button class="fa fa-chevron-right"></button>
+        <a href="{{ node.group.filter_url }}">{{ node.title }}</a>
        <ul>
        {% with nodes=node.children %}
             {% include "snippets/group_tree.html" %}
        {% endwith %}
        </ul>
+    {% else %}
+        <i class="fa fa-chevron-right"></i>
+        <a href="{{ node.group.filter_url }}">{{ node.title }}</a>
     {% endif %}
     </li>
 {% endfor %}
