@@ -1,6 +1,7 @@
 /*CustomizaciÃ³n para Geonode*/
 
 .navbar-brand {
+    background: none;
     width: 373px;
 }
 
