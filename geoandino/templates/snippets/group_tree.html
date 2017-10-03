@@ -1,18 +1,17 @@
 {% for node in nodes %}
     {% if node.has_parent %}
-       <ul>
-       <li>
+        <li>
     {% else %}
-        <ul class="list-group accordiontree" data-accordiontree>
         <li class="list-group-item">
     {% endif %}
     <button class="fa fa-chevron-right"></button>
     <a href="{{ node.group.filter_url }}">{{ node.title }}</a>
     {% if node.children %}
+       <ul>
        {% with nodes=node.children %}
             {% include "snippets/group_tree.html" %}
        {% endwith %}
+       </ul>
     {% endif %}
     </li>
-</ul>
 {% endfor %}
