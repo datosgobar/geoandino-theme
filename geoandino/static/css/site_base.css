@@ -1,4 +1,4 @@
-/*CustomizaciÃ³n para Geonode*/
+/*CustomizaciÃƒÂ³n para Geonode*/
 
 .navbar-brand {
     background: none;
@@ -198,9 +198,6 @@ nav.filter #date_end {
     background-color: #eee;
     text-align: center;
 }
-.panel.panel-icon .panel-heading {
-    min-height: 105px;
-}
 .panel h3 a, .panel time a {
   text-decoration: none;
 }
@@ -222,10 +219,15 @@ nav.filter #date_end {
 .panel-landscape{
     margin: 0 0 1em 0;
     position: relative;
+    min-height: 170px;
 }
 
 .panel-landscape a.panel-heading{
     display: block;
+}
+
+.panel.panel-landscape .panel-heading{
+    min-height: 0;
 }
 
 .panel-landscape .panel-heading{
@@ -343,6 +345,8 @@ nav.filter #date_end {
     width: 100%;
 }
 
+
+
 /* FOOTER STICK BOTTOM */
 
 @media (min-width: 769px){
@@ -424,7 +428,6 @@ nav.filter #date_end {
 
 
 
-
 /* FIX FILTERS-TITLE */
 
 .selections{
@@ -465,4 +468,12 @@ nav.filter #date_end {
 
 .results-topbar #sort a:hover{
     color: #fff;
+}
+
+
+/* FIX HEADER LOGO */
+
+nav .navbar-header .navbar-brand{
+    padding-top: 2px;
+    padding-bottom: 0;
 }
