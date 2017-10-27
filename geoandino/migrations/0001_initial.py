@@ -9,7 +9,7 @@ import exclusivebooleanfield.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('account', '0003_auto_20160822_0917'),
+        ('account', '0005_signupcode_username'),
     ]
     operations = [
         migrations.CreateModel(
