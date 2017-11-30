@@ -43,6 +43,9 @@ layers_urlpatterns = patterns(
                         url(r'^layers/upload$',
                             'layer_upload',
                             name='layer_upload'),
+                        url(r'^layers/(?P<layername>[^/]*)$',
+                            'layer_detail',
+                            name='layer_detail'),
                     )
 
 maps_urlpatterns = patterns(

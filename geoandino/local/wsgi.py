@@ -1,0 +1,1 @@
+/home/cdigiorno/Documents/Geoandino/geoandino-theme/geoandino/wsgi.py
