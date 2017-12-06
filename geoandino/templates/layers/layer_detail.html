@@ -7,6 +7,10 @@
 {% load url from future %}
 {% load base_tags %}
 {% load guardian_tags %}
+<script language="JavaScript" type="text/javascript" src="../geoandino/static/js/idera_metadata.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/admin/js/jquery.init.js"></script>
+
 
 {% block title %}{{ resource.title|default:resource.typename }} — {{ block.super }}{% endblock %}
 
@@ -406,14 +410,17 @@
             </ul>
             </div>
             <div style="margin-bottom: 20px;">
-                <h5 class="modal-title" id="myModalLabel"> IDERA 2.0 metadata </h5>
 
+                <h5 class="modal-title" id="myModalLabel"> IDERA 2.0 Metadata </h5>
+                <ul>
+                    <a href="{% url 'vista' resource_id=resource.id %}" target="_blank"> XML </a>
+                </ul>
             </div>
-            {% if resource.storeType == 'dataStore' %}
+              {% if resource.storeType == 'dataStore' %}
             <h5 class="modal-title" id="myModalLabel">Attribute Information</h5>
             <ul>
               <li><a href="{{ resource.get_absolute_url }}/feature_catalogue" target="_blank">ISO Feature Catalogue</a></li>
-            <ul>
+            </ul>
             {% endif %}
           </div>
           <div class="modal-footer">
@@ -575,4 +582,5 @@
     {% if GEONODE_SECURITY_ENABLED %}
     {% include "_permissions_form_js.html" %}
     {% endif %}
+
 {% endblock extra_script %}

@@ -2,6 +2,7 @@
 
 from django.conf.urls import url, patterns
 from django.views.generic import TemplateView
+from geoandino.apps.idera import views as idera_views
 
 from geonode.urls import *
 
@@ -43,9 +44,12 @@ layers_urlpatterns = patterns(
                         url(r'^layers/upload$',
                             'layer_upload',
                             name='layer_upload'),
-                        url(r'^layers/(?P<layername>[^/]*)$',
-                            'layer_detail',
-                            name='layer_detail'),
+                        # url(r'^layers/(?P<layername>[^/]*)$',
+                        #     'layer_detail',
+                        #     name='layer_detail'), todo: ver para que existia
+                        url(r'^vista/(?P<resource_id>[-\w]+)/$',
+                            idera_views.IderaMetadata.as_view(),
+                            name='vista'),
                     )
 
 maps_urlpatterns = patterns(
