@@ -22,6 +22,7 @@ from geonode.layers.forms import LayerForm, LayerUploadForm, NewLayerUploadForm,
 from geonode.base.forms import CategoryForm
 from geonode.layers.models import Layer, Attribute, UploadSession
 from geonode.base.models import TopicCategory
+from geonode.layers.views import layer_detail
 
 from geonode.people.forms import ProfileForm, PocForm
 from geonode.geoserver.helpers import ogc_server_settings, save_style

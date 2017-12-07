@@ -147,23 +147,23 @@
               <h4 class="modal-title" id="myModalLabel">{% trans "Download Metadata" %}</h4>
             </div>
             <div class="modal-body">
-			    <div style="margin-bottom:20px">
-					<h5 class="modal-title" id="myModalLabel">
-					Full metadata
-					</h5>
-					<ul style="list-style: outside none none;padding: 0;">
-						<li><a target="_blank" href="../catalogue/csw_to_extra_format/{{resource.uuid}}/{{resource.title}}.txt"> Text format </a></li>
-						<li><a target="_blank" href="../catalogue/csw_to_extra_format/{{resource.uuid}}/{{resource.title}}.html"> HTML format </a></li>
-					</ul>
-				</div>
-			  <h5 class="modal-title" id="myModalLabel">
-			  Standard Metadata - XML format
-			  </h5>
-              <ul style="list-style: outside none none;padding: 0;">
-                {% for link in metadata %}
-                <li><a href="{{ link.url }}">{{ link.name }}</a></li>
-                {% endfor %}
-              </ul>
+                <div style="margin-bottom:20px">
+                    <h5 class="modal-title" id="myModalLabel">
+                        Full metadata
+                    </h5>
+                    <ul style="list-style: outside none none;padding: 0;">
+                        <li><a target="_blank" href="../catalogue/csw_to_extra_format/{{resource.uuid}}/{{resource.title}}.txt"> Text format </a></li>
+                        <li><a target="_blank" href="../catalogue/csw_to_extra_format/{{resource.uuid}}/{{resource.title}}.html"> HTML format </a></li>
+                    </ul>
+                </div>
+                <h5 class="modal-title" id="myModalLabel">
+                    Standard Metadata - XML format
+                </h5>
+                <ul style="list-style: outside none none;padding: 0;">
+                    {% for link in metadata %}
+                        <li><a href="{{ link.url }}">{{ link.name }}</a></li>
+                    {% endfor %}
+                </ul>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">{% trans "Close" %}</button>

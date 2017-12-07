@@ -60,18 +60,18 @@ DATABASES = {
         'NAME': env('POSTGRES_DB', default=""),
         'USER': env('POSTGRES_USER', default=""),
         'PASSWORD': env('POSTGRES_PASSWORD', default=""),
-        'HOST' : env('POSTGRES_HOST', default="db"),
-        'PORT' : '5432',
+        'HOST': env('POSTGRES_HOST', default="db"),
+        'PORT': '5432',
      },
     # vector datastore for uploads
     'datastore' : {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        #'ENGINE': '', # Empty ENGINE name disables
+        # 'ENGINE': '', # Empty ENGINE name disables
         'NAME': env('DATASTORE_DB', default=""),
         'USER': env('POSTGRES_USER', default=""),
         'PASSWORD': env('POSTGRES_PASSWORD', default=""),
-        'HOST' : env('POSTGRES_HOST', default="db"),
-        'PORT' : '5432',
+        'HOST': env('POSTGRES_HOST', default="db"),
+        'PORT': '5432',
     }
 }
 
@@ -93,31 +93,31 @@ OGC_SERVER = {
         # the proxy won't work and the integration tests will fail
         # the entire block has to be overridden in the local_settings
         'PUBLIC_LOCATION': GEOSERVER_PUBLIC_LOCATION,
-        'USER' : 'admin',
-        'PASSWORD' : 'geoserver',
-        'MAPFISH_PRINT_ENABLED' : True,
-        'PRINT_NG_ENABLED' : True,
-        'GEONODE_SECURITY_ENABLED' : True,
-        'GEOGIG_ENABLED' : False,
-        'WMST_ENABLED' : False,
+        'USER': 'admin',
+        'PASSWORD': 'geoserver',
+        'MAPFISH_PRINT_ENABLED': True,
+        'PRINT_NG_ENABLED': True,
+        'GEONODE_SECURITY_ENABLED': True,
+        'GEOGIG_ENABLED': False,
+        'WMST_ENABLED': False,
         'BACKEND_WRITE_ENABLED': True,
-        'WPS_ENABLED' : False,
-        'LOG_FILE' : '/dev/stdout',
+        'WPS_ENABLED': False,
+        'LOG_FILE': '/dev/stdout',
         # Set to dictionary identifier of database containing spatial data in DATABASES dictionary to enable
         'DATASTORE': 'datastore',
     }
 }
 
 # If you want to enable Mosaics use the following configuration
-#UPLOADER = {
-##    'BACKEND': 'geonode.rest',
+# UPLOADER = {
+#    'BACKEND': 'geonode.rest',
 #    'BACKEND': 'geonode.importer',
 #    'OPTIONS': {
 #        'TIME_ENABLED': True,
 #        'MOSAIC_ENABLED': True,
 #        'GEOGIG_ENABLED': False,
 #    }
-#}
+# }
 
 CATALOG_URL = env("CATALOG_URL", default=SITEURL)
 
@@ -125,17 +125,17 @@ CATALOGUE = {
     'default': {
         # The underlying CSW implementation
         # default is pycsw in local mode (tied directly to GeoNode Django DB)
-        #'ENGINE': 'geonode.catalogue.backends.pycsw_local',
+        'ENGINE': 'geonode.catalogue.backends.pycsw_local',
         # pycsw in non-local mode
         # 'ENGINE': 'geonode.catalogue.backends.pycsw_http',
         # GeoNetwork opensource
-        'ENGINE': 'geonode.catalogue.backends.geonetwork',
+        # 'ENGINE': 'geonode.catalogue.backends.geonetwork',
         # deegree and others
         # 'ENGINE': 'geonode.catalogue.backends.generic',
 
         # The FULLY QUALIFIED base url to the CSW instance for this GeoNode
-        # 'URL': '%scatalogue/csw' % SITEURL,
-        'URL': '%sgeonetwork/srv/en/csw' % CATALOG_URL,
+        'URL': '%scatalogue/csw' % SITEURL,
+        # 'URL': '%sgeonetwork/srv/en/csw' % CATALOG_URL,
         # 'URL': 'http://localhost:8080/deegree-csw-demo-3.0.4/services',
 
         # login credentials (for GeoNetwork)
@@ -151,7 +151,7 @@ MEDIA_ROOT = env("MEDIA_ROOT", default=PROJECT_DIR("uploaded"))
 STATIC_ROOT = env("STATIC_ROOT", default=PROJECT_DIR("static_root"))
 
 # Default preview library
-#LAYER_PREVIEW_LIBRARY = 'geoext'
+# LAYER_PREVIEW_LIBRARY = 'geoext'
 
 # Custom settings
 
@@ -184,10 +184,10 @@ IGN_GEOSERVER = {
             'ING',
             'http://wms.ign.gob.ar/geoserver/wms',
             {
-            'layers': ['capabaseargenmap'],
-            "format":"image/png",
-            "tiled": True,
-            "tilesOrigin": [-20037508.34, -20037508.34],
+                'layers': ['capabaseargenmap'],
+                "format":"image/png",
+                "tiled": True,
+                "tilesOrigin": [-20037508.34, -20037508.34],
             },
 
         ],
@@ -245,9 +245,11 @@ SUPER_THEME_TAXONOMY_URL = "http://datos.gob.ar/superThemeTaxonomy.json"
 
 DEFAULT_SUPER_THEME = env("DEFAULT_SUPER_THEME_CODE", default=AGRI)
 
+
 def check_default_super_theme(code):
     if not any(code == super_theme_code for super_theme_code, text in SUPER_THEME_CHOICES):
         raise Exception("Invalid Super Theme code")
+
 
 check_default_super_theme(DEFAULT_SUPER_THEME)
 
