@@ -8,3 +8,4 @@ django-ckeditor==5.3.0
 # See https://github.com/yourlabs/django-autocomplete-light/issues/914
 # Force working version of six
 six==1.10
+django-polymorphic==0.9.2
